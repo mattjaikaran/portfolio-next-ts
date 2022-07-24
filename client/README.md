@@ -41,7 +41,7 @@ Adding a stylesheet will
 2. will import the stylesheet into MyComponent and include it in the parent div
 
 ### Pages
-To create a new page named MyPage in `pages/my-page.js`
+To create a new page named MyPage in `pages/my-page.ts`
 ```
   $ hygen page new
   1. What is the page title? MyPage
