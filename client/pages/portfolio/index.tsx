@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import MainLayout from 'views/layouts/MainLayout'
+import Portfolio from 'views/dotcom/Portfolio'
 
 const PortfolioPage: NextPage = () => {
   return (
@@ -9,13 +9,12 @@ const PortfolioPage: NextPage = () => {
       <Head>
         <title>Matt Jaikaran - PortfolioPage</title>
         <meta
-          name="PortfolioPage Page"
-          content="meta content for PortfolioPage Page" />
+          name="Portfolio Page"
+          content="meta content for Portfolio Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>PortfolioPage</h1>
-      <p>Lorem ipsum dolor sine.</p>
-      <Link href="/portfolio/1">See more</Link>
+      <h1>Portfolio</h1>
+      <Portfolio />
     </MainLayout>
   )
 }

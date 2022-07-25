@@ -1,15 +1,21 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import MainLayout from 'views/layouts/MainLayout'
-import styles from '../styles/Home.module.css'
+import Home from 'views/dotcom/Home'
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   return (
     <MainLayout>
-      <h1>Home</h1>
+      <Head>
+        <title>Matt Jaikaran - Software Engineer, NYC</title>
+        <meta
+          name="Home Page"
+          content="meta content for Home Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Home />
     </MainLayout>
   )
 }
 
-export default Home
+export default HomePage

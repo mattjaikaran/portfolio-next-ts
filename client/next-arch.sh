@@ -13,17 +13,17 @@ user_dir="mkdir components/user/UserProfile components/user/UserSettings"
 layout_dir="mkdir views/layouts"
 
 # files
-pages_ts="touch pages/about.ts pages/contact.ts pages/work.ts pages/login.ts pages/register.ts pages/forgot-password.ts pages/password-reset.ts"
+pages="touch pages/about.ts pages/contact.ts pages/portfolio.ts pages/login.ts pages/register.ts pages/forgot-password.ts pages/password-reset.ts"
 
 # hygen pages 
 hygen_page_about="hygen page new --title AboutPage --desc About Me"
 hygen_page_contact="hygen page new --title ContactPage --desc Contact Me"
-hygen_page_work="hygen page new --title WorkPage --desc Work With Me"
+hygen_page_portfolio="hygen page new --title PortfolioPage --desc Portfolio With Me"
 
-# hygen components
-hygen_component_about="hygen component new --name about --type dotcom --hasStyles"
-hygen_component_contact="hygen component new --name contact --type dotcom --hasStyles"
-hygen_component_work="hygen component new --name work --type dotcom --hasStyles"
+# hygen views
+hygen_view_about="hygen view new --name about --type dotcom --hasStyles"
+hygen_view_contact="hygen view new --name contact --type dotcom --hasStyles"
+hygen_view_portfolio="hygen view new --name portfolio --type dotcom --hasStyles"
 
 # forms
 hygen_form_contact="hygen form new --name ContactForm --type utils"
@@ -32,12 +32,12 @@ hygen_form_contact="hygen form new --name ContactForm --type utils"
 hygen_component_header="hygen component new --name header --type nav --hasStyles"
 hygen_component_footer="hygen component new --name footer --type nav --hasStyles"
 
-lib_files_ts="touch lib/routes/index.ts"
-config_files_ts="touch config/config.ts config/auth/auth.ts"
+lib_files="touch lib/routes/index.ts"
+config_files="touch config/config.ts config/auth/auth.ts"
 
 # redux
 redux_packages="yarn add @reduxjs/toolkit react-redux"
-rtk_files_ts="touch lib/store/index.ts"
+rtk_files="touch lib/store/index.ts"
 
 # storybook
 # tests
@@ -53,15 +53,15 @@ $component_main_dir
 $forms_dir
 $layout_dir
 
-$config_files_ts
+$config_files
 $hygen_page_about
 $hygen_page_contact
-$hygen_page_work
+$hygen_page_portfolio
 $hygen_component_header
 $hygen_component_footer
-$hygen_component_about
-$hygen_component_contact
-$hygen_component_work
+$hygen_view_about
+$hygen_view_contact
+$hygen_view_portfolio
 $hygen_form_contact
 
 

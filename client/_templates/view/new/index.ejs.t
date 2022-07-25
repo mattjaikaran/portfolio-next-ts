@@ -1,5 +1,5 @@
 ---
-to: components/<%= h.changeCase.lower(type) %>/<%= h.changeCase.pascal(name) %>/index.tsx
+to: views/<%= h.changeCase.lower(type) %>/<%= h.changeCase.pascal(name) %>/index.tsx
 arbitrary: <% name = null, type = null, hasStyles = false %>
 ---
 <% if ( hasStyles ) { %>

@@ -1,18 +1,18 @@
-import About from '@/components/dotcom/About'
+import About from 'views/dotcom/About'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import MainLayout from 'views/layouts/MainLayout'
 
-const AboutPage = () => {
+const AboutPage: NextPage = () => {
   return (
     <MainLayout>
       <Head>
-        <title>Matt Jaikaran - AboutPage</title>
+        <title>Matt Jaikaran - About</title>
         <meta
-          name="AboutPage Page"
-          content="meta content for AboutPage Page" />
+          name="About Page"
+          content="meta content for About Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>About</h1>
       <About />
     </MainLayout>
   )

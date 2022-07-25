@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import styles from './Header.module.scss'
+import { routes } from '../../../lib/routes'
 
 const Header = () => {
   return (
     <div className={styles.header}>
-      <Link href="/">Home</Link>
-      <Link href="/about">About</Link>
-      <Link href="/portfolio">Portfolio</Link>
-      <Link href="/contact">Contact</Link>
+      {routes.map(({ id, name, url}) => (
+        <Link key={id} href={url}>{name}</Link>
+      ))}
     </div>
   )
 }
