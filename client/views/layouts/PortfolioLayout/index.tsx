@@ -1,6 +1,14 @@
-const PortfolioLayout = () => {
+import Header from '@/components/nav/Header'
+
+const PortfolioLayout = ({ children }) => {
   return (
-    <div>PortfolioLayout</div>
+    <div>
+      <Header />
+      <p>PortfolioLayout</p>
+      <main>
+        {children}
+      </main>
+    </div>
   )
 }
 

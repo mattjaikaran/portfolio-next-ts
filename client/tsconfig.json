@@ -22,8 +22,8 @@
       "@/copy/*": [
         "copy/*"
       ],
-      "@/hooks/*": [
-        "hooks/*"
+      "@/lib/*": [
+        "lib/*"
       ],
       "@/icons/*": [
         "assets/icons/*"
