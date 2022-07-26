@@ -2,12 +2,12 @@ module.exports = [
   {
     type: 'input',
     name: 'name',
-    message: `What's the Component name?`
+    message: `What's the view name?`
   },
   {
     type: 'input',
     name: 'type',
-    message: `What's the Component type?`
+    message: `What's the view type?`
   },
   {
     type: 'confirm',
