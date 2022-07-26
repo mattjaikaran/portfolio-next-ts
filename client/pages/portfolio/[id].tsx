@@ -7,10 +7,10 @@ const PortfolioDetailPage: NextPage = () => {
   return (
     <MainLayout>
       <Head>
-        <title>Matt Jaikaran - PortfolioPage</title>
+        <title>Matt Jaikaran - Portfolio Detail</title>
         <meta
-          name="PortfolioPage Page"
-          content="meta content for PortfolioPage Page" />
+          name="PortfolioDetail Page"
+          content="meta content for PortfolioDetail Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PortfolioDetail />

@@ -25,7 +25,7 @@ hygen_view_about="hygen view new --name about --type dotcom --hasStyles"
 hygen_view_contact="hygen view new --name contact --type dotcom --hasStyles"
 hygen_view_portfolio="hygen view new --name portfolio --type dotcom --hasStyles"
 
-# forms
+# hygen forms
 hygen_form_contact="hygen form new --name ContactForm --type utils"
 
 # nav

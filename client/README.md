@@ -1,39 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Front End
 
 ## Features
 
-- NextJS w/ TypeScript
+- [NextJS](https://nextjs.org/)
+- TypeScript
 - SCSS modules
 - React Hook Form
-- Hygen CLI
+- [Hygen CLI](https://www.hygen.io/)
   - Pages
   - Components
     - Component File
     - Stylesheet
     - Unit Test (coming soon)
   - Forms
-- Bash
+- Bash Scripting
 
 ## CLI
-Using [Hygen](https://www.hygen.io/) to scaffold pages, components, forms. All generators are located in `_templates` directory.
+Using Hygen to scaffold pages, components, forms. All generators are located in `_templates` directory.
 
 Install Hygen globally
 ```bash
 $ npm i -g hygen
-or using npx
-$ npx hygen
 ```
 
 ### Components
 Create a new component named MyComponent in `@/components/shared/MyComponent/index.tsx`
 ```bash
-  $ hygen component new
-  1. What is the component name? MyComponent
-  2. What is the component type? shared
-  3. Do you want to add a stylesheet? (y/N) y
-  
-  or using flags
-  $ hygen component new --name MyComponent --type shared --hasStyles
+$ hygen component new
+1. What is the component name? MyComponent
+2. What is the component type? shared
+3. Do you want to add a stylesheet? (y/N) y
+
+or using flags
+$ hygen component new --name MyComponent --type shared --hasStyles
 ```
 
 Adding a stylesheet will 
@@ -42,24 +41,36 @@ Adding a stylesheet will
 
 ### Pages
 To create a new page named MyPage in `pages/my-page.ts`
+```bash
+$ hygen page new
+1. What is the page title? MyPage
+2. What is the page description? this is my description
+
+or
+$ hygen page new --title MyPage --desc this is my description
 ```
-  $ hygen page new
-  1. What is the page title? MyPage
-  2. What is the page description? this is my description
+
+### Views
+Create a new view named TestView in `@/views/dotcom/TestView/index.tsx`
+```bash
+  $ hygen view new
+  1. What is the view name? TestView
+  2. What is the view type? dotcom
+  3. Do you want to add a stylesheet? (y/N) y
   
-  or
-  $ hygen page new --title MyPage --desc this is my description
+  or using flags
+  $ hygen view new --name TestView --type dotcom --hasStyles
 ```
 
 ### Forms
 Create a new form named MyForm in `@/components/forms/utils/MyForm/index.tsx`
 ```bash
-  $ hygen form new
-  1. What is the form name? MyForm
-  2. What is the form type? utils
-  
-  or
-  $ hygen form new --name MyComponent --type utils
+$ hygen form new
+1. What is the form name? MyForm
+2. What is the form type? utils
+
+or
+$ hygen form new --name MyComponent --type utils
 ```
 
 # Installation

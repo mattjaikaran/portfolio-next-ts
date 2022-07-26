@@ -12,7 +12,7 @@ const <%= h.changeCase.pascal(title) || 'NewPage' %>: NextPage = () => {
         <title>Matt Jaikaran - <%= h.changeCase.pascal(title) || 'NewPage' %></title>
         <meta
           name="<%= h.changeCase.pascal(title) || 'NewPage' %> Page"
-          content="meta content for <%= h.changeCase.pascal(title) || 'NewPage' %> Page" />
+          content="meta content for <%= h.changeCase.pascal(title) || 'NewPage' %>" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1><%= h.changeCase.pascal(title) || 'NewPage' %></h1>
