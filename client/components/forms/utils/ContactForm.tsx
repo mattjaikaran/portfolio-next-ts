@@ -1,30 +1,103 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
+import {
+  FormErrorMessage,
+  FormLabel,
+  FormControl,
+  Input,
+  Textarea,
+  Button,
+} from '@chakra-ui/react'
 
-type Inputs = {
-  example: string,
-  exampleRequired: string,
+type ContactInputs = {
+  firstName: string,
+  lastName: string,
+  email: string,
+  content: string,
 };
 
 const ContactForm = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data): void => console.log(data);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm()
 
-  // console.log(watch('example'))
-  // console.log(watch('exampleRequired'))
+  function onSubmit(data: ContactInputs) {
+    try {
+      console.log(JSON.stringify(data, null, 2))
+    } catch (err) {
+      console.log(err);
+      console.log(errors);
+    }
+  }
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input placeholder="test" {...register("example")} />
-      
-      {/* include validation with required or other standard HTML validation rules */}
-      <input {...register("exampleRequired", { required: true })} />
-      {/* errors will return when field validation fails  */}
-      {errors.exampleRequired && <span>This field is required</span>}
-      
-      <input type="submit" />
-    </form>
+    <FormControl isInvalid={errors.firstName}>
+      <FormLabel htmlFor="firstName">First Name</FormLabel>
+      <Input
+        id="firstName"
+        placeholder="First Name"
+        {...register("firstName", {
+          required: "This is required",
+          minLength: { value: 4, message: "Minimum length should be 4" },
+        })}
+      />
+      <FormErrorMessage>
+        {errors.firstName && errors.firstName.message}
+      </FormErrorMessage>
+    </FormControl>
+
+    <FormControl isInvalid={errors.lastName}>
+      <FormLabel htmlFor="lastName">Last Name</FormLabel>
+      <Input
+        id="lastName"
+        placeholder="Last Name"
+        {...register("lastName", {
+          required: "This is required",
+          minLength: { value: 4, message: "Minimum length should be 4" },
+        })}
+      />
+      <FormErrorMessage>
+        {errors.lastName && errors.lastName.message}
+      </FormErrorMessage>
+    </FormControl>
+
+    <FormControl isInvalid={errors.email}>
+      <FormLabel htmlFor="firstName">Email</FormLabel>
+      <Input
+        id="email"
+        type="email"
+        placeholder="Email"
+        {...register("email", {
+          required: "This is required",
+          minLength: { value: 4, message: "Minimum length should be 4" },
+        })}
+      />
+      <FormErrorMessage>
+        {errors.email && errors.email.message}
+      </FormErrorMessage>
+    </FormControl>
+
+    <FormControl isInvalid={errors.content}>
+      <FormLabel htmlFor="firstName">Message</FormLabel>
+      <Textarea
+        id="content"
+        placeholder="Message"
+        {...register("content", {
+          required: "This is required",
+          minLength: { value: 10, message: "Minimum length should be 10" },
+        })}
+      />
+      <FormErrorMessage>
+        {errors.content && errors.content.message}
+      </FormErrorMessage>
+    </FormControl>
+
+    <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
+      Submit
+    </Button>
+  </form>
   )
 }
 
