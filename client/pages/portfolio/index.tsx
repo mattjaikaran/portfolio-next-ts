@@ -13,7 +13,6 @@ const PortfolioPage: NextPage = () => {
           content="meta content for Portfolio Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Portfolio</h1>
       <Portfolio />
     </MainLayout>
   )
