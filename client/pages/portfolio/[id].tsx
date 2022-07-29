@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import MainLayout from 'views/layouts/MainLayout'
-import PortfolioDetail from '@/components/portfolio/PortfolioDetail'
+import PortfolioDetail from '../../views/dotcom/PortfolioDetail'
 
 const PortfolioDetailPage: NextPage = () => {
   return (

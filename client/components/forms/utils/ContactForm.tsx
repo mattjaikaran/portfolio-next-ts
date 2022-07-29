@@ -20,11 +20,11 @@ const ContactForm = () => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm()
+  } = useForm<ContactInputs>()
 
-  function onSubmit(data: ContactInputs) {
+  function onSubmit(values: ContactInputs) {
     try {
-      console.log(JSON.stringify(data, null, 2))
+      console.log(JSON.stringify(values, null, 2));
     } catch (err) {
       console.log(err);
       console.log(errors);

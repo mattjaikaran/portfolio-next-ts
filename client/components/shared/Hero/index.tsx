@@ -1,18 +1,71 @@
-/* eslint-disable @next/next/no-img-element */
-import { Box } from '@chakra-ui/react'
-import styles from './Hero.module.scss'
+import {
+  Stack,
+  Flex,
+  Button,
+  Text,
+  VStack,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 
-const Hero = () => {
+interface IHeroProps {
+  homeHero: boolean;
+  backgroundImage: string;
+  title: string;
+  subtitle?: string;
+  btnText: string;
+  btnText2?: string;
+}
+
+const Hero = (props: IHeroProps) => {
+  const { homeHero, backgroundImage, title, subtitle, btnText, btnText2 } = props
   return (
-    <div className={styles.hero}>
-      <Box>
-        <img 
-          width="100%"
-          src="https://images.unsplash.com/photo-1658595638769-69a0a4141ab8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80" 
-          alt="hero image"
-        />
-      </Box>
-    </div>
+    <Flex
+      w={'full'}
+      h={'100vh'}
+      backgroundImage={`url(${backgroundImage})`}
+      backgroundSize={'cover'}
+      backgroundPosition={'center'}>
+      <VStack
+        w={'full'}
+        justify={'center'}
+        px={useBreakpointValue({ base: 4, md: 8 })}
+        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
+        <Stack maxW={'2xl'} align={homeHero ? 'center' : 'flex-start'} spacing={4}>
+          <Text
+            color={'white'}
+            fontWeight={700}
+            lineHeight={1}
+            fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
+            {title}
+          </Text>
+          <Text
+            color={'white'}
+            fontWeight={500}
+            lineHeight={1.2}
+            fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}>
+            {subtitle}
+          </Text>
+          <Stack direction={'row'}>
+            <Button
+              bg={'blue.400'}
+              rounded={'full'}
+              color={'white'}
+              _hover={{ bg: 'blue.500' }}>
+              {btnText}
+            </Button>
+            {btnText2 && (
+              <Button
+                bg={'whiteAlpha.300'}
+                rounded={'full'}
+                color={'white'}
+                _hover={{ bg: 'whiteAlpha.500' }}>
+                {btnText2}
+              </Button>
+            )}
+          </Stack>
+        </Stack>
+      </VStack>
+    </Flex>
   )
 }
 

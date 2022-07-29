@@ -1,12 +1,19 @@
 import PortfolioCard from '@/components/portfolio/PortfolioCard'
+import { Container, Grid } from '@chakra-ui/react'
 import styles from './Portfolio.module.scss'
 
 const Portfolio = () => {
   return (
-    <div className={styles.portfolio}>
-      <h5>Portfolio</h5>
-      <PortfolioCard />
-    </div>
+    <Container className={styles.portfolio} maxW={'7xl'}>
+      <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+        <PortfolioCard />
+        <PortfolioCard />
+        <PortfolioCard />
+        <PortfolioCard />
+        <PortfolioCard />
+        <PortfolioCard />
+      </Grid>
+    </Container>
   )
 }
 
