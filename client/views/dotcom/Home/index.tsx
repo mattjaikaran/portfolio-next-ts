@@ -35,9 +35,10 @@ const Home = () => {
       <Hero 
         homeHero
         backgroundImage={homeHeroImg}
-        title="Lorem Ipsum"
-        subtitle="Lorem ipsum something"
-        btnText="View More"
+        title="Matt Jaikaran"
+        subtitle="Software Engineer"
+        btnText="View GitHub"
+        btnLink="https://github.com/mattjaikaran"
       />
       <BackgroundWithText
         bgColor="black"

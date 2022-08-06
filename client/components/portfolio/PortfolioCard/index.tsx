@@ -11,8 +11,23 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-const PortfolioCard = () => {
+interface PortfolioCardProps {
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: Array<string>;
+  link: string;
+}
+
+const PortfolioCard = (props: PortfolioCardProps) => {
   const router = useRouter()
+  const {
+    title,
+    subtitle,
+    description,
+    tags,
+    link,
+  } = props
   return (
     <Center py={6}>
       <Box
@@ -44,16 +59,16 @@ const PortfolioCard = () => {
           }}
         />
         <Heading fontSize={'2xl'} fontFamily={'body'}>
-          Portfolio Item
+          {title}
         </Heading>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          Subtitle
+          {subtitle}
         </Text>
         <Text
           textAlign={'center'}
           color={useColorModeValue('gray.700', 'gray.400')}
           px={3}>
-          Details on the Portfolio Item
+          {description}
         </Text>
 
         <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
@@ -62,27 +77,27 @@ const PortfolioCard = () => {
             py={1}
             bg={useColorModeValue('gray.50', 'gray.800')}
             fontWeight={'400'}>
-            #art
+            #{tags[0]}
           </Badge>
           <Badge
             px={2}
             py={1}
             bg={useColorModeValue('gray.50', 'gray.800')}
             fontWeight={'400'}>
-            #photography
+            #{tags[1]}
           </Badge>
           <Badge
             px={2}
             py={1}
             bg={useColorModeValue('gray.50', 'gray.800')}
             fontWeight={'400'}>
-            #music
+            #{tags[2]}
           </Badge>
         </Stack>
 
         <Stack mt={8} direction={'row'} spacing={4}>
           <Button
-            onClick={() => router.push('/portfolio/1')}
+            onClick={() => router.push(link)}
             flex={1}
             fontSize={'sm'}
             rounded={'full'}
