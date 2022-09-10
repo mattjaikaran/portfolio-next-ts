@@ -2,7 +2,7 @@
 to: pages/<%= h.changeCase.paramCase(title) || 'dashboard-page' %>.ts
 ---
 import Head from 'next/head'
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import MainLayout from '@/views/layouts/MainLayout'
 
 const <%= h.changeCase.pascal(title) || 'NewPage' %>: NextPage = () => {

@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import MainLayout from 'views/layouts/MainLayout'
-import Home from 'views/dotcom/Home'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import MainLayout from '@/views/layouts/MainLayout';
+import Home from '@/views/dotcom/Home';
 
 const HomePage: NextPage = () => {
   return (
@@ -16,6 +16,6 @@ const HomePage: NextPage = () => {
       <Home />
     </MainLayout>
   )
-}
+};
 
-export default HomePage
+export default HomePage;
