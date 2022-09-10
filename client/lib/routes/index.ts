@@ -19,4 +19,9 @@ export const routes = [
     name: 'Contact',
     url: '/contact',
   },
-]
+  {
+    id: 5,
+    name: 'Blog',
+    url: '/blog',
+  },
+];

@@ -1,10 +1,9 @@
+import Link from 'next/link';
 import {
   Box,
   Container,
   Stack,
   Text,
-  Image,
-  Flex,
   VStack,
   Heading,
   SimpleGrid,
@@ -13,29 +12,36 @@ import {
   List,
   ListItem,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+import Carousel from '@/components/shared/Carousel';
+
+const homeSlides = [
+  {
+    image:
+      'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+  },
+  {
+    image:
+      'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
+  },
+  {
+    image:
+      'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+  },
+];
 
 const PortfolioDetail = () => {
   return (
     <Container maxW={'7xl'}>
-      <Link href="/portfolio">Back</Link>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 18, md: 24 }}>
-        <Flex>
-          <Image
-            rounded={'md'}
-            alt={'product image'}
-            src={
-              'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080'
-            }
-            fit={'cover'}
-            align={'center'}
-            w={'100%'}
-            h={{ base: '100%', sm: '400px', lg: '500px' }}
-          />
-        </Flex>
+        <Stack>
+          <Link href="/portfolio">
+            <Text>Back</Text>
+          </Link>
+          <Carousel slides={homeSlides} />
+        </Stack>
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={'header'}>
             <Heading
