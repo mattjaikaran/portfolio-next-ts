@@ -1,27 +1,8 @@
+import { IconHome2 } from '@tabler/icons';
+
 export const routes = [
-  {
-    id: 1,
-    name: 'Home',
-    url: '/',
-  },
-  {
-    id: 2,
-    name: 'About',
-    url: '/about',
-  },
-  {
-    id: 3,
-    name: 'Portfolio',
-    url: '/portfolio',
-  },
-  {
-    id: 4,
-    name: 'Contact',
-    url: '/contact',
-  },
-  {
-    id: 5,
-    name: 'Blog',
-    url: '/blog',
-  },
+  { link: '/', label: 'Home', icon: IconHome2 },
+  // { link: '/about', label: 'About', icon: MdBookmarkBorder },
+  // { link: '/portfolio', label: 'Portfolio', icon: MdWorkOutline },
+  // { link: '/contact', label: 'Contact', icon: MdContactMail },
 ];
