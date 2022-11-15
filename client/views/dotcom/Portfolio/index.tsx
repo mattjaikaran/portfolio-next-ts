@@ -1,56 +1,68 @@
-import PortfolioCard from '@/components/portfolio/PortfolioCard'
-import { Container, Grid } from '@chakra-ui/react'
-import styles from './Portfolio.module.scss'
+import PortfolioCard from '@/components/portfolio/PortfolioCard';
+import { Container, Grid } from '@mantine/core';
+import styles from './Portfolio.module.scss';
 
 const Portfolio = () => {
   return (
-    <Container className={styles.portfolio} maxW={'7xl'}>
-      <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+    <Container className={styles.portfolio}>
+      <Grid>
         <PortfolioCard
+          img={
+            'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+          }
           title="Portfolio Item 1"
-          subtitle="Subtitle"
           description="Details on the Portfolio Item 1"
-          tags={['art', 'photography', 'music']}
+          tags={['web']}
           link="portfolio/1"
         />
         <PortfolioCard
+          img={
+            'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+          }
           title="Portfolio Item 2"
-          subtitle="Subtitle"
           description="Details on the Portfolio Item 2"
-          tags={['art', 'photography', 'music']}
+          tags={['web']}
           link="portfolio/2"
         />
         <PortfolioCard
+          img={
+            'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+          }
           title="Portfolio Item 3"
-          subtitle="Subtitle"
           description="Details on the Portfolio Item 3"
-          tags={['art', 'photography', 'music']}
+          tags={['web']}
           link="portfolio/3"
         />
         <PortfolioCard
+          img={
+            'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+          }
           title="Portfolio Item 4"
-          subtitle="Subtitle"
           description="Details on the Portfolio Item 4"
-          tags={['art', 'photography', 'music']}
+          tags={['web']}
           link="portfolio/4"
         />
         <PortfolioCard
+          img={
+            'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+          }
           title="Portfolio Item 5"
-          subtitle="Subtitle"
           description="Details on the Portfolio Item 5"
-          tags={['art', 'photography', 'music']}
+          tags={['web']}
           link="portfolio/5"
         />
         <PortfolioCard
+          img={
+            'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80'
+          }
           title="Portfolio Item 6"
-          subtitle="Subtitle"
           description="Details on the Portfolio Item 6"
-          tags={['art', 'photography', 'music']}
+          tags={['web']}
           link="portfolio/6"
         />
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;
