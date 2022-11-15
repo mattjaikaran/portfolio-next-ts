@@ -1,5 +1,5 @@
 import BackgroundWithText from '@/components/shared/BackgroundWithText';
-import Carousel from '@/components/shared/Carousel';
+import ImgCarousel from '@/components/shared/ImgCarousel';
 import Hero from '@/components/shared/Hero';
 import styles from './Home.module.scss';
 
@@ -45,7 +45,7 @@ const Home = () => {
         title="This is some big text"
         subtitle="With some smaller text below"
       />
-      <Carousel slides={homeSlides} /> */}
+      <ImgCarousel slides={homeSlides} /> */}
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { routes } from '@/lib/routes';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { routes } from '@/lib/routes';
 import { createStyles, Navbar } from '@mantine/core';
 
 const useStyles = createStyles((theme, _params, getRef) => {
@@ -84,16 +84,17 @@ const useStyles = createStyles((theme, _params, getRef) => {
 const HeaderNav = () => {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Home');
+  const router = useRouter();
 
   const links = routes.map(item => (
     <a
       className={cx(classes.link, {
         [classes.linkActive]: item.label === active,
       })}
-      href={item.link}
       key={item.label}
       onClick={event => {
         event.preventDefault();
+        router.push(item.link);
         setActive(item.label);
       }}
     >
@@ -103,7 +104,7 @@ const HeaderNav = () => {
   ));
 
   return (
-    <Navbar height={800} width={{ sm: 300 }} p="md">
+    <Navbar height={{ lg: 800, md: 600 }} width={{ md: 300 }} p="md">
       <Navbar.Section grow>{links}</Navbar.Section>
     </Navbar>
   );
