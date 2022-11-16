@@ -4,7 +4,7 @@ import styles from './BackgroundWithText.module.scss';
 interface IBackgroundWithText {
   bgColor: string;
   textColor: string;
-  title: string;
+  title?: string;
   subtitle?: string;
 }
 
@@ -17,12 +17,12 @@ const BackgroundWithText = ({
   return (
     <div
       className={`
-      ${styles.backgroundWithText} 
+      ${styles.backgroundWithText}
       ${bgColor === 'black' ? styles.bgBlack : ''}
       ${textColor === 'white' ? styles.textWhite : ''}
     `}
     >
-      <Title>{title}</Title>
+      {title && <Title>{title}</Title>}
       {subtitle && <Text>{subtitle}</Text>}
     </div>
   );
