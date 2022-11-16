@@ -3,6 +3,8 @@ import { Image } from '@mantine/core';
 
 interface SlideProps {
   id: number;
+  title?: string;
+  text?: string;
   image: string;
 }
 

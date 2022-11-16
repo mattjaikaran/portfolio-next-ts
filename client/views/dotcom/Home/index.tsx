@@ -8,18 +8,21 @@ const homeHeroImg =
 
 const homeSlides = [
   {
+    id: 1,
     title: 'Design Projects 1',
     text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
     image:
       'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
   },
   {
+    id: 2,
     title: 'Design Projects 2',
     text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
     image:
       'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
   },
   {
+    id: 3,
     title: 'Design Projects 3',
     text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
     image:
@@ -30,8 +33,7 @@ const homeSlides = [
 const Home = () => {
   return (
     <div className={styles.home}>
-      <h1>Hello</h1>
-      {/* <Hero 
+      <Hero
         homeHero
         backgroundImage={homeHeroImg}
         title="Matt Jaikaran"
@@ -45,7 +47,7 @@ const Home = () => {
         title="This is some big text"
         subtitle="With some smaller text below"
       />
-      <ImgCarousel slides={homeSlides} /> */}
+      <ImgCarousel images={homeSlides} />
     </div>
   );
 };

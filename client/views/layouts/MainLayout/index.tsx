@@ -55,7 +55,7 @@ const MainLayout = ({ children }) => {
               />
             </MediaQuery>
 
-            <Text>Application header</Text>
+            <Text>Matt Jaikaran</Text>
           </div>
         </Header>
       }
