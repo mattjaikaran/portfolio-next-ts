@@ -1,14 +1,12 @@
-import Header from '@/components/nav/Header'
+import HeaderNav from '@/components/nav/HeaderNav';
 
 const MainLayout = ({ children }) => {
   return (
     <div>
-      <Header />
-      <main>
-        {children}
-      </main>
+      <HeaderNav />
+      <main>{children}</main>
     </div>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;

@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import MainLayout from '@/views/layouts/MainLayout';
 import Contact from '@/views/dotcom/Contact';
+import { Container } from '@mantine/core';
 
 const ContactPage: NextPage = () => {
   return (
@@ -11,8 +12,9 @@ const ContactPage: NextPage = () => {
         <meta name="Contact Page" content="meta content for Contact Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>ContactPage</h1>
-      <Contact />
+      <Container py="xl">
+        <Contact />
+      </Container>
     </MainLayout>
   );
 };

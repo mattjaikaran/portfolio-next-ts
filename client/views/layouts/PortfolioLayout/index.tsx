@@ -1,15 +1,13 @@
-import Header from '@/components/nav/Header'
+import Header from '@/components/nav/HeaderNav';
 
 const PortfolioLayout = ({ children }) => {
   return (
     <div>
       <Header />
       <p>PortfolioLayout</p>
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
     </div>
-  )
-}
+  );
+};
 
-export default PortfolioLayout
+export default PortfolioLayout;

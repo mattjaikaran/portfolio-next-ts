@@ -1,14 +1,16 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import {
-  Stack,
-  Flex,
-  Button,
+  BackgroundImage,
+  Center,
   Text,
-  VStack,
-  useBreakpointValue,
-} from '@chakra-ui/react';
+  Box,
+  Title,
+  Button,
+  Stack,
+} from '@mantine/core';
+import { IconCode, IconBrandGithub } from '@tabler/icons';
 
-interface IHeroProps {
+interface HeroProps {
   homeHero: boolean;
   backgroundImage: string;
   title: string;
@@ -17,72 +19,72 @@ interface IHeroProps {
   btnLink: string;
   btnText2?: string;
   btnLink2?: string;
+  textColor?: string;
 }
 
-const Hero = (props: IHeroProps) => {
-  const { 
-    homeHero,
+const Hero = (props: HeroProps) => {
+  const {
     backgroundImage,
     title,
     subtitle,
     btnText,
     btnLink,
     btnText2,
-    btnLink2
-  } = props
-  const router = useRouter()
+    btnLink2,
+  } = props;
+  const router = useRouter();
   return (
-    <Flex
-      w={'full'}
-      h={'100vh'}
-      backgroundImage={`url(${backgroundImage})`}
-      backgroundSize={'cover'}
-      backgroundPosition={'center'}>
-      <VStack
-        w={'full'}
-        justify={'center'}
-        px={useBreakpointValue({ base: 4, md: 8 })}
-        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
-        <Stack maxW={'2xl'} align={homeHero ? 'center' : 'flex-start'} spacing={4}>
-          <Text
-            color={'white'}
-            fontWeight={700}
-            lineHeight={1}
-            fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            {title}
-          </Text>
-          <Text
-            color={'white'}
-            fontWeight={500}
-            lineHeight={1.2}
-            fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}>
-            {subtitle}
-          </Text>
-          <Stack direction={'row'}>
-            <a href={btnLink} target="_blank" rel="noreferrer">
-              <Button
-                bg={'blue.400'}
-                rounded={'full'}
-                color={'white'}
-                _hover={{ bg: 'blue.500' }}>
-                {btnText}
-              </Button>
-            </a>
-            {btnText2 && btnLink2 && (
-              <Button
-                bg={'whiteAlpha.300'}
-                rounded={'full'}
-                color={'white'}
-                onClick={() => router.push(btnLink2)}
-                _hover={{ bg: 'whiteAlpha.500' }}>
-                {btnText2}
-              </Button>
-            )}
-          </Stack>
-        </Stack>
-      </VStack>
-    </Flex>
-  )
-}
+    <Box sx={{ maxWidth: '100%', height: '100vh' }} mx="auto">
+      <BackgroundImage
+        src={backgroundImage}
+        radius="sm"
+        sx={{ maxWidth: '100%', height: '100vh' }}
+      >
+        <Center p="md" sx={{ height: '70vh' }}>
+          <Stack>
+            <Title color="#fff" weight={300}>
+              {title}
+            </Title>
+            <Text color="#fff" ta="center">
+              {subtitle}
+            </Text>
+            <Button
+              leftIcon={<IconCode size={14} />}
+              onClick={() => router.push(btnLink)}
+            >
+              {btnText}
+            </Button>
+            <Button
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={btnLink2}
+              leftIcon={<IconBrandGithub size={14} />}
+              styles={theme => ({
+                root: {
+                  backgroundColor: '#00acee',
+                  border: 0,
+                  height: 42,
+                  paddingLeft: 20,
+                  paddingRight: 20,
 
-export default Hero
+                  '&:hover': {
+                    backgroundColor: theme.fn.darken('#00acee', 0.05),
+                  },
+                },
+
+                leftIcon: {
+                  marginRight: 15,
+                },
+              })}
+            >
+              {btnText2}
+            </Button>
+          </Stack>
+        </Center>
+      </BackgroundImage>
+    </Box>
+  );
+};
+
+export default Hero;
