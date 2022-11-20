@@ -131,7 +131,9 @@ const HeaderNav = () => {
     <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
         {/* <MantineLogo size={28} /> */}
-        <Title order={3}>Matt Jaikaran</Title>
+        <Title order={3} weight={300} onClick={() => router.push('/')}>
+          Matt Jaikaran
+        </Title>
         <Group spacing={5} className={classes.links}>
           {items}
           <Group position="center" my="xl">

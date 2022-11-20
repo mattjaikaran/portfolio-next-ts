@@ -1,10 +1,22 @@
 import PortfolioCard from '@/components/portfolio/PortfolioCard';
-import { Container, Grid } from '@mantine/core';
+import { Grid, Title, useMantineTheme } from '@mantine/core';
 import styles from './Portfolio.module.scss';
 
 const Portfolio = () => {
+  const globalTheme = useMantineTheme();
   return (
-    <Container className={styles.portfolio}>
+    <div className={styles.portfolio}>
+      <Title
+        order={2}
+        size="h1"
+        sx={{
+          fontFamily: `Greycliff CF, ${globalTheme.fontFamily}`,
+        }}
+        weight={300}
+        py="xl"
+      >
+        Portfolio
+      </Title>
       <Grid grow>
         <Grid.Col sm={6}>
           <PortfolioCard
@@ -73,7 +85,7 @@ const Portfolio = () => {
           />
         </Grid.Col>
       </Grid>
-    </Container>
+    </div>
   );
 };
 

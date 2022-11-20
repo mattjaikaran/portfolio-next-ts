@@ -4,5 +4,6 @@ export const routes = [
   { link: '/', label: 'Home', icon: IconHome2 },
   { link: '/about', label: 'About', icon: IconHome2 },
   { link: '/portfolio', label: 'Portfolio', icon: IconCodeCircle2 },
+  { link: '/blog', label: 'Blog' },
   { link: '/contact', label: 'Contact', icon: IconAddressBook },
 ];

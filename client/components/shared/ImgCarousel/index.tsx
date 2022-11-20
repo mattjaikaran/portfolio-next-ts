@@ -8,9 +8,12 @@ interface SlideProps {
   image: string;
 }
 
-type CarouselProps = Array<SlideProps>;
+interface CarouselProps {
+  images: Array<SlideProps>;
+}
 
-const ImgCarousel = ({ images }: CarouselProps) => {
+const ImgCarousel = (props: CarouselProps) => {
+  const { images }: CarouselProps = props;
   const slides = images.map((slide: SlideProps) => (
     <Carousel.Slide key={slide.id}>
       <Image src={slide.image} alt="Slide" />
