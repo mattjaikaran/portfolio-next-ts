@@ -1,13 +1,13 @@
 import styles from './Contact.module.scss';
 import ContactForm from '@/components/forms/utils/ContactForm';
+import { Container } from '@mantine/core';
 
 const Contact = () => {
   return (
     <div className={styles.contact}>
-      <h5>Contact Me</h5>
-      <div>
+      <Container>
         <ContactForm />
-      </div>
+      </Container>
     </div>
   );
 };

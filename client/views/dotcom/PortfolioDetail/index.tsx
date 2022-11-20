@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ImgCarousel from '@/components/shared/ImgCarousel';
 import { Container, Grid } from '@mantine/core';
 
