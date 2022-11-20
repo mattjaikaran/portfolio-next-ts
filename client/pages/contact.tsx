@@ -11,7 +11,6 @@ const ContactPage: NextPage = () => {
         <meta name="Contact Page" content="meta content for Contact Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>ContactPage</h1>
       <Contact />
     </MainLayout>
   );

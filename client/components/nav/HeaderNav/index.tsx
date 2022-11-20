@@ -1,112 +1,201 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { routes } from '@/lib/routes';
-import { createStyles, Navbar } from '@mantine/core';
+import {
+  ActionIcon,
+  Burger,
+  Container,
+  createStyles,
+  Group,
+  Header,
+  Paper,
+  Title,
+  Transition,
+  useMantineColorScheme,
+  useMantineTheme,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconSun, IconMoonStars } from '@tabler/icons';
 
-const useStyles = createStyles((theme, _params, getRef) => {
-  const icon = getRef('icon');
-  return {
-    header: {
-      paddingBottom: theme.spacing.md,
-      marginBottom: theme.spacing.md * 1.5,
-      borderBottom: `1px solid ${
+const HEADER_HEIGHT = 60;
+
+const useStyles = createStyles(theme => ({
+  root: {
+    position: 'relative',
+    zIndex: 1,
+    backgroundColor: theme.colorScheme === 'dark' ? 'black' : 'white',
+    color: theme.colorScheme === 'dark' ? 'white' : 'black',
+  },
+
+  dropdown: {
+    position: 'absolute',
+    top: HEADER_HEIGHT,
+    left: 0,
+    right: 0,
+    zIndex: 0,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTopWidth: 0,
+    overflow: 'hidden',
+
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '100%',
+  },
+
+  links: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  burger: {
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  link: {
+    display: 'block',
+    lineHeight: 1,
+    padding: '8px 12px',
+    borderRadius: theme.radius.sm,
+    textDecoration: 'none',
+    color:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    '&:hover': {
+      backgroundColor:
         theme.colorScheme === 'dark'
-          ? theme.colors.dark[4]
-          : theme.colors.gray[2]
-      }`,
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
     },
 
-    footer: {
-      paddingTop: theme.spacing.md,
-      marginTop: theme.spacing.md,
-      borderTop: `1px solid ${
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[4]
-          : theme.colors.gray[2]
-      }`,
+    [theme.fn.smallerThan('sm')]: {
+      borderRadius: 0,
+      padding: theme.spacing.md,
     },
+  },
 
-    link: {
-      ...theme.fn.focusStyles(),
-      display: 'flex',
-      alignItems: 'center',
-      textDecoration: 'none',
-      fontSize: theme.fontSizes.sm,
-      color:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[1]
-          : theme.colors.gray[7],
-      padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
-      borderRadius: theme.radius.sm,
-      fontWeight: 500,
-
-      '&:hover': {
-        backgroundColor:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[6]
-            : theme.colors.gray[0],
-        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-
-        [`& .${icon}`]: {
-          color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-        },
-      },
+  linkActive: {
+    '&, &:hover': {
+      backgroundColor: theme.fn.variant({
+        variant: 'light',
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
+        .color,
     },
-
-    linkIcon: {
-      ref: icon,
-      color:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[2]
-          : theme.colors.gray[6],
-      marginRight: theme.spacing.sm,
-    },
-
-    linkActive: {
-      '&, &:hover': {
-        backgroundColor: theme.fn.variant({
-          variant: 'light',
-          color: theme.primaryColor,
-        }).background,
-        color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
-          .color,
-        [`& .${icon}`]: {
-          color: theme.fn.variant({
-            variant: 'light',
-            color: theme.primaryColor,
-          }).color,
-        },
-      },
-    },
-  };
-});
+  },
+}));
 
 const HeaderNav = () => {
-  const { classes, cx } = useStyles();
-  const [active, setActive] = useState('Home');
   const router = useRouter();
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const [active, setActive] = useState(routes[0].link);
+  const { classes, cx } = useStyles();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const globalTheme = useMantineTheme();
 
-  const links = routes.map(item => (
+  const items = routes.map(route => (
     <a
+      key={route.label}
+      href={route.link}
       className={cx(classes.link, {
-        [classes.linkActive]: item.label === active,
+        [classes.linkActive]: active === route.link,
       })}
-      key={item.label}
       onClick={event => {
         event.preventDefault();
-        router.push(item.link);
-        setActive(item.label);
+        console.log('event', event);
+        setActive(route.link);
+        router.push(route.link);
+        close();
       }}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
+      {route.label}
     </a>
   ));
 
   return (
-    <Navbar height={{ lg: 800, md: 600 }} width={{ md: 300 }} p="md">
-      <Navbar.Section grow>{links}</Navbar.Section>
-    </Navbar>
+    <Header height={HEADER_HEIGHT} className={classes.root}>
+      <Container className={classes.header}>
+        {/* <MantineLogo size={28} /> */}
+        <Title order={3}>Matt Jaikaran</Title>
+        <Group spacing={5} className={classes.links}>
+          {items}
+          <Group position="center" my="xl">
+            <ActionIcon
+              onClick={() => toggleColorScheme()}
+              size="lg"
+              sx={{
+                backgroundColor:
+                  globalTheme.colorScheme === 'dark'
+                    ? globalTheme.colors.dark[6]
+                    : globalTheme.colors.gray[0],
+                color:
+                  globalTheme.colorScheme === 'dark'
+                    ? globalTheme.colors.yellow[4]
+                    : globalTheme.colors.blue[6],
+              }}
+            >
+              {colorScheme === 'dark' ? (
+                <IconSun size={18} />
+              ) : (
+                <IconMoonStars size={18} />
+              )}
+            </ActionIcon>
+          </Group>
+        </Group>
+
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          className={classes.burger}
+          size="sm"
+        />
+
+        <Transition transition="pop-top-right" duration={200} mounted={opened}>
+          {styles => (
+            <Paper className={classes.dropdown} withBorder style={styles}>
+              {items}
+              <Group position="center" my="xl">
+                <ActionIcon
+                  onClick={() => toggleColorScheme()}
+                  size="lg"
+                  sx={{
+                    backgroundColor:
+                      globalTheme.colorScheme === 'dark'
+                        ? globalTheme.colors.dark[6]
+                        : globalTheme.colors.gray[0],
+                    color:
+                      globalTheme.colorScheme === 'dark'
+                        ? globalTheme.colors.yellow[4]
+                        : globalTheme.colors.blue[6],
+                  }}
+                >
+                  {colorScheme === 'dark' ? (
+                    <IconSun size={18} />
+                  ) : (
+                    <IconMoonStars size={18} />
+                  )}
+                </ActionIcon>
+              </Group>
+            </Paper>
+          )}
+        </Transition>
+      </Container>
+    </Header>
   );
 };
 
