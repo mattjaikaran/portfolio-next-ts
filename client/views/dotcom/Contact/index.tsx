@@ -1,17 +1,25 @@
-
 import styles from './Contact.module.scss';
 import ContactForm from '@/components/forms/utils/ContactForm';
-import { Box } from '@chakra-ui/react';
+import { useMantineTheme, Title } from '@mantine/core';
 
 const Contact = () => {
+  const globalTheme = useMantineTheme();
   return (
     <div className={styles.contact}>
-      <h5>Contact Me</h5>
-      <Box p={4}>
-        <ContactForm />
-      </Box>
+      <Title
+        order={2}
+        size="h1"
+        sx={{
+          fontFamily: `Greycliff CF, ${globalTheme.fontFamily}`,
+        }}
+        weight={300}
+        pb="xl"
+      >
+        Contact Me
+      </Title>
+      <ContactForm />
     </div>
   );
-}
+};
 
 export default Contact;

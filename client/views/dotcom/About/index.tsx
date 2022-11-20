@@ -1,13 +1,12 @@
-
-import styles from './About.module.scss'
-
+import AboutMe from '@/components/about/AboutMe';
+import styles from './About.module.scss';
 
 const About = () => {
   return (
     <div className={styles.about}>
-      <p>I am code.</p>
+      <AboutMe />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

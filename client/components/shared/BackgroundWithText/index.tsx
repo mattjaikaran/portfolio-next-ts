@@ -1,29 +1,31 @@
-import { Heading, Text } from '@chakra-ui/react'
-import styles from './BackgroundWithText.module.scss'
+import { Title, Text } from '@mantine/core';
+import styles from './BackgroundWithText.module.scss';
 
 interface IBackgroundWithText {
-  bgColor: string,
-  textColor: string,
-  title: string,
-  subtitle?: string
+  bgColor: string;
+  textColor: string;
+  title?: string;
+  subtitle?: string;
 }
 
 const BackgroundWithText = ({
   bgColor,
   textColor,
   title,
-  subtitle
+  subtitle,
 }: IBackgroundWithText) => {
   return (
-    <div className={`
-      ${styles.backgroundWithText} 
+    <div
+      className={`
+      ${styles.backgroundWithText}
       ${bgColor === 'black' ? styles.bgBlack : ''}
       ${textColor === 'white' ? styles.textWhite : ''}
-    `}>
-      <Heading>{title}</Heading>
+    `}
+    >
+      {title && <Title>{title}</Title>}
       {subtitle && <Text>{subtitle}</Text>}
     </div>
-  )
-}
+  );
+};
 
-export default BackgroundWithText
+export default BackgroundWithText;

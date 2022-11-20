@@ -1,13 +1,12 @@
-
-import styles from './Spinner.module.scss'
-
+import { Loader } from '@mantine/core';
+import styles from './Spinner.module.scss';
 
 const Spinner = () => {
   return (
     <div className={styles.spinner}>
-      <h5>Spinner</h5>
+      <Loader />
     </div>
-  )
-}
+  );
+};
 
-export default Spinner
+export default Spinner;

@@ -1,56 +1,49 @@
 ---
 to: components/forms/<%= type || 'utils' %>/<%= h.changeCase.pascal(name) || 'new-form' %>.tsx
 ---
-import { useForm, SubmitHandler } from 'react-hook-form';
-import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-} from '@chakra-ui/react'
+import { useEffect } from 'react';
+import { TextInput, Checkbox, Button, Group, Box } from '@mantine/core';
+import { useForm } from '@mantine/form';
 
-type Inputs = {
-  example: string,
-  exampleRequired: string,
-};
+interface FormValues {
+  email: string;
+  terms: boolean;
+}
 
 const <%= h.changeCase.pascal(name) || 'NewForm' %> = () => {
-  const { 
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting } 
-  } = useForm<Inputs>();
+  const form = useForm({
+    initialValues: {
+      email: '',
+      termsOfService: false,
+    },
 
-  const onSubmit: SubmitHandler<Inputs> = (data): void => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2))
-        console.log(JSON.stringify(values, null, 2))
-        resolve()
-      }, 3000)
-  }
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+    },
+  });
+
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl isInvalid={errors.firstName}>
-        <FormLabel htmlFor="firstName">First Name</FormLabel>
-        <Input
-          id="firstName"
-          placeholder="firstName"
-          {...register("firstName", {
-            required: "This is required",
-            minLength: { value: 4, message: "Minimum length should be 4" },
-          })}
+    <Box sx={{ maxWidth: 300 }} mx="auto">
+      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <TextInput
+          withAsterisk
+          label="Email"
+          placeholder="your@email.com"
+          {...form.getInputProps('email')}
         />
-        <FormErrorMessage>
-          {errors.firstName && errors.firstName.message}
-        </FormErrorMessage>
-      </FormControl>
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
-        Submit
-      </Button>
-    </form>
+
+        <Checkbox
+          mt="md"
+          label="I agree to sell my privacy"
+          {...form.getInputProps('termsOfService', { type: 'checkbox' })}
+        />
+
+        <Group position="right" mt="md">
+          <Button type="submit">Submit</Button>
+        </Group>
+      </form>
+    </Box>
   )
 }
 
