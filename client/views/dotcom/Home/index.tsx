@@ -2,6 +2,7 @@ import BackgroundWithText from '@/components/shared/BackgroundWithText';
 import ImgCarousel from '@/components/shared/ImgCarousel';
 import Hero from '@/components/shared/Hero';
 import styles from './Home.module.scss';
+import Brands from '@/components/shared/Brands';
 
 const homeHeroImg =
   'https://images.unsplash.com/photo-1641058911831-da976344fc0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80';
@@ -38,8 +39,10 @@ const Home = () => {
         backgroundImage={homeHeroImg}
         title="Matt Jaikaran"
         subtitle="Software Engineer"
-        btnText="View GitHub"
-        btnLink="https://github.com/mattjaikaran"
+        btnText="View Projects"
+        btnLink="/portfolio"
+        btnText2="View GitHub"
+        btnLink2="https://github.com/mattjaikaran"
       />
       <BackgroundWithText
         bgColor="black"
@@ -47,6 +50,7 @@ const Home = () => {
         title="This is some big text"
         subtitle="With some smaller text below"
       />
+      <Brands />
       <ImgCarousel images={homeSlides} />
     </div>
   );

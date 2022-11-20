@@ -40,17 +40,7 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={form.onSubmit(() => onSubmit(form.values))}>
-      <Title
-        order={2}
-        size="h1"
-        sx={theme => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}` })}
-        weight={900}
-        align="center"
-      >
-        Get in touch
-      </Title>
-
-      <SimpleGrid cols={2} mt="xl" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+      <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         <TextInput
           label="Name"
           placeholder="Your name"

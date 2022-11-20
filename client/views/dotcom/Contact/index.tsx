@@ -1,13 +1,23 @@
 import styles from './Contact.module.scss';
 import ContactForm from '@/components/forms/utils/ContactForm';
-import { Container } from '@mantine/core';
+import { useMantineTheme, Title } from '@mantine/core';
 
 const Contact = () => {
+  const globalTheme = useMantineTheme();
   return (
     <div className={styles.contact}>
-      <Container>
-        <ContactForm />
-      </Container>
+      <Title
+        order={2}
+        size="h1"
+        sx={{
+          fontFamily: `Greycliff CF, ${globalTheme.fontFamily}`,
+        }}
+        weight={300}
+        pb="xl"
+      >
+        Contact Me
+      </Title>
+      <ContactForm />
     </div>
   );
 };

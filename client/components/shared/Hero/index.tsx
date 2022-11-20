@@ -8,9 +8,9 @@ import {
   Button,
   Stack,
 } from '@mantine/core';
-import { IconBrandGithub } from '@tabler/icons';
+import { IconCode, IconBrandGithub } from '@tabler/icons';
 
-interface IHeroProps {
+interface HeroProps {
   homeHero: boolean;
   backgroundImage: string;
   title: string;
@@ -22,9 +22,17 @@ interface IHeroProps {
   textColor?: string;
 }
 
-const Hero = (props: IHeroProps) => {
-  const { backgroundImage, title, subtitle, btnText, btnLink, textColor } =
-    props;
+const Hero = (props: HeroProps) => {
+  const {
+    backgroundImage,
+    title,
+    subtitle,
+    btnText,
+    btnLink,
+    btnText2,
+    btnLink2,
+  } = props;
+  const router = useRouter();
   return (
     <Box sx={{ maxWidth: '100%', height: '100vh' }} mx="auto">
       <BackgroundImage
@@ -34,15 +42,23 @@ const Hero = (props: IHeroProps) => {
       >
         <Center p="md" sx={{ height: '70vh' }}>
           <Stack>
-            <Title color="#fff">{title}</Title>
+            <Title color="#fff" weight={300}>
+              {title}
+            </Title>
             <Text color="#fff" ta="center">
               {subtitle}
             </Text>
             <Button
+              leftIcon={<IconCode size={14} />}
+              onClick={() => router.push(btnLink)}
+            >
+              {btnText}
+            </Button>
+            <Button
               component="a"
               target="_blank"
               rel="noopener noreferrer"
-              href={btnLink}
+              href={btnLink2}
               leftIcon={<IconBrandGithub size={14} />}
               styles={theme => ({
                 root: {
@@ -62,7 +78,7 @@ const Hero = (props: IHeroProps) => {
                 },
               })}
             >
-              {btnText}
+              {btnText2}
             </Button>
           </Stack>
         </Center>
