@@ -2,7 +2,7 @@
 
 ## Features
 - NextJS w/ TypeScript
-- React Hook Form
+- Mantine UI
 - Axios
 - Hygen 
 - Strapi CMS (NodeJS)

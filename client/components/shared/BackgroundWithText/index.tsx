@@ -22,7 +22,7 @@ const BackgroundWithText = ({
       ${textColor === 'white' ? styles.textWhite : ''}
     `}
     >
-      {title && <Title>{title}</Title>}
+      {title && <Title order={2}>{title}</Title>}
       {subtitle && <Text>{subtitle}</Text>}
     </div>
   );

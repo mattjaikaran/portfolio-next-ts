@@ -1,5 +1,5 @@
 import ImgCarousel from '@/components/shared/ImgCarousel';
-import { Container, Grid } from '@mantine/core';
+import { Container, Grid, Title, Text, Skeleton } from '@mantine/core';
 
 const homeSlides = [
   {
@@ -18,14 +18,44 @@ const homeSlides = [
       'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
   },
 ];
+const child = <Skeleton height={140} radius="md" animate={false} />;
 
 const PortfolioDetail = () => {
   return (
-    <Container>
-      <Grid>
-        <ImgCarousel images={homeSlides} />
+    <div>
+      <Grid mt="xl">
+        <Grid.Col md={8} xl={7}>
+          <ImgCarousel images={homeSlides} />
+        </Grid.Col>
+        <Grid.Col md={4} xl={5}>
+          <Title>Project Name</Title>
+          <Title mt="md" order={3}>
+            Description
+          </Title>
+          <Text mt="md">Some description here with some other text after.</Text>
+          <Title mt="md" order={5}>
+            Technologies:
+          </Title>
+          <ul>
+            <li>Tech</li>
+            <li>Tech</li>
+            <li>Tech</li>
+          </ul>
+        </Grid.Col>
+        <Grid.Col sm={6}>
+          <Title order={5}>Features:</Title>
+          <ul>
+            <li>Tech</li>
+            <li>Tech</li>
+            <li>Tech</li>
+          </ul>
+        </Grid.Col>
+        <Grid.Col sm={6}>{child}</Grid.Col>
+        <Grid.Col sm={6}>{child}</Grid.Col>
+        <Grid.Col sm={6}>{child}</Grid.Col>
+        <Grid.Col sm={12}>{child}</Grid.Col>
       </Grid>
-    </Container>
+    </div>
   );
 };
 
