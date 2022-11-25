@@ -136,7 +136,7 @@ const HeaderNav = () => {
         </Title>
         <Group spacing={5} className={classes.links}>
           {items}
-          <Group position="center" my="xl">
+          {/* <Group position="center" my="xl">
             <ActionIcon
               onClick={() => toggleColorScheme()}
               size="lg"
@@ -157,7 +157,7 @@ const HeaderNav = () => {
                 <IconMoonStars size={18} />
               )}
             </ActionIcon>
-          </Group>
+          </Group> */}
         </Group>
 
         <Burger
@@ -171,7 +171,7 @@ const HeaderNav = () => {
           {styles => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}
-              <Group position="center" my="xl">
+              {/* <Group position="center" my="xl">
                 <ActionIcon
                   onClick={() => toggleColorScheme()}
                   size="lg"
@@ -192,7 +192,7 @@ const HeaderNav = () => {
                     <IconMoonStars size={18} />
                   )}
                 </ActionIcon>
-              </Group>
+              </Group> */}
             </Paper>
           )}
         </Transition>
