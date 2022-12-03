@@ -1,19 +1,25 @@
 .backgroundWithText {
-    padding: 8rem;
-    text-align: center;
+  padding: 8rem;
+  text-align: center;
 }
 
 .bgBlack {
-    background-color: black;
+  background-color: black;
 }
 
 .bgWhite {
-    background-color: white;
+  background-color: white;
 }
 
 .textWhite {
-    color: white;
+  color: white;
 }
 .textBlack {
-    color: black;
+  color: black;
+}
+
+@media (max-width: 767px) {
+  .backgroundWithText {
+    padding: 8rem 3rem;
+  }
 }
