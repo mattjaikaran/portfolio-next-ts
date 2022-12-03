@@ -1,11 +1,4 @@
-import {
-  TextInput,
-  Textarea,
-  SimpleGrid,
-  Group,
-  Title,
-  Button,
-} from '@mantine/core';
+import { TextInput, Textarea, SimpleGrid, Group, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 interface ContactInputs {
@@ -24,15 +17,20 @@ const ContactForm = () => {
       message: '',
     },
     validate: {
-      name: value => value.trim().length < 2,
-      email: value => !/^\S+@\S+$/.test(value),
-      subject: value => value.trim().length === 0,
+      name: value =>
+        value.trim().length < 2
+          ? 'Name must have more than 2 characters'
+          : null,
+      email: value => (!/^\S+@\S+$/.test(value) ? 'Invalid Email' : null),
+      subject: value => (value.trim().length === 0 ? 'Enter a subject' : null),
+      message: value => (value.trim().length === 10 ? 'Add a message' : null),
     },
   });
 
   function onSubmit(values: ContactInputs) {
     try {
       console.log(JSON.stringify(values, null, 2));
+      form.setValues(prev => ({ ...prev, ...values }));
     } catch (err) {
       console.log(err);
     }
@@ -42,6 +40,7 @@ const ContactForm = () => {
     <form onSubmit={form.onSubmit(() => onSubmit(form.values))}>
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         <TextInput
+          withAsterisk
           label="Name"
           placeholder="Your name"
           name="name"
@@ -49,6 +48,7 @@ const ContactForm = () => {
           {...form.getInputProps('name')}
         />
         <TextInput
+          withAsterisk
           label="Email"
           placeholder="Your email"
           name="email"
@@ -58,6 +58,7 @@ const ContactForm = () => {
       </SimpleGrid>
 
       <TextInput
+        withAsterisk
         label="Subject"
         placeholder="Subject"
         mt="md"
@@ -66,6 +67,7 @@ const ContactForm = () => {
         {...form.getInputProps('subject')}
       />
       <Textarea
+        withAsterisk
         mt="md"
         label="Message"
         placeholder="Your message"

@@ -28,27 +28,33 @@ const PortfolioDetail = () => {
           <ImgCarousel images={homeSlides} />
         </Grid.Col>
         <Grid.Col md={4} xl={5}>
-          <Title>Project Name</Title>
-          <Title mt="md" order={3}>
-            Description
-          </Title>
-          <Text mt="md">Some description here with some other text after.</Text>
-          <Title mt="md" order={5}>
-            Technologies:
-          </Title>
-          <ul>
-            <li>Tech</li>
-            <li>Tech</li>
-            <li>Tech</li>
-          </ul>
+          <Container>
+            <Title>Project Name</Title>
+            <Title mt="md" order={3}>
+              Description
+            </Title>
+            <Text mt="md">
+              Some description here with some other text after.
+            </Text>
+            <Title mt="md" order={5}>
+              Technologies:
+            </Title>
+            <ul>
+              <li>Tech</li>
+              <li>Tech</li>
+              <li>Tech</li>
+            </ul>
+          </Container>
         </Grid.Col>
         <Grid.Col sm={6}>
-          <Title order={5}>Features:</Title>
-          <ul>
-            <li>Tech</li>
-            <li>Tech</li>
-            <li>Tech</li>
-          </ul>
+          <Container>
+            <Title order={5}>Features:</Title>
+            <ul>
+              <li>Tech</li>
+              <li>Tech</li>
+              <li>Tech</li>
+            </ul>
+          </Container>
         </Grid.Col>
         <Grid.Col sm={6}>{child}</Grid.Col>
         <Grid.Col sm={6}>{child}</Grid.Col>

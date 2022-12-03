@@ -22,8 +22,8 @@ const BackgroundWithText = ({
       ${textColor === 'white' ? styles.textWhite : ''}
     `}
     >
-      {title && <Title order={2}>{title}</Title>}
-      {subtitle && <Text>{subtitle}</Text>}
+      {title ? <Title order={2}>{title}</Title> : null}
+      {subtitle ? <Text>{subtitle}</Text> : null}
     </div>
   );
 };

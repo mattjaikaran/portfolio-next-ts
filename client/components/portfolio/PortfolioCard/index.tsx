@@ -14,11 +14,11 @@ const PortfolioCard = (props: PortfolioCardProps) => {
   const { img, title, description, tags, link } = props;
   return (
     <Card shadow="sm" p="lg" radius="md" withBorder>
-      {img && (
+      {img ? (
         <Card.Section>
           <Image src={img} height={300} alt="Norway" />
         </Card.Section>
-      )}
+      ) : null}
 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>{title}</Text>
