@@ -1,10 +1,8 @@
-# Portfolio App
+# Portfolio NextJS TypeScript App
 
 ## Features
 - NextJS w/ TypeScript
-- Mantine UI
-- Axios
-- Hygen 
+- [shadcn/ui](https://ui.shadcn.com/)
 - Strapi CMS (NodeJS)
 
 ## Installation

@@ -21,16 +21,7 @@ export default function Home() {
   return (
     <MainLayout>
       <div className="container-fluid xl:container">
-        <div
-          // style={{
-          //   backgroundImage: `url(${birds.src})`,
-          //   backgroundSize: 'cover',
-          //   backgroundPosition: 'top',
-          //   backgroundRepeat: 'no-repeat',
-          //   // height: '',
-          // }}
-          className="p-16 md:p-32 text-center heroImg"
-        >
+        <div className="px-16 py-64 md:p-64 text-center heroImg">
           <HeadingH1 className="text-foreground">Matt Jaikaran</HeadingH1>
           <Paragraph className="text-foreground">
             {siteConfig.description}
@@ -97,7 +88,7 @@ export default function Home() {
             </a>
             <a href="https://gm.com" target="__blank">
               <img
-                className="w-32 mt-4 md:mt-0 ml-8 md:ml-20"
+                className="w-32 mt-4 md:mt-0 ml-8 md:ml-16"
                 src={gm.src}
                 alt="gm"
               />
@@ -109,31 +100,29 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
-          <div className="pink-bg p-24 text-center">
-            <HeadingH3>get fucked</HeadingH3>
+          <div className="p-24 text-center">
+            <HeadingH3>Some Title</HeadingH3>
             <Paragraph>here is a one liner</Paragraph>
-            <Button variant="outline">Button</Button>
+            <Button variant="outline">View Details</Button>
           </div>
-          <div className="p-24 bg-zinc-400 text-foreground text-center">
-            <HeadingH3>hell yeah</HeadingH3>
-            <Paragraph>here is a one liner</Paragraph>
-            <Button variant="outline">Button</Button>
+          <div className="p-24 bg-zinc-700 text-center">
+            <HeadingH3 className="text-white">hell yeah</HeadingH3>
+            <Paragraph className="text-white">
+              here are some words with some other words
+            </Paragraph>
+            <Button variant="outline" className="">
+              View Details
+            </Button>
           </div>
         </div>
         <img src={birds.src} alt="img" />
 
         {/* newsletter */}
         <div className="p-16 md:px-64 md:py-32 text-center">
-          <HeadingH3>Newsletter</HeadingH3>
-          <Paragraph>Sign up for updates</Paragraph>
-          <div className="px-0 lg:px-32 xl:px-32">
-            <Input
-              className="mb-4"
-              type="email"
-              placeholder="test@example.com"
-            />
-          </div>
-          <Button variant="outline">Button</Button>
+          <HeadingH3>Want to collaborate on a project?</HeadingH3>
+          <Button variant="outline" onClick={() => router.push('/contact')}>
+            Contact Me
+          </Button>
         </div>
       </div>
     </MainLayout>
