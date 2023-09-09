@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { useRouter } from 'next/router';
 
 interface PortfolioItems {
   id: number;
@@ -58,6 +59,7 @@ const sampleData: PortfolioItems[] = [
 ];
 
 export default function Portfolio() {
+  const router = useRouter();
   const PortfolioCard = (props: PortfolioItems) => (
     <Card className="">
       <CardHeader>
@@ -66,7 +68,9 @@ export default function Portfolio() {
       </CardHeader>
       <CardContent>{props.content}</CardContent>
       <CardFooter className="flex">
-        <Button>View Details</Button>
+        <Button onClick={() => router.push(`/portfolio/${props.id}`)}>
+          View Details
+        </Button>
       </CardFooter>
     </Card>
   );
