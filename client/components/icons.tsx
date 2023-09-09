@@ -6,6 +6,7 @@ import {
   Instagram,
   Github,
   Linkedin,
+  // @ts-ignore
   type Icon as LucideIcon,
 } from 'lucide-react';
 
