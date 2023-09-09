@@ -1,22 +1,33 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import MainLayout from '@/views/layouts/MainLayout';
-import About from '@/views/dotcom/About';
-import { Container } from '@mantine/core';
+import { MainLayout } from '@/layouts/MainLayout';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { HeadingH1, Paragraph } from '@/components/typography';
 
-const AboutPage: NextPage = () => {
+export default function About() {
   return (
     <MainLayout>
-      <Head>
-        <title>Matt Jaikaran - About</title>
-        <meta name="About Page" content="meta content for About Page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Container py="xl">
-        <About />
-      </Container>
+      <div className="container">
+        <HeadingH1>About</HeadingH1>
+        <Paragraph>I am me.</Paragraph>
+        {/* <Card>
+          <CardHeader>
+            <CardTitle>Card Title</CardTitle>
+            <CardDescription>Card Description</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>Card Content</p>
+          </CardContent>
+          <CardFooter>
+            <p>Card Footer</p>
+          </CardFooter>
+        </Card> */}
+      </div>
     </MainLayout>
   );
-};
-
-export default AboutPage;
+}

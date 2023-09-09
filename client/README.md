@@ -1,101 +1,38 @@
-# Portfolio Front End
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Technologies
-
-- [NextJS](https://nextjs.org/)
-- TypeScript
-- SCSS modules
-- [Mantine](https://mantine.dev/)
-  - [Mantine Form](https://mantine.dev/form/use-form/)
-- [Hygen CLI](https://www.hygen.io/)
-  - Pages
-  - Components
-    - Component File
-    - Stylesheet
-    - Unit Test (coming soon)
-  - Forms
-- Bash Scripting
-  - `next-arch.sh` scaffolds the front end architecture
-
-# Installation
+## Getting Started
 
 First, run the development server:
 
 ```bash
-git clone URL
-yarn
+npm run dev
+# or
 yarn dev
+# or
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## CLI
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-Using Hygen to scaffold pages, components, forms. All generators are located in `_templates` directory.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-Install Hygen globally
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-```bash
-$ npm i -g hygen
-```
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### Components
+## Learn More
 
-Create a new component named MyComponent in `@/components/shared/MyComponent/index.tsx`
+To learn more about Next.js, take a look at the following resources:
 
-```bash
-$ hygen component new
-1. What is the component name? MyComponent
-2. What is the component type? shared
-3. Do you want to add a stylesheet? (y/N) y
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-or using flags
-$ hygen component new --name MyComponent --type shared --hasStyles
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-Adding a stylesheet will
+## Deploy on Vercel
 
-1. create the stylesheet in `@/components/MyComponent/MyComponent.module.scss`
-2. will import the stylesheet into MyComponent and include it in the parent div
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Pages
-
-To create a new page named MyPage in `pages/my-page.ts`
-
-```bash
-$ hygen page new
-1. What is the page title? MyPage
-2. What is the page description? this is my description
-
-or
-$ hygen page new --title MyPage --desc this is my description
-```
-
-### Views
-
-Create a new view named TestView in `@/views/dotcom/TestView/index.tsx`
-
-```bash
-  $ hygen view new
-  1. What is the view name? TestView
-  2. What is the view type? dotcom
-  3. Do you want to add a stylesheet? (y/N) y
-
-  or using flags
-  $ hygen view new --name TestView --type dotcom --hasStyles
-```
-
-### Forms
-
-Forms are extracted from actual components to provide a better separation of concerns.
-
-Create a new form named MyForm in `@/components/forms/utils/MyForm/index.tsx`
-
-```bash
-$ hygen form new
-1. What is the form name? MyForm
-2. What is the form type? utils
-
-or
-$ hygen form new --name MyComponent --type utils
-```
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

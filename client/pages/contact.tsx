@@ -1,22 +1,17 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import MainLayout from '@/views/layouts/MainLayout';
-import Contact from '@/views/dotcom/Contact';
-import { Container } from '@mantine/core';
+import { NextPage } from 'next';
+import { HeadingH1 } from '@/components/typography';
+import { MainLayout } from '@/layouts/MainLayout';
+import ContactForm from '@/components/forms/ContactForm';
 
-const ContactPage: NextPage = () => {
+const Contact: NextPage = () => {
   return (
     <MainLayout>
-      <Head>
-        <title>Matt Jaikaran - Contact</title>
-        <meta name="Contact Page" content="meta content for Contact Page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Container py="xl">
-        <Contact />
-      </Container>
+      <div className="container">
+        <HeadingH1 className="mt-8 mb-8">Contact</HeadingH1>
+        <ContactForm />
+      </div>
     </MainLayout>
   );
 };
 
-export default ContactPage;
+export default Contact;
