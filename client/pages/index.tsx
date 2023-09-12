@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <MainLayout>
       <div className="container-fluid xl:container">
-        <div className="px-16 py-64 md:p-64 text-center heroImg">
+        <div className="px-16 py-48 md:p-64 text-center heroImg">
           <HeadingH1 className="text-foreground">Matt Jaikaran</HeadingH1>
           <Paragraph className="text-foreground">
             {siteConfig.description}
@@ -103,14 +103,14 @@ export default function Home() {
           <div className="p-24 text-center">
             <HeadingH3>Some Title</HeadingH3>
             <Paragraph>here is a one liner</Paragraph>
-            <Button variant="outline">View Details</Button>
+            <Button variant="outline" onClick={() => router.push('/portfolio')}>View Details</Button>
           </div>
           <div className="p-24 bg-zinc-700 text-center">
             <HeadingH3 className="text-white">hell yeah</HeadingH3>
             <Paragraph className="text-white">
-              here are some words with some other words
+              this isnt done yet so ur cool if ur seeing this
             </Paragraph>
-            <Button variant="outline" className="">
+            <Button variant="outline" className="" onClick={() => router.push('/portfolio')}>
               View Details
             </Button>
           </div>
