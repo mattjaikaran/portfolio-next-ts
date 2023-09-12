@@ -129,7 +129,7 @@ export default function Navbar({
             item =>
               item.href && (
                 <Link
-                  key={item.href}
+                  key={item.title}
                   href={item.href}
                   className={cn(
                     'flex items-center text-sm font-medium text-muted-foreground'
