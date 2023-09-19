@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export default function PortfolioDetail() {
   const router = useRouter();
   console.log('router.query', router.query);
-  const [portfolioDetail, setPortfolioDetail] = useState<PortfolioItems>({});
+  const [portfolioDetail, setPortfolioDetail] = useState<any>({});
   console.log('portfolioDetail', portfolioDetail);
   return (
     <MainLayout>
