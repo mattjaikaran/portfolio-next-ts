@@ -10,63 +10,24 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useRouter } from 'next/router';
-
-interface PortfolioItems {
-  id: number;
-  title: string;
-  description: string;
-  content?: string;
-  url: string;
-}
-
-const sampleData: PortfolioItems[] = [
-  {
-    id: 1,
-    title: 'Title 1',
-    description: 'Description 1',
-    url: '/portfolio/1',
-  },
-  {
-    id: 2,
-    title: 'Title 2',
-    description: 'Description 2',
-    url: '/portfolio/2',
-  },
-  {
-    id: 3,
-    title: 'Title 3',
-    description: 'Description 3',
-    url: '/portfolio/3',
-  },
-  {
-    id: 4,
-    title: 'Title 4',
-    description: 'Description 4',
-    url: '/portfolio/4',
-  },
-  {
-    id: 5,
-    title: 'Title 5',
-    description: 'Description 5',
-    url: '/portfolio/5',
-  },
-  {
-    id: 6,
-    title: 'Title 6',
-    description: 'Description 6',
-    url: '/portfolio/6',
-  },
-];
+import { PortfolioItems, sampleData } from '@/data/portfolio';
+import { Badge } from '@/components/ui/badge';
 
 export default function Portfolio() {
   const router = useRouter();
   const PortfolioCard = (props: PortfolioItems) => (
-    <Card className="">
+    <Card>
       <CardHeader>
         <CardTitle>{props.title}</CardTitle>
         <CardDescription>{props.description}</CardDescription>
       </CardHeader>
-      <CardContent>{props.content}</CardContent>
+      <CardContent>
+        {props.tech?.map(t => (
+          <Badge key={t} className="mt-2 mr-2">
+            {t}
+          </Badge>
+        ))}
+      </CardContent>
       <CardFooter className="flex">
         <Button onClick={() => router.push(`/portfolio/${props.id}`)}>
           View Details
