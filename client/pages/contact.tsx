@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { HeadingH1 } from '@/components/typography';
+import { HeadingH1, Paragraph } from '@/components/typography';
 import { MainLayout } from '@/layouts/MainLayout';
 import ContactForm from '@/components/forms/ContactForm';
 
@@ -8,6 +8,7 @@ const Contact: NextPage = () => {
     <MainLayout>
       <div className="container">
         <HeadingH1 className="mt-8 mb-8">Contact</HeadingH1>
+        <Paragraph>Email me - info@mattjaikaran.com</Paragraph>
         <ContactForm />
       </div>
     </MainLayout>

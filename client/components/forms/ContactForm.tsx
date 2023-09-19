@@ -12,11 +12,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import sendgrid from '@sendgrid/mail'
-const sendgridKey = process.env.NEXT_PUBLIC_SENDGRID_KEY
+// import sendgrid from '@sendgrid/mail';
+// const sendgridKey = process.env.NEXT_PUBLIC_SENDGRID_KEY;
 
-console.log('sendgridKey', sendgridKey)
-sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_KEY)
+// console.log('sendgridKey', sendgridKey);
+// sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_KEY);
 
 const profileFormSchema = z.object({
   name: z.string().min(2, {
@@ -46,16 +46,16 @@ const ContactForm = () => {
     mode: 'onChange',
   });
 
-  async function onSubmit (data: ProfileFormValues) {
+  async function onSubmit(data: ProfileFormValues) {
     console.log('data', data);
-    const msg = {
-      to: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
-      from: `${data.name} - ${data.email}`,
-      subject: data.title,
-      text: data.message,
-      html: `<div>${data.message}</div>`,
-    };
-    console.log('msg', msg)
+    // const msg = {
+    //   to: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
+    //   from: `${data.name} - ${data.email}`,
+    //   subject: data.title,
+    //   text: data.message,
+    //   html: `<div>${data.message}</div>`,
+    // };
+    // console.log('msg', msg)
     // try {
     //   await sendgrid.send(msg);
     // } catch (error: any) {
@@ -78,10 +78,7 @@ const ContactForm = () => {
         <FormItem>
           <FormLabel>Email</FormLabel>
           <FormControl>
-            <Input
-              placeholder="test@example.com"
-              {...form.register('email')}
-            />
+            <Input placeholder="test@example.com" {...form.register('email')} />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -110,7 +107,7 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">
+        <Button type="submit" disabled>
           Send Message
         </Button>
       </form>
