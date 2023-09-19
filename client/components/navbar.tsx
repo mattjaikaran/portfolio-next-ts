@@ -52,27 +52,14 @@ export default function Navbar({
           <DropdownMenuTrigger>Menu</DropdownMenuTrigger>
           <DropdownMenuContent>
             {siteConfig.mainNav?.map(item => (
-              <>
+              <div key={item.href}>
                 <DropdownMenuLabel
-                  key={item.href}
                   className="hover:cursor-pointer"
                   onClick={() => router.push(item.href)}
                 >
                   {item.title}
                 </DropdownMenuLabel>
-              </>
-
-              // item.href && (
-              //   <Link
-              //     key={index}
-              //     href={item.href}
-              //     className={cn(
-              //       'flex items-center text-sm font-medium text-muted-foreground'
-              //     )}
-              //   >
-              //     {item.title}
-              //   </Link>
-              // )
+              </div>
             ))}
             <Link
               href={siteConfig.links.linkedin}
@@ -126,9 +113,8 @@ export default function Navbar({
       {siteConfig.mainNav?.length ? (
         <nav className="hidden md:flex gap-6">
           {siteConfig.mainNav?.map(
-            item =>
-              item.href && (
-                <Link
+            item => (
+              <Link
                   key={item.title}
                   href={item.href}
                   className={cn(
@@ -137,7 +123,7 @@ export default function Navbar({
                 >
                   {item.title}
                 </Link>
-              )
+            )
           )}
         </nav>
       ) : null}

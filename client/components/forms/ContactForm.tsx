@@ -12,6 +12,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import sendgrid from '@sendgrid/mail'
+const sendgridKey = process.env.NEXT_PUBLIC_SENDGRID_KEY
+
+console.log('sendgridKey', sendgridKey)
+sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_KEY)
 
 const profileFormSchema = z.object({
   name: z.string().min(2, {
@@ -41,8 +46,24 @@ const ContactForm = () => {
     mode: 'onChange',
   });
 
-  function onSubmit(data: ProfileFormValues) {
+  async function onSubmit (data: ProfileFormValues) {
     console.log('data', data);
+    const msg = {
+      to: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
+      from: `${data.name} - ${data.email}`,
+      subject: data.title,
+      text: data.message,
+      html: `<div>${data.message}</div>`,
+    };
+    console.log('msg', msg)
+    // try {
+    //   await sendgrid.send(msg);
+    // } catch (error: any) {
+    //   console.error(error);
+    //   if (error.response) {
+    //     console.error(error.response.body)
+    //   }
+    // }
   }
   return (
     <Form {...form}>
@@ -50,7 +71,7 @@ const ContactForm = () => {
         <FormItem>
           <FormLabel>Name</FormLabel>
           <FormControl>
-            <Input placeholder="Cornel West" {...form.register('name')} />
+            <Input placeholder="Test Example" {...form.register('name')} />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -58,7 +79,7 @@ const ContactForm = () => {
           <FormLabel>Email</FormLabel>
           <FormControl>
             <Input
-              placeholder="cornellwest@gpny.org"
+              placeholder="test@example.com"
               {...form.register('email')}
             />
           </FormControl>
@@ -89,7 +110,7 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled>
+        <Button type="submit">
           Send Message
         </Button>
       </form>
