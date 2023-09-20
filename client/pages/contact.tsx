@@ -8,7 +8,6 @@ const Contact: NextPage = () => {
     <MainLayout>
       <div className="container">
         <HeadingH1 className="mt-8 mb-8">Contact</HeadingH1>
-        <Paragraph>Email me - info@mattjaikaran.com</Paragraph>
         <ContactForm />
       </div>
     </MainLayout>
