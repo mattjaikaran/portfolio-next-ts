@@ -12,7 +12,7 @@ export default function PortfolioDetail() {
   return (
     <MainLayout>
       <div className="container">
-        <HeadingH1>{portfolioDetail.title}</HeadingH1>
+        <HeadingH1>{portfolioDetail.title ?? 'Title'}</HeadingH1>
         <Paragraph>Project details here</Paragraph>
         {/* <Paragraph>{data.tech?.map((t: any) => t)}</Paragraph> */}
       </div>

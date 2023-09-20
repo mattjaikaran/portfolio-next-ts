@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <MainLayout>
       <div className="container-fluid xl:container">
-        <div className="px-16 py-48 md:p-64 text-center heroImg">
+        <div className="px-16 py-32 md:p-64 text-center heroImg">
           <HeadingH1 className="text-foreground">Matt Jaikaran</HeadingH1>
           <Paragraph className="text-foreground">
             {siteConfig.description}
@@ -34,7 +34,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="p-8 md:p-24 lg:p-32 bg-foreground text-background md:px-64 md:py-32 text-center">
+        {/* <div className="p-8 md:p-24 lg:p-32 bg-foreground text-background md:px-64 md:py-32 text-center">
           <HeadingH3>Title</HeadingH3>
           <Paragraph>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -44,16 +44,16 @@ export default function Home() {
           <Button variant="outline" className="text-foreground">
             See More
           </Button>
-        </div>
+        </div> */}
 
-        <img src={pages.src} alt="img" />
+        <img src={pages.src} alt="img" className="sm:hidden" />
 
-        <div className="pink-bg p-24 text-center">
+        {/* <div className="pink-bg p-24 text-center">
           <HeadingH3>what up</HeadingH3>
           <Button className="bg-foreground text-background">Click Here</Button>
-        </div>
+        </div> */}
 
-        <img className="sm:hidden" src={texture1.src} alt="img" />
+        {/* <img className="sm:hidden" src={texture1.src} alt="img" /> */}
 
         <div className="p-16 md:p-32 bg-white border-t-2 text-center">
           <HeadingH3 className="text-black">{`Brands I've worked with`}</HeadingH3>
@@ -103,19 +103,25 @@ export default function Home() {
           <div className="p-24 text-center">
             <HeadingH3>Some Title</HeadingH3>
             <Paragraph>here is a one liner</Paragraph>
-            <Button variant="outline" onClick={() => router.push('/portfolio')}>View Details</Button>
+            <Button variant="outline" onClick={() => router.push('/portfolio')}>
+              View Details
+            </Button>
           </div>
           <div className="p-24 bg-zinc-700 text-center">
             <HeadingH3 className="text-white">hell yeah</HeadingH3>
             <Paragraph className="text-white">
               this isnt done yet so ur cool if ur seeing this
             </Paragraph>
-            <Button variant="outline" className="" onClick={() => router.push('/portfolio')}>
+            <Button
+              variant="outline"
+              className=""
+              onClick={() => router.push('/portfolio')}
+            >
               View Details
             </Button>
           </div>
         </div>
-        <img src={birds.src} alt="img" className="" />
+        <img src={birds.src} alt="img" className="sm:hidden" />
 
         {/* newsletter */}
         <div className="p-16 md:px-64 md:py-32 text-center">

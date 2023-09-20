@@ -12,13 +12,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-// import sendgrid from '@sendgrid/mail';
-// const sendgridKey = process.env.NEXT_PUBLIC_SENDGRID_KEY;
-
-// console.log('sendgridKey', sendgridKey);
-// sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_KEY);
-
-const profileFormSchema = z.object({
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { useState } from 'react';
+import axios from 'axios';
+export const contactFormSchema = z.object({
   name: z.string().min(2, {
     message: 'Name must be at least 2 characters.',
   }),
@@ -38,80 +35,93 @@ const profileFormSchema = z.object({
   message: z.string().max(1024).min(10),
 });
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactForm = () => {
-  const form = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileFormSchema),
+  const [alertMessage, setAlertMessage] = useState<string>('');
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
     mode: 'onChange',
   });
 
-  async function onSubmit(data: ProfileFormValues) {
-    console.log('data', data);
-    // const msg = {
-    //   to: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
-    //   from: `${data.name} - ${data.email}`,
-    //   subject: data.title,
-    //   text: data.message,
-    //   html: `<div>${data.message}</div>`,
-    // };
-    // console.log('msg', msg)
-    // try {
-    //   await sendgrid.send(msg);
-    // } catch (error: any) {
-    //   console.error(error);
-    //   if (error.response) {
-    //     console.error(error.response.body)
-    //   }
-    // }
-  }
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      const messageData = {
+        to: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
+        from: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
+        name: data.name,
+        subject: data.title,
+        text: data.message,
+        html: `<p>${data.message} from ${data.email}</p>`,
+      };
+      const response = await axios.post('/api/sendgrid', messageData);
+      console.log('response', response);
+      setAlertMessage(response.data.message);
+      return await response;
+    } catch (error: any) {
+      console.log('error in onSubmit', error);
+      if (error.response) {
+        console.log('error.response.data', error.response.data);
+      }
+    }
+  };
+
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormItem>
-          <FormLabel>Name</FormLabel>
-          <FormControl>
-            <Input placeholder="Test Example" {...form.register('name')} />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-        <FormItem>
-          <FormLabel>Email</FormLabel>
-          <FormControl>
-            <Input placeholder="test@example.com" {...form.register('email')} />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-        <FormItem>
-          <FormLabel>Title</FormLabel>
-          <FormControl>
-            <Input placeholder="Enter a Title" {...form.register('title')} />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Message</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Enter your message"
-                  className="resize-none"
-                  {...form.register('message')}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" disabled>
-          Send Message
-        </Button>
-      </form>
-    </Form>
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormItem>
+            <FormLabel>Name</FormLabel>
+            <FormControl>
+              <Input placeholder="Test Example" {...form.register('name')} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+          <FormItem>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <Input
+                placeholder="test@example.com"
+                {...form.register('email')}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+          <FormItem>
+            <FormLabel>Title</FormLabel>
+            <FormControl>
+              <Input placeholder="Enter a Title" {...form.register('title')} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Message</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Enter your message"
+                    className="resize-none"
+                    {...form.register('message')}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Send Message</Button>
+        </form>
+      </Form>
+      {alertMessage ? (
+        <Alert>
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>{alertMessage}</AlertDescription>
+        </Alert>
+      ) : null}
+    </>
   );
 };
 
