@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   Form,
@@ -13,8 +14,10 @@ import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { useState } from 'react';
 import axios from 'axios';
+import { MailCheck } from 'lucide-react';
+import { useRouter } from 'next/router';
+
 export const contactFormSchema = z.object({
   name: z.string().min(2, {
     message: 'Name must be at least 2 characters.',
@@ -38,6 +41,7 @@ export const contactFormSchema = z.object({
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactForm = () => {
+  const router = useRouter();
   const [alertMessage, setAlertMessage] = useState<string>('');
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -51,13 +55,19 @@ const ContactForm = () => {
         from: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
         name: data.name,
         subject: data.title,
-        text: data.message,
-        html: `<p>${data.message} from ${data.email}</p>`,
+        text: `${data.message} from ${data.email}`,
+        html: `
+          <p>${data.message}</p>
+          <p style="margin-top: 2rem;">${data.name}</p>
+          <p>${data.email}</p>
+        `,
       };
       const response = await axios.post('/api/sendgrid', messageData);
       console.log('response', response);
       setAlertMessage(response.data.message);
-      return await response;
+      setTimeout(() => {
+        router.push('/');
+      }, 8000);
     } catch (error: any) {
       console.log('error in onSubmit', error);
       if (error.response) {
@@ -68,6 +78,13 @@ const ContactForm = () => {
 
   return (
     <>
+      {alertMessage ? (
+        <Alert className="mt-8">
+          <MailCheck />
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>{alertMessage}</AlertDescription>
+        </Alert>
+      ) : null}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormItem>
@@ -115,12 +132,6 @@ const ContactForm = () => {
           <Button type="submit">Send Message</Button>
         </form>
       </Form>
-      {alertMessage ? (
-        <Alert>
-          <AlertTitle>Success</AlertTitle>
-          <AlertDescription>{alertMessage}</AlertDescription>
-        </Alert>
-      ) : null}
     </>
   );
 };
