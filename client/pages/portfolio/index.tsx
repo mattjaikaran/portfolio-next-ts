@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useRouter } from 'next/router';
-import { PortfolioItems, sampleData } from '@/data/portfolio';
+import { PortfolioItems, portfolioData } from '@/data/portfolio';
 import { Badge } from '@/components/ui/badge';
 
 export default function Portfolio() {
@@ -48,7 +48,7 @@ export default function Portfolio() {
         <HeadingH1>Portfolio</HeadingH1>
         <Paragraph>{`Here's some of my work`}</Paragraph>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {renderPortfolioItems(sampleData)}
+          {renderPortfolioItems(portfolioData)}
         </div>
       </div>
     </MainLayout>

@@ -1,6 +1,6 @@
 import sendgrid from '@sendgrid/mail';
 const sendgridKey = process.env.NEXT_PUBLIC_SENDGRID_KEY;
-
+// @ts-ignore
 sendgrid.setApiKey(sendgridKey);
 
 async function sendMail(req: any, res: any) {
@@ -14,10 +14,10 @@ async function sendMail(req: any, res: any) {
     to: req.body.to,
     from: req.body.from,
     name: req.body.name,
-    subject: `mattjaikaran.com  contact form - ${req.body.subject}`,
+    subject: `${req.body.subject} - mattjaikaran.com contact form`,
     text: req.body.text,
     html: `
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <!DOCTYPE html>
       <html lang="en">
       <head>
         <meta charset="utf-8">
@@ -28,7 +28,7 @@ async function sendMail(req: any, res: any) {
       <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />     
       </head>
       <body>
-        ${req.body.text}
+        ${req.body.html}
       </body>
     `,
   };
