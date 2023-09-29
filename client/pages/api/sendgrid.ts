@@ -4,12 +4,6 @@ const sendgridKey = process.env.NEXT_PUBLIC_SENDGRID_KEY;
 sendgrid.setApiKey(sendgridKey);
 
 async function sendMail(req: any, res: any) {
-  console.log('req', req);
-  console.log('req.body', req.body);
-  console.log('req.body.to', req.body.to);
-  console.log('req.body.from', req.body.from);
-  console.log('req.body.subject', req.body.subject);
-  console.log('req.body.text', req.body.text);
   const msg = {
     to: req.body.to,
     from: req.body.from,
@@ -32,11 +26,9 @@ async function sendMail(req: any, res: any) {
       </body>
     `,
   };
-  console.log('msg', msg);
   try {
     const response: any = await sendgrid.send(msg);
-    console.log('response', response);
-    console.log('response.data', response.data);
+    console.log('response', response)
     return res.status(200).json({ message: 'Message sent successfully' });
   } catch (error: any) {
     console.error(error);
