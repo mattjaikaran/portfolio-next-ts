@@ -1,4 +1,9 @@
-import { HeadingH1, Paragraph } from '@/components/typography';
+import {
+  HeadingH1,
+  HeadingH2,
+  HeadingH3,
+  Paragraph,
+} from '@/components/typography';
 import { MainLayout } from '@/layouts/MainLayout';
 import { useRouter } from 'next/router';
 import { PortfolioItems, portfolioData } from '@/data/portfolio';
@@ -28,19 +33,31 @@ export default function PortfolioDetail() {
     <MainLayout>
       <div className="container">
         <HeadingH1>{portfolioDetail.title ?? 'Title'}</HeadingH1>
-        {portfolioDetail.tech?.map((t: any) => (
+        {portfolioDetail.fullTech?.map((t: any) => (
           <Badge key={t} className="mt-2 mr-2">
             {t}
           </Badge>
         ))}
-        <Paragraph>Project details here</Paragraph>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        {/* <img
-          src="https://live.staticflickr.com/65535/53206588558_cfee562928_k.jpg"
-          width="865"
-          height="2048"
-          alt="rewyrehomepagedesktop"
-        /> */}
+
+        <Paragraph>{portfolioDetail.description}</Paragraph>
+
+        <HeadingH3>Details</HeadingH3>
+        <Paragraph>{portfolioDetail.details}</Paragraph>
+        <HeadingH3 className="mt-8">Links</HeadingH3>
+        <Paragraph>
+          <a href={portfolioDetail.liveLink} target="__blank">
+            {portfolioDetail.liveLink}
+          </a>
+        </Paragraph>
+        {portfolioDetail.githubLinks
+          ? portfolioDetail.githubLinks.map((repo: any) => (
+              <Paragraph key={repo.link}>
+                <a href={repo.link} target="__blank">
+                  {repo.text}
+                </a>
+              </Paragraph>
+            ))
+          : null}
       </div>
     </MainLayout>
   );
