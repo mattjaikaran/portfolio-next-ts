@@ -107,9 +107,9 @@ export default function Home() {
               View Details
             </Button>
           </div>
-          <div className="p-24 bg-zinc-700 text-center">
-            <HeadingH3 className="text-white">hell yeah</HeadingH3>
-            <Paragraph className="text-white">
+          <div className="p-24 bg-foreground text-center">
+            <HeadingH3 className="text-background">hell yeah</HeadingH3>
+            <Paragraph className="text-background">
               this isnt done yet so ur cool if ur seeing this
             </Paragraph>
             <Button
