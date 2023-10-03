@@ -15,7 +15,7 @@ export const portfolioData: PortfolioItems[] = [
   {
     id: 1,
     title: 'Rewyre',
-    description: 'B2B SaaS Product',
+    description: 'B2B SaaS Engineering and Architecture',
     url: '/portfolio/1',
     tech: ['Django', 'Postgres', 'NextJS', 'TypeScript'],
     fullTech: ['Django', 'Postgres', 'NextJS', 'TypeScript', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
@@ -45,7 +45,7 @@ export const portfolioData: PortfolioItems[] = [
   {
     id: 3,
     title: 'E-Commerce',
-    description: 'Description 3',
+    description: 'Fullstack E-Commerce App',
     url: '/portfolio/3',
     tech: ['NextJS', 'Django', 'Postgres'],
     fullTech: ['NextJS', 'Django', 'Postgres', 'SCSS'],
@@ -69,7 +69,7 @@ export const portfolioData: PortfolioItems[] = [
   {
     id: 4,
     title: 'HyVee',
-    description: 'E-Commerce',
+    description: 'Enterprise E-Commerce Development',
     url: '/portfolio/4',
     tech: ['TypeScript', 'React', 'React Native', 'NodeJS'],
     fullTech: ['TypeScript', 'React', 'React Native', 'HapiJS/NodeJS', 'GraphQL/REST APIs', 'Postgres', 'Microservices', 'RTL', 'Bash', 'Jest', 'Concourse CI', 'GCP/Kubernetes', 'ProdX',],
@@ -78,8 +78,8 @@ export const portfolioData: PortfolioItems[] = [
   },
   {
     id: 5,
-    title: 'Hubble',
-    description: 'Description 5',
+    title: 'Hubble Contacts',
+    description: 'B2C Fullstack Shopify Development',
     url: '/portfolio/5',
     tech: ['React', 'GraphQL', 'Rails', 'Shopify'],
     fullTech: ['React', 'Gatsby', 'JavaScript/TypeScript', 'Apollo GraphQL', 'Rails', 'Postgres', 'Shopify'],
@@ -88,9 +88,10 @@ export const portfolioData: PortfolioItems[] = [
   },
   {
     id: 6,
-    title: 'Title 6',
-    description: 'Description 6',
+    title: 'NestJS NextJS App',
+    description: 'Fullstack App',
     url: '/portfolio/6',
-    tech: ['Django', 'Postgres', 'NextJS', 'TypeScript'],
+    tech: ['NestJS', 'Postgres', 'NextJS', 'TypeScript'],
+    fullTech: ['NestJS', 'Postgres', 'NextJS', 'TypeScript', 'Prisma', 'Magic Link'],
   },
 ];
