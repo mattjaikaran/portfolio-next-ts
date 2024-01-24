@@ -21,30 +21,38 @@ export default function PortfolioDetail() {
         console.log('error in renderPortfolioData ~>', error);
       }
     };
-    renderPortfolioData();
+    if (router.query.id) renderPortfolioData();
   }, [router.query.id]);
+
   return (
     <MainLayout>
+      {!portfolioDetail?.title ? (
+        <div className="container">
+          <HeadingH1>Loading...</HeadingH1>
+        </div>
+      ) : null}
       <div className="container">
-        <HeadingH1>{portfolioDetail.title ?? 'Title'}</HeadingH1>
-        {portfolioDetail.fullTech?.map((t: any) => (
+        <HeadingH1>{portfolioDetail?.title ?? 'Title'}</HeadingH1>
+        {portfolioDetail?.fullTech?.map((t: any) => (
           <Badge key={t} className="mt-2 mr-2">
             {t}
           </Badge>
         ))}
 
-        <Paragraph>{portfolioDetail.description}</Paragraph>
+        <Paragraph>{portfolioDetail?.description}</Paragraph>
 
         <HeadingH3>Details</HeadingH3>
-        <Paragraph>{portfolioDetail.details}</Paragraph>
+        <Paragraph className="lg:pr-32 xl:pr-64">
+          {portfolioDetail?.details}
+        </Paragraph>
         <HeadingH3 className="mt-8">Links</HeadingH3>
         <Paragraph>
-          <a href={portfolioDetail.liveLink} target="__blank">
-            {portfolioDetail.liveLink}
+          <a href={portfolioDetail?.liveLink} target="__blank">
+            {portfolioDetail?.liveLink}
           </a>
         </Paragraph>
-        {portfolioDetail.githubLinks
-          ? portfolioDetail.githubLinks.map((repo: any) => (
+        {portfolioDetail?.githubLinks
+          ? portfolioDetail?.githubLinks.map((repo: any) => (
               <Paragraph key={repo.link}>
                 <a href={repo.link} target="__blank">
                   {repo.text}

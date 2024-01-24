@@ -45,9 +45,11 @@ export default function Home() {
           </Button>
         </div> */}
         <img src={pages.src} alt="img" className="sm:hidden" />
-        {/* <div className="pink-bg p-24 text-center">
+        {/* <div className="bg-foreground text-background p-24 text-center">
           <HeadingH3>what up</HeadingH3>
-          <Button className="bg-foreground text-background">Click Here</Button>
+          <Button variant="outline" className="bg-foreground text-background">
+            Click Here
+          </Button>
         </div> */}
         {/* <img className="sm:hidden" src={texture1.src} alt="img" /> */}
         <div className="p-16 md:p-32 bg-white border-t-2 text-center">
@@ -108,7 +110,7 @@ export default function Home() {
             </Paragraph>
             <Button
               variant="outline"
-              className=""
+              className="bg-foreground text-background"
               onClick={() => router.push('/portfolio')}
             >
               View Details
@@ -120,7 +122,11 @@ export default function Home() {
         {/* newsletter */}
         <div className="p-16 md:px-64 md:py-32 text-center border-t-2">
           <HeadingH3>Want to collaborate on a project?</HeadingH3>
-          <Button variant="outline" onClick={() => router.push('/contact')}>
+          <Button
+            variant="outline"
+            className="bg-foreground text-background"
+            onClick={() => router.push('/contact')}
+          >
             Contact Me
           </Button>
         </div>
