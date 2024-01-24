@@ -36,15 +36,19 @@ export default function About() {
             <HeadingH3 className="mt-4">Education</HeadingH3>
             <Paragraph>
               <strong>Belmont University</strong>
-              <ul>
-                <li>- Music Business (Production)</li>
-                <li>- Marketing</li>
-              </ul>
             </Paragraph>
+            <ul>
+              <li>- Music Business (Production)</li>
+              <li className="ml-8">- Bachelors of Business Administration</li>
+              <li>- Marketing</li>
+              <li className="ml-8">- Bachelors of Business Administration</li>
+            </ul>
             <Paragraph>
               <strong>General Assembly</strong>
-              <br />- Software Engineer Immersive
             </Paragraph>
+            <ul>
+              <li>- Software Engineering Bootcamp</li>
+            </ul>
           </div>
         </div>
       </div>
