@@ -1,12 +1,6 @@
-import {
-  HeadingH1,
-  HeadingH2,
-  HeadingH3,
-  Paragraph,
-} from '@/components/typography';
+import { HeadingH1, HeadingH3, Paragraph } from '@/components/typography';
 import { MainLayout } from '@/layouts/MainLayout';
 import { useRouter } from 'next/router';
-import { PortfolioItems, portfolioData } from '@/data/portfolio';
 import { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import axios from 'axios';
