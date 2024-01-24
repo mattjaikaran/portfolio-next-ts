@@ -33,7 +33,6 @@ export default function Home() {
             View Portfolio
           </Button>
         </div>
-
         {/* <div className="p-8 md:p-24 lg:p-32 bg-foreground text-background md:px-64 md:py-32 text-center">
           <HeadingH3>Title</HeadingH3>
           <Paragraph>
@@ -45,16 +44,12 @@ export default function Home() {
             See More
           </Button>
         </div> */}
-
         <img src={pages.src} alt="img" className="sm:hidden" />
-
         {/* <div className="pink-bg p-24 text-center">
           <HeadingH3>what up</HeadingH3>
           <Button className="bg-foreground text-background">Click Here</Button>
         </div> */}
-
         {/* <img className="sm:hidden" src={texture1.src} alt="img" /> */}
-
         <div className="p-16 md:p-32 bg-white border-t-2 text-center">
           <HeadingH3 className="text-black">{`Brands I've worked with`}</HeadingH3>
           <div className="mt-12 lg:ml-32 grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
@@ -98,8 +93,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
           <div className="p-24 text-center">
             <HeadingH3>Some Title</HeadingH3>
             <Paragraph>here is a one liner</Paragraph>
@@ -121,10 +115,10 @@ export default function Home() {
             </Button>
           </div>
         </div>
+         */}
         <img src={birds.src} alt="img" className="sm:hidden" />
-
         {/* newsletter */}
-        <div className="p-16 md:px-64 md:py-32 text-center">
+        <div className="p-16 md:px-64 md:py-32 text-center border-t-2">
           <HeadingH3>Want to collaborate on a project?</HeadingH3>
           <Button variant="outline" onClick={() => router.push('/contact')}>
             Contact Me
