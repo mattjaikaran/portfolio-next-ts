@@ -8,6 +8,7 @@ import {
   Linkedin,
   // @ts-ignore
   type Icon as LucideIcon,
+  Loader2,
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -18,6 +19,7 @@ export const Icons = {
   instagram: Instagram,
   linkedin: Linkedin,
   github: Github,
+  spinner: Loader2,
   // logo: (props: LucideProps) => (
   //   <img src={logo.src} width={100} alt="logo" {...props} />
   // ),
