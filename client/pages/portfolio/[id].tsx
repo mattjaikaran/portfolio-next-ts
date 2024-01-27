@@ -92,12 +92,12 @@ export default function PortfolioDetail() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              {portfolioDetail?.images?.length < 2 ? null : (
+              {portfolioDetail?.images?.length > 1 ? (
                 <>
                   <CarouselPrevious />
                   <CarouselNext />
                 </>
-              )}
+              ) : null}
             </Carousel>
           </div>
         </div>

@@ -1,4 +1,15 @@
-Portfolio Next TypeScript
+# Matt Portfolio Front End
+
+## Technologies
+
+- React 18.2
+- NextJS 13.4 (Pages Router)
+- [shadcn/ui](https://ui.shadcn.com/)
+
+### TODO:
+
+- Add more portfolio photos
+- Analytics
 
 ## Getting Started
 
