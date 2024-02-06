@@ -112,19 +112,19 @@ export default function Navbar({
 
       {siteConfig.mainNav?.length ? (
         <nav className="hidden md:flex gap-6">
-          {siteConfig.mainNav?.map(
-            item => (
-              <Link
-                  key={item.title}
-                  href={item.href}
-                  className={cn(
-                    'flex items-center text-sm font-medium text-muted-foreground'
-                  )}
-                >
-                  {item.title}
-                </Link>
-            )
-          )}
+          {siteConfig.mainNav?.map(item => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className={cn(
+                `flex items-center text-sm font-medium text-muted-foreground hover:text-gray-700 ${
+                  router.asPath === item.href ? 'underline' : ''
+                }`
+              )}
+            >
+              {item.title}
+            </Link>
+          ))}
         </nav>
       ) : null}
 

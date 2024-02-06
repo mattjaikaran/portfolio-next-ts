@@ -3,7 +3,7 @@
 ## Features
 - NextJS w/ TypeScript
 - [shadcn/ui](https://ui.shadcn.com/)
-- Strapi CMS (NodeJS)
+- Strapi CMS (NodeJS) WIP
 
 ## Installation
 `$ git clone URL`
