@@ -1,4 +1,4 @@
-export interface PortfolioItems {
+export interface PortfolioItem {
   id: number | string;
   title: string;
   description: string;
@@ -12,7 +12,7 @@ export interface PortfolioItems {
   githubLinks?: any;
 }
 
-export const portfolioData: PortfolioItems[] = [
+export const portfolioData: PortfolioItem[] = [
   {
     id: '6ef08e8a-3c17-4cac-afbb-0e62bfb9e3dc',
     title: 'Rewyre',
@@ -106,13 +106,93 @@ export const portfolioData: PortfolioItems[] = [
     liveLink: 'https://klosers.vercel.app',
     images: ['https://live.staticflickr.com/65535/53512305935_0664c0264e_k.jpg'],
   },
-  {
-    id: '9f8b8125-a202-427e-9329-d1f0cd52ecac',
-    title: 'NestJS NextJS App',
-    description: 'Fullstack App',
-    url: '/portfolio/9f8b8125-a202-427e-9329-d1f0cd52ecac',
-    tech: ['NestJS', 'Postgres', 'NextJS', 'TypeScript'],
-    fullTech: ['NestJS', 'React', 'Postgres', 'NextJS', 'TypeScript', 'Prisma', 'Magic Link'],
-    details: 'This is a fullstack app built with NestJS, Postgres, NextJS, and TypeScript. The API is built with NestJS and Postgres. The front end is built with NextJS and TypeScript. The API is protected with Magic Link authentication.',
-  },
+  // {
+  //   id: '9f8b8125-a202-427e-9329-d1f0cd52ecac',
+  //   title: 'NestJS NextJS App',
+  //   description: 'Fullstack App',
+  //   url: '/portfolio/9f8b8125-a202-427e-9329-d1f0cd52ecac',
+  //   tech: ['NestJS', 'Postgres', 'NextJS', 'TypeScript'],
+  //   fullTech: ['NestJS', 'React', 'Postgres', 'NextJS', 'TypeScript', 'Prisma', 'Magic Link'],
+  //   details: 'This is a fullstack app built with NestJS, Postgres, NextJS, and TypeScript. The API is built with NestJS and Postgres. The front end is built with NextJS and TypeScript. The API is protected with Magic Link authentication.',
+  // },
 ];
+
+
+export const aboutData = `<p>
+Former touring musician/songwriter/producer turned software engineer.
+I've had an unconventional career path transitioning from the music
+industry specializing in marketing/branding, launching brands, and
+artist management while living in Nashville.
+</p>
+<p>
+Upon moving to NYC 2016, I attended a bootcamp and have gained tons
+of relevant experience and knowledge of the full software
+development/product lifecycle. Most of my engineering experience has
+been within startups, helping SaaS companies launch their product.
+</p>
+<p>
+The majority of my experience lies within JavaScript/TypeScript and Python
+languages using various frameworks but I am continuously learning and
+researching for more optimal solutions to my workflow. I also enjoy
+Bash scripting and building CLIs to speed up development.
+</p>
+<p>
+I am open to working on new projects of any size.
+</p>
+`;
+
+
+const date = new Date();
+const currentYear = date.getFullYear();
+const softwareExperience = currentYear - 2016;
+const eCommExperience = currentYear - 2009;
+const businessExperience = currentYear - 2008;
+const musicExperience = currentYear - 2002;
+
+export interface ExperienceItem {
+  title: string;
+  description: string;
+}
+
+export const experienceData: ExperienceItem[] = [
+  {
+    title: 'Software Engineering',
+    description: `${softwareExperience}+ years of software engineering`,
+  },
+  {
+    title: 'E-Commerce',
+    description: `${eCommExperience}+ years of e-commerce experience`,
+  },
+  {
+    title: 'Business/Marketing/Branding',
+    description: `${businessExperience}+ years of business/marketing/branding experience`,
+  },
+  {
+    title: 'Music/Music Production',
+    description: `${musicExperience}+ years of music/music production experience`,
+  }
+]
+
+export interface EducationItem {
+  title: string;
+  description: string;
+  type?: string;
+}
+
+export const educationData = [
+  {
+    title: 'Belmont University',
+    description: 'Major: Music Business (Production)',
+    type: 'Bachelors of Business Administration'
+  },
+  {
+    title: 'Belmont University',
+    description: 'Major: Marketing',
+    type: 'Bachelors of Business Administration'
+  },
+  {
+    title: 'General Assembly',
+    description: 'Software Engineering Bootcamp',
+  }
+]
+
