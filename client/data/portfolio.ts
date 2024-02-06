@@ -118,12 +118,15 @@ export const portfolioData: PortfolioItem[] = [
 ];
 
 
-export const aboutData = `<p>
-Former touring musician/songwriter/producer turned software engineer.
+export const aboutData = `
+<p>
+I am <strong>Matt Jaikaran</strong>, a software engineer based in New York.
+<p>
+<p>
 I've had an unconventional career path transitioning from the music
-industry specializing in marketing/branding, launching brands, and
+industry as a former touring musician, songwriter, and producer while also specializing in marketing/branding, launching brands, and
 artist management while living in Nashville.
-</p>
+</,p>
 <p>
 Upon moving to NYC 2016, I attended a bootcamp and have gained tons
 of relevant experience and knowledge of the full software

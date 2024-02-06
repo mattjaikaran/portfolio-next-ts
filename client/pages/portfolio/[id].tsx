@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/carousel';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import axios from 'axios';
+import { Button } from '@/components/ui/button';
 
 export default function PortfolioDetail() {
   const router = useRouter();
@@ -35,6 +36,16 @@ export default function PortfolioDetail() {
 
   return (
     <MainLayout>
+      {/* Back to Portfolio btn */}
+      <div className="container">
+        <Button
+          variant="link"
+          onClick={() => router.push('/portfolio')}
+          className="mb-4"
+        >
+          Back to Portfolio
+        </Button>
+      </div>
       {!portfolioDetail?.title ? (
         <div className="container">
           {/* div places spinner vertically aligned */}
