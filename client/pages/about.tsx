@@ -2,6 +2,8 @@ import { MainLayout } from '@/layouts/MainLayout';
 import { HeadingH1, HeadingH3, Paragraph } from '@/components/typography';
 
 export default function About() {
+  const date = new Date();
+  const currentYear = date.getFullYear();
   return (
     <MainLayout>
       <div className="container">
@@ -27,10 +29,15 @@ export default function About() {
             open to freelance projects.`}
           </Paragraph>
           <ul>
-            <li>8+ years of software engineering</li>
-            <li>14+ years of business/marketing/branding experience </li>
-            <li>16+ years of e-commerce experience </li>
-            <li>21+ years of music/music production experience</li>
+            <li>{currentYear - 2016}+ years of software engineering</li>
+            <li>{currentYear - 2009}+ years of e-commerce experience </li>
+            <li>
+              {currentYear - 2008}+ years of business/marketing/branding
+              experience
+            </li>
+            <li>
+              {currentYear - 2002}+ years of music/music production experience
+            </li>
           </ul>
           <div className="mt-4 border-t-2 pb-16 md:pb-0">
             <HeadingH3 className="mt-4">Education</HeadingH3>
@@ -38,9 +45,9 @@ export default function About() {
               <strong>Belmont University</strong>
             </Paragraph>
             <ul>
-              <li>- Music Business (Production)</li>
+              <li>- Music Business (Production) major</li>
               <li className="ml-8">- Bachelors of Business Administration</li>
-              <li>- Marketing</li>
+              <li>- Marketing major</li>
               <li className="ml-8">- Bachelors of Business Administration</li>
             </ul>
             <Paragraph>
