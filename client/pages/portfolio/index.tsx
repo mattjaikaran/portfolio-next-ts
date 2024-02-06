@@ -10,19 +10,19 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useRouter } from 'next/router';
-import { PortfolioItems, portfolioData } from '@/data/portfolio';
+import { PortfolioItem, portfolioData } from '@/data/portfolio';
 import { Badge } from '@/components/ui/badge';
 
 export default function Portfolio() {
   const router = useRouter();
-  const PortfolioCard = (props: PortfolioItems) => (
+  const PortfolioCard = (props: PortfolioItem) => (
     <Card>
       <CardHeader>
         <CardTitle>{props.title}</CardTitle>
         <CardDescription>{props.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        {props.tech?.map(t => (
+        {props.tech?.map((t: string) => (
           <Badge key={t} className="mt-2 mr-2">
             {t}
           </Badge>
@@ -36,8 +36,8 @@ export default function Portfolio() {
     </Card>
   );
 
-  const renderPortfolioItems = (items: PortfolioItems[]) => {
-    return items.map((item: PortfolioItems) => (
+  const renderPortfolioItems = (items: PortfolioItem[]) => {
+    return items.map((item: PortfolioItem) => (
       <PortfolioCard key={item.id} {...item} />
     ));
   };

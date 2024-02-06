@@ -1,4 +1,4 @@
-import { HeadingH1, HeadingH3, Paragraph } from '@/components/typography';
+import { HeadingH1, HeadingH5, Paragraph } from '@/components/typography';
 import { MainLayout } from '@/layouts/MainLayout';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -11,9 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import Image from 'next/image';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-
 import axios from 'axios';
 
 export default function PortfolioDetail() {
@@ -39,7 +37,10 @@ export default function PortfolioDetail() {
     <MainLayout>
       {!portfolioDetail?.title ? (
         <div className="container">
-          <Spinner />
+          {/* div places spinner vertically aligned */}
+          <div className="flex justify-center items-center h-96">
+            <Spinner />
+          </div>
         </div>
       ) : (
         <div className="container">
@@ -50,27 +51,35 @@ export default function PortfolioDetail() {
             </Badge>
           ))}
 
-          <Paragraph>{portfolioDetail?.description}</Paragraph>
+          <Paragraph>
+            <small className="italic">{portfolioDetail?.description}</small>
+          </Paragraph>
 
-          <HeadingH3>Details</HeadingH3>
+          <HeadingH5>Details</HeadingH5>
           <Paragraph className="lg:pr-32 xl:pr-64">
             {portfolioDetail?.details}
           </Paragraph>
-          <HeadingH3 className="mt-8">Links</HeadingH3>
+          <HeadingH5 className="mt-8">Links</HeadingH5>
           <Paragraph>
-            <a href={portfolioDetail?.liveLink} target="__blank">
+            <a
+              href={portfolioDetail?.liveLink}
+              target="__blank"
+              className="block underline hover:no-underline"
+            >
               {portfolioDetail?.liveLink}
             </a>
+            <br />
+            {portfolioDetail?.githubLinks?.map((repo: any) => (
+              <a
+                key={repo.link}
+                href={repo.link}
+                target="__blank"
+                className="block underline hover:no-underline"
+              >
+                {repo.text}
+              </a>
+            ))}
           </Paragraph>
-          {portfolioDetail?.githubLinks
-            ? portfolioDetail?.githubLinks.map((repo: any) => (
-                <Paragraph key={repo.link}>
-                  <a href={repo.link} target="__blank">
-                    {repo.text}
-                  </a>
-                </Paragraph>
-              ))
-            : null}
 
           <div>
             <Carousel>
@@ -79,13 +88,11 @@ export default function PortfolioDetail() {
                   <CarouselItem key={image}>
                     <div className="w-100">
                       <AspectRatio ratio={16 / 9}>
-                        <Image
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
                           src={image}
-                          width={950}
-                          height={1050}
-                          layout="responsive"
                           alt="Image"
-                          className="rounded-md object-cover"
+                          className="object-cover w-full rounded-lg shadow-lg overflow-hidden bg-gray-100 dark:bg-gray-800 dark:shadow-none"
                         />
                       </AspectRatio>
                     </div>
