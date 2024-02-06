@@ -33,6 +33,7 @@ export const portfolioData: PortfolioItems[] = [
     fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
     details: 'This was a proof of concept for a fitness studio startup based in NYC. The API was built with Django and Postgres. Front end was built with NextJS and React Bootstrap. Designed by Madrid based art director/designer Iria Viejo.',
     liveLink: 'https://fitness-client-next.vercel.app/',
+    images: ['https://live.staticflickr.com/65535/53510981402_332e659430_k.jpg'],
     githubLinks: [
       {
         text: 'Front End Repo',
@@ -57,6 +58,7 @@ export const portfolioData: PortfolioItems[] = [
     fullTech: ['NextJS', 'React', 'Django', 'Postgres', 'NodeJS', 'SCSS'],
     details: 'Proof of concept e-commerce application. The front end end is built with NextJS/React, the API is built with Django and Postgres. The CMS is built with Strapi/NodeJS and provides two way communication to the Django API.',
     liveLink: 'https://ecommerce-store-nextjs.vercel.app',
+    images: ['https://live.staticflickr.com/65535/53511874811_546bf739b2_k.jpg'],
     githubLinks: [
       {
         text: 'Front End Repo',
@@ -91,17 +93,18 @@ export const portfolioData: PortfolioItems[] = [
     fullTech: ['React', 'Gatsby', 'TypeScript', 'Apollo GraphQL', 'Rails', 'Postgres', 'Shopify'],
     details: 'I helped migrate the Rails 4 to Rails 6 API. I built the front end using Gatsby/React and connect it to Shopify and the new Rails API. I also built customer acquisition quiz using React TypeScript to help customers decide different contacts.',
     liveLink: 'https://hubblecontacts.com',
+    images: ['https://live.staticflickr.com/65535/53510957077_a71313426c_k.jpg']
   },
   {
     id: '2a724e2d-6e37-4be7-b68d-07fbb0c9cc9b',
     title: 'Klosers',
     description: 'Sales Startup Platform',
-    // images: [],
     url: '/portfolio/2a724e2d-6e37-4be7-b68d-07fbb0c9cc9b',
     tech: ['Django', 'Postgres', 'NextJS', 'TypeScript'],
     fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'Redux', 'RTK Query', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
     details: 'A sales platform built with Django, Postgres, NextJS, Redux, and TypeScript. The API is built with Django and Postgres. The front end is built with NextJS and TypeScript, Redux Toolkit/RTK Query to manage state, React Bootstrap UI library.',
     liveLink: 'https://klosers.vercel.app',
+    images: ['https://live.staticflickr.com/65535/53512305935_0664c0264e_k.jpg'],
   },
   {
     id: '9f8b8125-a202-427e-9329-d1f0cd52ecac',
