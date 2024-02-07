@@ -5,6 +5,7 @@ import {
   SunMedium,
   Instagram,
   Github,
+  Undo2,
   Linkedin,
   // @ts-ignore
   type Icon as LucideIcon,
@@ -20,6 +21,7 @@ export const Icons = {
   linkedin: Linkedin,
   github: Github,
   spinner: Loader2,
+  undo: Undo2,
   // logo: (props: LucideProps) => (
   //   <img src={logo.src} width={100} alt="logo" {...props} />
   // ),
