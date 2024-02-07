@@ -46,8 +46,7 @@ export default function Portfolio() {
     <MainLayout>
       <div className="container">
         <HeadingH1>Portfolio</HeadingH1>
-        <Paragraph>{`Here's some of my work`}</Paragraph>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {renderPortfolioItems(portfolioData)}
         </div>
       </div>

@@ -26,10 +26,10 @@ export const portfolioData: PortfolioItem[] = [
   },
   {
     id: '43b58672-e6de-4d6c-ae44-b126c649338b',
-    title: 'Fitness',
-    description: 'Finess App Proof of Concept',
+    title: 'Fitness App',
+    description: 'Fitness App',
     url: '/portfolio/43b58672-e6de-4d6c-ae44-b126c649338b',
-    tech: ['NextJS', 'Django', 'Postgres'],
+    tech: ['NextJS', 'SCSS', 'Django', 'Postgres'],
     fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
     details: 'This was a proof of concept for a fitness studio startup based in NYC. The API was built with Django and Postgres. Front end was built with NextJS and React Bootstrap. Designed by Madrid based art director/designer Iria Viejo.',
     liveLink: 'https://fitness-client-next.vercel.app/',
@@ -51,10 +51,10 @@ export const portfolioData: PortfolioItem[] = [
   },
   {
     id: '574431f8-1d46-42b7-8b6e-eacb51128bdf',
-    title: 'E-Commerce',
+    title: 'E-Commerce App',
     description: 'Fullstack E-Commerce App',
     url: '/portfolio/574431f8-1d46-42b7-8b6e-eacb51128bdf',
-    tech: ['NextJS', 'Django', 'Postgres'],
+    tech: ['NextJS', 'Redux', 'Django', 'Postgres'],
     fullTech: ['NextJS', 'React', 'Django', 'Postgres', 'NodeJS', 'SCSS'],
     details: 'Proof of concept e-commerce application. The front end end is built with NextJS/React, the API is built with Django and Postgres. The CMS is built with Strapi/NodeJS and provides two way communication to the Django API.',
     liveLink: 'https://ecommerce-store-nextjs.vercel.app',
@@ -68,10 +68,10 @@ export const portfolioData: PortfolioItem[] = [
         text: 'Back End Repo',
         link: 'https://github.com/mattjaikaran/ecommerce-api',
       },
-      {
-        text: 'CMS Repo',
-        link: 'https://github.com/mattjaikaran/ecommerce-cms',
-      },
+      // {
+      //   text: 'CMS Repo',
+      //   link: 'https://github.com/mattjaikaran/ecommerce-cms',
+      // },
     ]
   },
   {
@@ -124,9 +124,10 @@ I am <strong>Matt Jaikaran</strong>, a software engineer based in New York.
 <p>
 <p>
 I've had an unconventional career path transitioning from the music
-industry as a former touring musician, songwriter, and producer while also specializing in marketing/branding, launching brands, and
-artist management while living in Nashville.
-</,p>
+industry as a former touring musician, songwriter, and producer while also 
+specializing in marketing/branding, launching brands, and artist management 
+while living in Nashville.
+</p>
 <p>
 Upon moving to NYC 2016, I attended a bootcamp and have gained tons
 of relevant experience and knowledge of the full software
@@ -168,11 +169,11 @@ export const experienceData: ExperienceItem[] = [
   },
   {
     title: 'Business/Marketing/Branding',
-    description: `${businessExperience}+ years of business/marketing/branding experience`,
+    description: `${businessExperience}+ years of business, marketing and branding experience`,
   },
   {
     title: 'Music/Music Production',
-    description: `${musicExperience}+ years of music/music production experience`,
+    description: `${musicExperience}+ years of music and music production experience`,
   }
 ]
 

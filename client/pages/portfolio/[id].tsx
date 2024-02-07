@@ -14,6 +14,8 @@ import {
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import axios from 'axios';
 import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/icons';
+import Link from 'next/link';
 
 export default function PortfolioDetail() {
   const router = useRouter();
@@ -38,13 +40,10 @@ export default function PortfolioDetail() {
     <MainLayout>
       {/* Back to Portfolio btn */}
       <div className="container">
-        <Button
-          variant="link"
-          onClick={() => router.push('/portfolio')}
-          className="mb-4"
-        >
-          Back to Portfolio
-        </Button>
+        <Link href="/portfolio">
+          <Icons.undo className="h-5 w-5 inline mr-2" />
+          <small>Back to Portfolio</small>
+        </Link>
       </div>
       {!portfolioDetail?.title ? (
         <div className="container">
