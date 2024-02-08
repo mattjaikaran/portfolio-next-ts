@@ -39,7 +39,7 @@ export default function PortfolioDetail() {
   return (
     <MainLayout>
       {/* Back to Portfolio btn */}
-      <div className="container">
+      <div className="container mb-4">
         <Link href="/portfolio">
           <Icons.undo className="h-5 w-5 inline mr-2" />
           <small>Back to Portfolio</small>

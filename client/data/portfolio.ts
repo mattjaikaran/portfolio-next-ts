@@ -22,7 +22,7 @@ export const portfolioData: PortfolioItem[] = [
     fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'Redux', 'RTK Query', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
     details: 'Rewyre is a prop tech startup based in NYC. Version 1.0 was a monolith web app built with Django 3, Postgres, and Vue 2. Version 2.0 was a full rebuild of the back end using Django 4 and Postgres and the front end using NextJS TypeScript, Redux Toolkit/RTK Query to manage state, and React Bootstrap UI library. I was the lead engineer for version 1.0 and was the architect and sole engineer for version 2.0',
     liveLink: 'https://rewyre.com',
-    images: ['https://live.staticflickr.com/65535/53206588558_cfee562928_k.jpg']
+    images: ['https://live.staticflickr.com/65535/53517461941_76689aa748_k.jpg']
   },
   {
     id: '43b58672-e6de-4d6c-ae44-b126c649338b',
@@ -58,7 +58,7 @@ export const portfolioData: PortfolioItem[] = [
     fullTech: ['NextJS', 'React', 'Django', 'Postgres', 'NodeJS', 'SCSS'],
     details: 'Proof of concept e-commerce application. The front end end is built with NextJS/React, the API is built with Django and Postgres. The CMS is built with Strapi/NodeJS and provides two way communication to the Django API.',
     liveLink: 'https://ecommerce-store-nextjs.vercel.app',
-    images: ['https://live.staticflickr.com/65535/53511874811_546bf739b2_k.jpg'],
+    images: ['https://live.staticflickr.com/65535/53517773049_7a4bebdc87_h.jpg'],
     githubLinks: [
       {
         text: 'Front End Repo',
@@ -83,6 +83,7 @@ export const portfolioData: PortfolioItem[] = [
     fullTech: ['TypeScript', 'React', 'React Native', 'HapiJS/NodeJS', 'GraphQL/REST APIs', 'Postgres', 'Microservices', 'RTL', 'Bash', 'Jest', 'Concourse CI', 'GCP/Kubernetes', 'ProdX',],
     details: 'At HyVee I worked on Web and Mobile team. I worked within a TDD environment where the codebase was in TypeScript with 100% test coverage.',
     liveLink: 'https://hyvee.com',
+    images: ['https://live.staticflickr.com/65535/53517880325_3e8c3d376b_k.jpg']
   },
   {
     id: '88b3515a-c68e-4a63-b0db-1aa603fe1092',
@@ -129,16 +130,15 @@ specializing in marketing/branding, launching brands, and artist management
 while living in Nashville.
 </p>
 <p>
-Upon moving to NYC 2016, I attended a bootcamp and have gained tons
-of relevant experience and knowledge of the full software
-development/product lifecycle. Most of my engineering experience has
-been within startups, helping SaaS companies launch their product.
+I moved to NYC 2016, attended a bootcamp and transitioned into software engineering, 
+gaining experience in the full software lifecycle from design, development, testing, 
+deployment, and maintenance. I have experience in both front end and back end development 
+and have worked on various projects in different industries.
 </p>
 <p>
 The majority of my experience lies within JavaScript/TypeScript and Python
 languages using various frameworks but I am continuously learning and
-researching for more optimal solutions to my workflow. I also enjoy
-Bash scripting and building CLIs to speed up development.
+researching for more optimal solutions to my workflow.
 </p>
 <p>
 I am open to working on new projects of any size.
@@ -179,6 +179,7 @@ export const experienceData: ExperienceItem[] = [
 
 export interface EducationItem {
   title: string;
+  location?: string;
   description: string;
   type?: string;
 }
@@ -186,16 +187,19 @@ export interface EducationItem {
 export const educationData = [
   {
     title: 'Belmont University',
+    location: 'Nashville, TN',
     description: 'Major: Music Business (Production)',
     type: 'Bachelors of Business Administration'
   },
   {
     title: 'Belmont University',
+    location: 'Nashville, TN',
     description: 'Major: Marketing',
     type: 'Bachelors of Business Administration'
   },
   {
     title: 'General Assembly',
+    location: 'New York, NY',
     description: 'Software Engineering Bootcamp',
   }
 ]
