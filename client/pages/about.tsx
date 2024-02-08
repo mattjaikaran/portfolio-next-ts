@@ -43,6 +43,12 @@ export default function About() {
                   <div key={index} className="mb-4">
                     <Paragraph>
                       <strong>{edu.title}</strong>
+                      {edu.location ? (
+                        <>
+                          <br />
+                          <small>{edu.location}</small>
+                        </>
+                      ) : null}
                       <br />
                       {edu.description}
                       <br />

@@ -8,7 +8,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log('req.query', req.query);
   const portfolioItem = portfolioData.filter((p: any) => p.id == req.query.id);
   res.status(200).json({ data: portfolioItem[0] });
 }
