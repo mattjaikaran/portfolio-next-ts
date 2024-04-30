@@ -1,23 +1,26 @@
-# Portfolio NextJS TypeScript App
+# Matt Portfolio Front End
 
-## Features
-- NextJS w/ TypeScript
+## Technologies
+
+- React 18.2
+- NextJS 13.4 (Pages Router)
 - [shadcn/ui](https://ui.shadcn.com/)
-- Strapi CMS (NodeJS) WIP
 
-## Installation
-`$ git clone URL`
+### TODO:
 
-#### Next Front End -
+- Add more portfolio photos
+- Analytics
+- Finish back end
+- Upgrade to Next 14. App Router
+- Bun
+
+
+## Getting Started
+
+First, run the development server:
+
 ```bash
-cd client
-yarn 
 yarn dev
 ```
 
-#### Strapi API -
-```bash
-cd server
-yarn
-yarn develop
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
