@@ -1,5 +1,5 @@
 import { MainLayout } from '@/layouts/MainLayout';
-import { HeadingH1, Paragraph } from '@/components/typography';
+import { HeadingH1 } from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import {
   Card,
