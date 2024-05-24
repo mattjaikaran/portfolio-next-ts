@@ -22,7 +22,7 @@ const MusicCard: React.FC<MusicCardProps> = ({ item }) => {
       <small className="text-sm text-gray-500 mt-0">{item.description}</small>
       {item.releases && item.releases.length ? (
         <div>
-          <HeadingH5 className="mt-2 mb-0">Albums</HeadingH5>
+          <HeadingH5 className="mt-2 mb-0">Releases</HeadingH5>
           <ul>
             {item.releases.map((release) => (
               <li key={release.title} className="mt-0 hover:underline">
