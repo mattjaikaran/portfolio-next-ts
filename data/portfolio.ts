@@ -130,7 +130,7 @@ specializing in marketing/branding, launching brands, and artist management
 while living in Nashville.
 </p>
 <p>
-I moved to NYC 2016, attended a bootcamp and transitioned into software engineering, 
+I moved to NYC 2016, attended a coding bootcamp and transitioned into software engineering, 
 gaining experience in the full software lifecycle from design, development, testing, 
 deployment, and maintenance. I have experience in both front end and back end development 
 and have worked on various projects in different industries.
@@ -202,72 +202,4 @@ export const educationData = [
     location: 'New York, NY',
     description: 'Software Engineering Bootcamp',
   }
-]
-
-export interface MusicItem {
-  title: string;
-  description: string;
-  releases?: any;
-  image?: string;
-  urls?: any;
-}
-// prev projects
-// Have You Heard, 2008-2012, https://haveyouheard.bandcamp.com/album/where-you-want-me
-// Pocono, 2013, https://pocono.bandcamp.com/album/pocono
-// Chapels, 2014-2015, https://chapelsmusic.bandcamp.com
-export const pastMusicData: MusicItem[] = [
-  {
-    title: 'Have You Heard',
-    description: 'Guitarist/Songwriter 2008-2012',
-    releases: [
-      {
-        title: 'Where You Want Me',
-        url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
-      }, 
-      {
-        title: 'take.create.revive.',
-        url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
-      }
-    ],
-    urls: [
-      'https://haveyouheard.bandcamp.com/album/where-you-want-me', 
-      'https://haveyouheard.bandcamp.com/album/take-create-revive'
-    ]
-  },
-  {
-    title: 'Pocono',
-    description: 'Guitarist/Songwriter 2013',
-    releases: [
-      {
-        title: 'Pocono',
-        url: 'https://pocono.bandcamp.com/album/pocono',
-        image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
-      }
-    ]
-  },
-  {
-    title: 'Chapels',
-    description: 'Guitarist/Songwriter 2014-2015',
-    releases: [
-      {
-        title: 'Chapels',
-        url: 'https://chapelsmusic.bandcamp.com/',
-        image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
-      }
-    ]
-  },
-]
-
-// current projects
-// tba, 2024, tbd
-// tba2, 2024, tbd
-export const currentMusicData: MusicItem[] = [
-  {
-    title: 'TBA',
-    description: '2024',
-  },
-  // {
-  //   title: 'TBA2',
-  //   description: '2024',
-  // }
 ]
