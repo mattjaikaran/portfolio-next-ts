@@ -13,6 +13,10 @@ export const siteConfig = {
       href: '/portfolio',
     },
     {
+      title: 'Music',
+      href: '/music',
+    },
+    {
       title: 'Contact',
       href: '/contact',
     },

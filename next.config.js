@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'live.staticflickr.com'],
+    domains: ['localhost', 'live.staticflickr.com', 'f4.bcbits.com'],
   },
 };
 
