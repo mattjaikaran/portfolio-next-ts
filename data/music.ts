@@ -96,10 +96,12 @@ export const musicData: MusicItem[] = [
     longDescription: 'add more for hyh tbd',
     releases: [
       {
+        id: 1, 
         title: 'Where You Want Me',
         url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
       }, 
       {
+        id: 2, 
         title: 'take.create.revive.',
         url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
       }
@@ -116,6 +118,7 @@ export const musicData: MusicItem[] = [
     longDescription: 'add more for pocono tbd',
     releases: [
       {
+        id: 1,
         title: 'Pocono',
         url: 'https://pocono.bandcamp.com/album/pocono',
         image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
@@ -129,6 +132,7 @@ export const musicData: MusicItem[] = [
     longDescription: 'add more for chapels tbd',
     releases: [
       {
+        id: 1,
         title: 'Chapels',
         url: 'https://chapelsmusic.bandcamp.com/',
         image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
