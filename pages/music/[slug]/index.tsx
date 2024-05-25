@@ -8,6 +8,7 @@ import { Spinner } from '@/components/ui/spinner';
 import Link from 'next/link';
 import { Icons } from '@/components/icons';
 import { Release } from '@/data/music';
+import ReleaseCard from '@/components/release-card';
 
 const MusicProjectDetail: NextPage = () => {
   const router = useRouter();
@@ -54,12 +55,7 @@ const MusicProjectDetail: NextPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {musicDetail.releases && musicDetail.releases.length > 0 ? (
             musicDetail.releases.map((release: Release) => (
-              <div key={release.title} className='card bg-white p-4 shadow rounded-lg'>
-                <h3>{release.title}</h3>
-                <a href={release.url} target="_blank" rel="noopener noreferrer">
-                  <p className="mb-0 text-sm">{release.title}</p>
-                </a>
-              </div>
+              <ReleaseCard key={release.year} release={release} />
             ))
           ) : null}
           </div>

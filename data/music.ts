@@ -1,6 +1,7 @@
 export interface Release {
   id: number;
   title: string;
+  year: number;
   url: string;
   image?:  string;
 }
@@ -25,11 +26,13 @@ export const pastMusicData: MusicItem[] = [
       {
         id: 1,
         title: 'Where You Want Me',
+        year: 2010,
         url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
       }, 
       {
         id: 2,
         title: 'take.create.revive.',
+        year: 2012,
         url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
       }
     ],
@@ -46,6 +49,7 @@ export const pastMusicData: MusicItem[] = [
       {
         id: 1,
         title: 'Pocono',
+        year: 2013,
         url: 'https://pocono.bandcamp.com/album/pocono',
         image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
       }
@@ -61,6 +65,7 @@ export const pastMusicData: MusicItem[] = [
       {
         id: 1,
         title: 'Chapels',
+        year: 2015,
         url: 'https://chapelsmusic.bandcamp.com/',
         image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
       }
@@ -98,12 +103,16 @@ export const musicData: MusicItem[] = [
       {
         id: 1, 
         title: 'Where You Want Me',
+        year: 2010,
         url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
+        image: 'https://f4.bcbits.com/img/a4242374142_10.jpg'
       }, 
       {
         id: 2, 
         title: 'take.create.revive.',
+        year: 2011,
         url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
+        image: 'https://f4.bcbits.com/img/a1910409234_16.jpg'
       }
     ],
     urls: [
@@ -120,6 +129,7 @@ export const musicData: MusicItem[] = [
       {
         id: 1,
         title: 'Pocono',
+        year: 2013,
         url: 'https://pocono.bandcamp.com/album/pocono',
         image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
       }
@@ -134,6 +144,7 @@ export const musicData: MusicItem[] = [
       {
         id: 1,
         title: 'Chapels',
+        year: 2015,
         url: 'https://chapelsmusic.bandcamp.com/',
         image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
       }
