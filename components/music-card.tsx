@@ -18,7 +18,10 @@ const MusicCard: React.FC<MusicCardProps> = ({ item }) => {
             {item.releases.map((release: Release) => (
               <li key={release.title} className="mt-0 hover:underline">
                 <a href={release.url} target="_blank" rel="noopener noreferrer">
-                  <p className="mb-0 text-sm">{release.title}</p>
+                  
+                  <p className="mb-0 text-sm">
+                    {release.title} - {release.year}
+                    </p>
                 </a>
               </li>
             ))}
