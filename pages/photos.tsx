@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { MainLayout } from '@/layouts/MainLayout';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+// import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 // test imgs
 import midtown34th from '@/public/images/photos/midtown34th.jpg';
