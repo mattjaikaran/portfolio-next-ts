@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { Icons } from '@/components/icons';
 import { Release } from '@/data/music';
 import ReleaseCard from '@/components/release-card';
+import BackButton from '@/components/back-button';
 
 const MusicProjectDetail: NextPage = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const MusicProjectDetail: NextPage = () => {
         const response = await axios.get(`/api/music/${router.query.slug}`);
         console.log('response.data.data', response.data.data);
         setMusicDetail(response.data.data);
-        console.log('musicDetail', musicDetail)
+        console.log('musicDetail', musicDetail);
         return response;
       } catch (error) {
         console.log('error in renderMusicData ~>', error);
@@ -31,16 +32,11 @@ const MusicProjectDetail: NextPage = () => {
 
   return (
     <MainLayout>
-      {/* Back to Music btn */}
       <div className="container mb-4">
-        <Link href="/music">
-          <Icons.undo className="h-5 w-5 inline mr-2" />
-          <small>Back to Music</small>
-        </Link>
+        <BackButton route="music" />
       </div>
       {!musicDetail || !musicDetail.title ? (
         <div className="container">
-          {/* div places spinner vertically aligned */}
           <div className="flex justify-center items-center h-96">
             <Spinner />
           </div>
@@ -53,11 +49,11 @@ const MusicProjectDetail: NextPage = () => {
           <Paragraph>{musicDetail.longDescription}</Paragraph>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {musicDetail.releases && musicDetail.releases.length > 0 ? (
-            musicDetail.releases.map((release: Release) => (
-              <ReleaseCard key={release.year} release={release} />
-            ))
-          ) : null}
+            {musicDetail.releases && musicDetail.releases.length > 0
+              ? musicDetail.releases.map((release: Release) => (
+                  <ReleaseCard key={release.year} release={release} />
+                ))
+              : null}
           </div>
         </div>
       )}

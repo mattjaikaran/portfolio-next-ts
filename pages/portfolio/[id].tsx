@@ -16,6 +16,7 @@ import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import Link from 'next/link';
+import BackButton from '@/components/back-button';
 
 export default function PortfolioDetail() {
   const router = useRouter();
@@ -38,16 +39,11 @@ export default function PortfolioDetail() {
 
   return (
     <MainLayout>
-      {/* Back to Portfolio btn */}
       <div className="container mb-4">
-        <Link href="/portfolio">
-          <Icons.undo className="h-5 w-5 inline mr-2" />
-          <small>Back to Portfolio</small>
-        </Link>
+        <BackButton route="portfolio" />
       </div>
       {!portfolioDetail?.title ? (
         <div className="container">
-          {/* div places spinner vertically aligned */}
           <div className="flex justify-center items-center h-96">
             <Spinner />
           </div>
