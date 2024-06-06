@@ -1,7 +1,8 @@
 import { MainLayout } from '@/layouts/MainLayout';
-import { HeadingH1, Paragraph } from '@/components/typography';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { aboutData, educationData, experienceData } from '@/data/portfolio';
+import { HeadingH1 } from '@/components/typography';
+import { aboutData } from '@/data/portfolio';
+import ExperienceCard from '@/components/experience-card';
+import EducationCard from '@/components/education-card';
 
 export default function About() {
   return (
@@ -15,49 +16,9 @@ export default function About() {
             dangerouslySetInnerHTML={{ __html: aboutData }}
           />
 
-          {/* Grid with 2 Cards. 1 card with experienceData mapped and 1 card with education data */}
-          {/* Experience */}
           <div className="grid sm:grid-cols-2 gap-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Experience</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul>
-                  {experienceData.map((exp, index) => (
-                    <li key={index} className="mb-4">
-                      {exp.description}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Education */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Education</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {educationData.map((edu, index) => (
-                  <div key={index} className="mb-4">
-                    <Paragraph>
-                      <strong>{edu.title}</strong>
-                      {edu.location ? (
-                        <>
-                          <br />
-                          <small>{edu.location}</small>
-                        </>
-                      ) : null}
-                      <br />
-                      {edu.description}
-                      <br />
-                      {edu.type}
-                    </Paragraph>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+            <ExperienceCard />
+            <EducationCard />
           </div>
         </div>
       </div>
