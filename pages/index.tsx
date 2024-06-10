@@ -49,10 +49,7 @@ export default function Home() {
         </div> */}
 
         <img src={pages.src} alt="img" className="sm:hidden" />
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <img src={grandCentral.src} alt="img" className="sm:hidden" />
-          <img src={unionSquareCouple.src} alt="img" className="sm:hidden" />
-        </div>
+        {/* <img src={grandCentral.src} alt="img" className="sm:hidden" /> */}
 
         {/* <div className="bg-foreground text-background p-24 text-center">
           <HeadingH3>what up</HeadingH3>
@@ -123,6 +120,7 @@ export default function Home() {
           </div>
         </div> */}
 
+        <img src={unionSquareCouple.src} alt="img" className="sm:hidden" />
         <img src={birds.src} alt="img" className="sm:hidden" />
         {/* <img src={midtown34th.src} alt="img" className="sm:hidden" /> */}
         {/* newsletter */}
