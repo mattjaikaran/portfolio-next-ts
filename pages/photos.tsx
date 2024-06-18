@@ -6,7 +6,7 @@ import { MainLayout } from '@/layouts/MainLayout';
 import midtown34th from '@/public/images/photos/midtown34th.jpg';
 import grandCentral from '@/public/images/photos/grand-central-rain.jpg';
 
-const Photography: NextPage = () => {
+const Photos: NextPage = () => {
   return (
     <MainLayout>
       <div className="container">
@@ -22,4 +22,4 @@ const Photography: NextPage = () => {
   );
 };
 
-export default Photography;
+export default Photos;

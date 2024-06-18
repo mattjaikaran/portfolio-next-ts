@@ -1,5 +1,4 @@
-import { Release } from '@/data/music';
-
+/* eslint-disable @next/next/no-img-element */
 const ReleaseCard = ({ release }: any) => {
   return (
     <div

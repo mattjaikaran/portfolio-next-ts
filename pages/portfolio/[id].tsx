@@ -1,7 +1,11 @@
-import { HeadingH1, HeadingH5, Paragraph } from '@/components/typography';
+import { useEffect, useState } from 'react';
+import {
+  HeadingH1,
+  HeadingH5,
+  Paragraph,
+} from '@/components/shared/typography';
 import { MainLayout } from '@/layouts/MainLayout';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Spinner } from '@/components/ui/spinner';
 import {
@@ -12,11 +16,8 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import BackButton from '@/components/shared/back-button';
 import axios from 'axios';
-import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/icons';
-import Link from 'next/link';
-import BackButton from '@/components/back-button';
 
 export default function PortfolioDetail() {
   const router = useRouter();

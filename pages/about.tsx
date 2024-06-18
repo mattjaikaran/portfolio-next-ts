@@ -1,11 +1,12 @@
+import { NextPage } from 'next';
 import { MainLayout } from '@/layouts/MainLayout';
-import { HeadingH1 } from '@/components/typography';
+import { HeadingH1 } from '@/components/shared/typography';
 import { aboutData } from '@/data/portfolio';
 
-import ExperienceCard from '@/components/experience-card';
-import EducationCard from '@/components/education-card';
+import ExperienceCard from '@/components/cards/experience-card';
+import EducationCard from '@/components/cards/education-card';
 
-export default function About() {
+const About: NextPage = () => {
   return (
     <MainLayout>
       <div className="container">
@@ -24,4 +25,6 @@ export default function About() {
       </div>
     </MainLayout>
   );
-}
+};
+
+export default About;
