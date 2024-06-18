@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { HeadingH1 } from '@/components/typography';
+import { HeadingH1 } from '@/components/shared/typography';
 import { MainLayout } from '@/layouts/MainLayout';
 import ContactForm from '@/components/forms/ContactForm';
 

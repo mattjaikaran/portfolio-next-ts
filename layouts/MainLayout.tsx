@@ -1,5 +1,5 @@
-import Navbar from '@/components/navbar';
-import { ThemeProvider } from '@/components/theme-provider';
+import Navbar from '@/components/shared/navbar';
+import { ThemeProvider } from '@/components/shared/theme-provider';
 
 export function MainLayout({ children, ...props }: any) {
   return (

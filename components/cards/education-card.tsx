@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { educationData } from '@/data/portfolio';
-import { Paragraph } from './typography';
+import { Paragraph } from '../shared/typography';
 
 export default function EducationCard() {
   return (

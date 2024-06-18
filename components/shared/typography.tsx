@@ -123,13 +123,12 @@ export function TypographyBlockquote({
   );
 }
 
-// wip
-export function TypographyList() {
+export function TypographyList({ list }: { list: string[] }) {
   return (
     <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
-      <li>1st level of puns: 5 gold coins</li>
-      <li>2nd level of jokes: 10 gold coins</li>
-      <li>3rd level of one-liners : 20 gold coins</li>
+      {list.map((item: string, i: number) => {
+        return <li key={i}>{item}</li>;
+      })}
     </ul>
   );
 }

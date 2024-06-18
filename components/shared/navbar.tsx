@@ -2,17 +2,16 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { cn } from '@/lib/utils';
 import { siteConfig } from '@/config/site';
-import { buttonVariants } from './ui/button';
-import { Icons } from './icons';
-import { ThemeToggle } from './theme-toggle';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { buttonVariants } from '../ui/button';
+import { Icons } from './icons';
+import { ThemeToggle } from './theme-toggle';
 
 export interface NavItem {
   title: string;

@@ -1,15 +1,13 @@
 import { NextPage } from 'next';
-import { MainLayout } from '@/layouts/MainLayout';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
-import { HeadingH1, Paragraph } from '@/components/typography';
+import { MainLayout } from '@/layouts/MainLayout';
+import { HeadingH1, Paragraph } from '@/components/shared/typography';
 import { Spinner } from '@/components/ui/spinner';
-import Link from 'next/link';
-import { Icons } from '@/components/icons';
 import { Release } from '@/data/music';
-import ReleaseCard from '@/components/release-card';
-import BackButton from '@/components/back-button';
+import ReleaseCard from '@/components/cards/release-card';
+import BackButton from '@/components/shared/back-button';
 
 const MusicProjectDetail: NextPage = () => {
   const router = useRouter();
