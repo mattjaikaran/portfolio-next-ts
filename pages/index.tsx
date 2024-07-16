@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next';
+import Head from 'next/head';
+import { siteConfig } from '@/config/site';
 import { MainLayout } from '@/layouts/MainLayout';
 
 import Hero from '@/components/home/hero';
@@ -13,6 +15,12 @@ import unionSquareCouple from '@/public/images/photos/unionsquare-couple.jpg';
 const Home: NextPage = () => {
   return (
     <MainLayout>
+      <Head>
+        <title>{siteConfig.name}</title>
+        <meta name="description" content={siteConfig.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="container-fluid xl:container">
         <Hero />
         <img src={pages.src} alt="img" className="sm:hidden" />
