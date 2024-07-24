@@ -3,9 +3,8 @@ export interface Release {
   title: string;
   year: number;
   url: string;
-  image?:  string;
+  image?: string;
 }
-
 
 export interface MusicItem {
   id: string;
@@ -28,18 +27,18 @@ export const pastMusicData: MusicItem[] = [
         title: 'Where You Want Me',
         year: 2010,
         url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
-      }, 
+      },
       {
         id: 2,
         title: 'take.create.revive.',
         year: 2012,
         url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
-      }
+      },
     ],
     urls: [
-      'https://haveyouheard.bandcamp.com/album/where-you-want-me', 
-      'https://haveyouheard.bandcamp.com/album/take-create-revive'
-    ]
+      'https://haveyouheard.bandcamp.com/album/where-you-want-me',
+      'https://haveyouheard.bandcamp.com/album/take-create-revive',
+    ],
   },
   {
     id: 'pocono',
@@ -52,13 +51,13 @@ export const pastMusicData: MusicItem[] = [
         year: 2013,
         url: 'https://pocono.bandcamp.com/album/pocono',
         image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 'chapels',
     title: 'Chapels',
-    
+
     description: 'Guitarist/Songwriter 2014-2015',
     longDescription: '',
     releases: [
@@ -68,30 +67,44 @@ export const pastMusicData: MusicItem[] = [
         year: 2015,
         url: 'https://chapelsmusic.bandcamp.com/',
         image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
-      }
-    ]
+      },
+    ],
   },
-]
+];
 
 // current projects
-// tba, 2024, tbd
-// tba2, 2024, tbd
 export const currentMusicData: MusicItem[] = [
   {
-    id: 'tba',
-    title: 'TBA',
-    description: '2024',
-    longDescription: 'add data for srh tbd',
+    id: 'srh',
+    title: 'TBA1',
+    description: 'Solo Project 2024',
+    longDescription: 'Add more',
+    // releases: [
+    //   {
+    //     id: 1,
+    //     title: '',
+    //     year: 2024,
+    //     url: '',
+    //     image: '',
+    //   },
+    // ],
   },
-  // {
-  //   id: 'tba2',
-  //   title: 'TBA2',
-  //   description: '2024',
-  //   longDescription: '',
-  // },
-]
-
-
+  {
+    id: 'mc',
+    title: 'TBA2',
+    description: 'Solo Project 2024',
+    longDescription: 'Add more',
+    // releases: [
+    //   {
+    //     id: 1,
+    //     title: '',
+    //     year: 2024,
+    //     url: '',
+    //     image: '',
+    //   },
+    // ],
+  },
+];
 
 export const musicData: MusicItem[] = [
   {
@@ -101,24 +114,24 @@ export const musicData: MusicItem[] = [
     longDescription: 'add more for hyh tbd',
     releases: [
       {
-        id: 1, 
+        id: 1,
         title: 'Where You Want Me',
         year: 2010,
         url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
-        image: 'https://f4.bcbits.com/img/a4242374142_10.jpg'
-      }, 
+        image: 'https://f4.bcbits.com/img/a4242374142_10.jpg',
+      },
       {
-        id: 2, 
+        id: 2,
         title: 'take.create.revive.',
         year: 2011,
         url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
-        image: 'https://f4.bcbits.com/img/a1910409234_16.jpg'
-      }
+        image: 'https://f4.bcbits.com/img/a1910409234_16.jpg',
+      },
     ],
     urls: [
-      'https://haveyouheard.bandcamp.com/album/where-you-want-me', 
-      'https://haveyouheard.bandcamp.com/album/take-create-revive'
-    ]
+      'https://haveyouheard.bandcamp.com/album/where-you-want-me',
+      'https://haveyouheard.bandcamp.com/album/take-create-revive',
+    ],
   },
   {
     id: 'pocono',
@@ -132,8 +145,8 @@ export const musicData: MusicItem[] = [
         year: 2013,
         url: 'https://pocono.bandcamp.com/album/pocono',
         image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 'chapels',
@@ -147,13 +160,19 @@ export const musicData: MusicItem[] = [
         year: 2015,
         url: 'https://chapelsmusic.bandcamp.com/',
         image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
-      }
-    ]
+      },
+    ],
   },
   {
-    id: 'tba',
-    title: 'TBA',
-    description: '2024',
-    longDescription: 'add more for srh tbd',
+    id: 'srh',
+    title: 'TBA1',
+    description: 'Solo Project 2024',
+    longDescription: 'New project releasing fall 2024',
   },
-]
+  {
+    id: 'mc',
+    title: 'TBA2',
+    description: 'Solo Project 2024',
+    longDescription: 'Add more for mc',
+  },
+];
