@@ -10,7 +10,8 @@ import Collaborate from '@/components/home/collaborate';
 
 import pages from '@/public/images/jj-ying-WmnsGyaFnCQ-unsplash.jpg';
 import birds from '@/public/images/birds.jpg';
-import unionSquareCouple from '@/public/images/photos/unionsquare-couple.jpg';
+const unionSquareCouple =
+  'https://live.staticflickr.com/65535/53919798420_6530fb72a4_c.jpg';
 
 const Home: NextPage = () => {
   return (
@@ -21,11 +22,12 @@ const Home: NextPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div className="container-fluid xl:container">
         <Hero />
         <img src={pages.src} alt="img" className="sm:hidden" />
         <Brands />
-        <img src={unionSquareCouple.src} alt="img" className="sm:hidden" />
+        <img src={unionSquareCouple} alt="img" className="sm:hidden" />
         <img src={birds.src} alt="img" className="sm:hidden" />
         <Collaborate />
       </div>
