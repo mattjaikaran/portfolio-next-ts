@@ -77,7 +77,7 @@ export const currentMusicData: MusicItem[] = [
   {
     id: 'srh',
     title: 'TBA1',
-    description: 'Solo Project 2024',
+    description: 'Solo Project 2025',
     longDescription: 'Add more',
     // releases: [
     //   {
@@ -89,21 +89,21 @@ export const currentMusicData: MusicItem[] = [
     //   },
     // ],
   },
-  {
-    id: 'mc',
-    title: 'TBA2',
-    description: 'Solo Project 2024',
-    longDescription: 'Add more',
-    // releases: [
-    //   {
-    //     id: 1,
-    //     title: '',
-    //     year: 2024,
-    //     url: '',
-    //     image: '',
-    //   },
-    // ],
-  },
+  // {
+  //   id: 'mc',
+  //   title: 'TBA2',
+  //   description: 'Solo Project 2025',
+  //   longDescription: 'Add more',
+  //   // releases: [
+  //   //   {
+  //   //     id: 1,
+  //   //     title: '',
+  //   //     year: 2024,
+  //   //     url: '',
+  //   //     image: '',
+  //   //   },
+  //   // ],
+  // },
 ];
 
 export const musicData: MusicItem[] = [
