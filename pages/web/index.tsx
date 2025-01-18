@@ -126,7 +126,7 @@ export default function WebPage() {
           >
             <HeadingH1>Web</HeadingH1>
             <p className="text-muted-foreground mt-4">
-              A collection of fullstack applications I've worked on.
+              {`A collection of fullstack applications I've worked on.`}
             </p>
           </motion.div>
 

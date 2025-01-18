@@ -60,12 +60,12 @@ export function Hero() {
         </motion.h2>
 
         <motion.div className="flex gap-4 justify-center" {...fadeIn}>
-          {socialLinks.map(link => {
+          {socialLinks.map((link, index) => {
             const Icon = link.icon;
 
             if (link.name === 'Contact') {
               return (
-                <Link href={link.href}>
+                <Link key={index} href={link.href}>
                   <Button variant="ghost" size="icon" className="rounded-full">
                     <Mail className="h-5 w-5" />
                     <span className="sr-only">Contact</span>
@@ -76,7 +76,7 @@ export function Hero() {
 
             return (
               <Link
-                key={link.name}
+                key={index}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
