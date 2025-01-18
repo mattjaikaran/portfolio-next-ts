@@ -8,10 +8,12 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const navItems = [
-  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Web', href: '/web' },
   { name: 'Music', href: '/music' },
-  // { name: 'Photos', href: '/photos' },
+  { name: 'Photos', href: '/photos' },
+  { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  // { name: 'Health', href: '/health' },
 ];
 
 export function Navbar() {

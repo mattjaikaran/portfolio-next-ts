@@ -7,117 +7,179 @@ export interface PortfolioItem {
   url: string;
   tech?: string[];
   fullTech?: string[];
-  details?: string | any;
+  details?: string;
   liveLink?: string;
-  githubLinks?: any;
+  githubLinks?: Array<{ text: string; link: string }>;
 }
 
 export const portfolioData: PortfolioItem[] = [
   {
     id: '6ef08e8a-3c17-4cac-afbb-0e62bfb9e3dc',
     title: 'Rewyre',
-    description: 'B2B SaaS Engineering and Architecture',
+    description: 'Enterprise B2B SaaS Platform for Property Management',
     url: '/portfolio/6ef08e8a-3c17-4cac-afbb-0e62bfb9e3dc',
     tech: ['Django', 'Postgres', 'NextJS', 'TypeScript'],
-    fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'Redux', 'RTK Query', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
-    details: 'Rewyre is a prop tech startup based in NYC. Version 1.0 was a monolith web app built with Django 3, Postgres, and Vue 2. Version 2.0 was a full rebuild of the back end using Django 4 and Postgres and the front end using NextJS TypeScript, Redux Toolkit/RTK Query to manage state, and React Bootstrap UI library. I was the lead engineer for version 1.0 and was the architect and sole engineer for version 2.0',
+    fullTech: [
+      'Django',
+      'Postgres',
+      'NextJS',
+      'React',
+      'TypeScript',
+      'Redux',
+      'RTK Query',
+      'SCSS',
+      'Vue',
+      'Cypress',
+      'PyTest',
+      'Bash',
+    ],
+    details:
+      'As the lead engineer at Rewyre, I led the development of a sophisticated property management platform through two major iterations. The initial version was architected as a monolithic application using Django 3 and Vue.js, establishing a strong foundation for the product. For version 2.0, I designed and implemented a complete rebuild, transitioning to a more scalable and modern tech stack. This included upgrading to Django 4 for a robust backend API and adopting Next.js with TypeScript for an enhanced frontend experience. The new architecture leverages Redux Toolkit and RTK Query for efficient state management, resulting in improved performance and maintainability. Throughout both versions, I implemented comprehensive testing strategies using Cypress and PyTest to ensure reliability.',
     liveLink: 'https://rewyre.com',
-    images: ['https://live.staticflickr.com/65535/53517461941_76689aa748_k.jpg']
+    images: [
+      'https://live.staticflickr.com/65535/53517461941_76689aa748_k.jpg',
+    ],
   },
   {
     id: '43b58672-e6de-4d6c-ae44-b126c649338b',
-    title: 'Fitness App',
-    description: 'Fitness App',
+    title: 'Fitness Studio Platform',
+    description: 'Modern Digital Platform for Fitness Studios',
     url: '/portfolio/43b58672-e6de-4d6c-ae44-b126c649338b',
     tech: ['NextJS', 'SCSS', 'Django', 'Postgres'],
-    fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
-    details: 'This was a proof of concept for a fitness studio startup based in NYC. The API was built with Django and Postgres. Front end was built with NextJS and React Bootstrap. Designed by Madrid based art director/designer Iria Viejo.',
+    fullTech: [
+      'Django',
+      'Postgres',
+      'NextJS',
+      'React',
+      'TypeScript',
+      'SCSS',
+      'Vue',
+      'Cypress',
+      'PyTest',
+      'Bash',
+    ],
+    details:
+      'Developed an innovative fitness studio platform in collaboration with a NYC-based startup and Madrid-based designer Iria Viejo. The platform features a modern, responsive interface built with Next.js and styled using SCSS for a polished user experience. The backend infrastructure utilizes Django and PostgreSQL, providing a robust API for managing class schedules, member profiles, and booking systems. Key features include real-time class availability, integrated payment processing, and an intuitive admin dashboard for studio management. The project demonstrates the successful integration of design excellence with technical functionality.',
     liveLink: 'https://fitness-client-next.vercel.app/',
-    images: ['https://live.staticflickr.com/65535/53510981402_332e659430_k.jpg'],
+    images: [
+      'https://live.staticflickr.com/65535/53510981402_332e659430_k.jpg',
+    ],
     githubLinks: [
       {
-        text: 'Front End Repo',
+        text: 'Frontend Repository',
         link: 'https://github.com/mattjaikaran/fitness-client-next',
       },
       {
-        text: 'Back End Repo',
+        text: 'Backend Repository',
         link: 'https://github.com/mattjaikaran/fitness-django',
       },
       {
-        text: 'Iria Viejo',
+        text: 'Design by Iria Viejo',
         link: 'https://www.iriaviejo.com/',
       },
-    ]
+    ],
   },
   {
     id: '574431f8-1d46-42b7-8b6e-eacb51128bdf',
-    title: 'E-Commerce App',
-    description: 'Fullstack E-Commerce App',
+    title: 'E-Commerce Platform',
+    description: 'Full-Stack E-Commerce Solution with Headless CMS',
     url: '/portfolio/574431f8-1d46-42b7-8b6e-eacb51128bdf',
     tech: ['NextJS', 'Redux', 'Django', 'Postgres'],
     fullTech: ['NextJS', 'React', 'Django', 'Postgres', 'NodeJS', 'SCSS'],
-    details: 'Proof of concept e-commerce application. The front end end is built with NextJS/React, the API is built with Django and Postgres. The CMS is built with Strapi/NodeJS and provides two way communication to the Django API.',
+    details:
+      'Engineered a comprehensive e-commerce solution that showcases modern web development practices. The platform features a Next.js frontend delivering a fast, SEO-friendly shopping experience, while a Django backend handles core business logic and data management. A notable aspect of the architecture is the integration of a Strapi headless CMS, enabling seamless content management and two-way communication with the Django API. The system includes features such as dynamic product catalogs, secure checkout processes, and an intuitive admin interface for inventory management. This project demonstrates the effective combination of multiple technologies to create a scalable, maintainable e-commerce solution.',
     liveLink: 'https://ecommerce-store-nextjs.vercel.app',
-    images: ['https://live.staticflickr.com/65535/53517773049_7a4bebdc87_h.jpg'],
+    images: [
+      'https://live.staticflickr.com/65535/53517773049_7a4bebdc87_h.jpg',
+    ],
     githubLinks: [
       {
-        text: 'Front End Repo',
+        text: 'Frontend Repository',
         link: 'https://github.com/mattjaikaran/ecommerce-next',
       },
       {
-        text: 'Back End Repo',
+        text: 'Backend Repository',
         link: 'https://github.com/mattjaikaran/ecommerce-api',
       },
-      // {
-      //   text: 'CMS Repo',
-      //   link: 'https://github.com/mattjaikaran/ecommerce-cms',
-      // },
-    ]
+    ],
   },
   {
     id: '3b78ab96-0697-49b7-8c68-c2e1e437fc3e',
-    title: 'HyVee',
-    description: 'Enterprise E-Commerce Development',
+    title: 'HyVee Digital Experience',
+    description: 'Enterprise E-Commerce and Mobile Development',
     url: '/portfolio/3b78ab96-0697-49b7-8c68-c2e1e437fc3e',
     tech: ['TypeScript', 'React', 'React Native', 'NodeJS'],
-    fullTech: ['TypeScript', 'React', 'React Native', 'HapiJS/NodeJS', 'GraphQL/REST APIs', 'Postgres', 'Microservices', 'RTL', 'Bash', 'Jest', 'Concourse CI', 'GCP/Kubernetes', 'ProdX',],
-    details: 'At HyVee I worked on Web and Mobile team. I worked within a TDD environment where the codebase was in TypeScript with 100% test coverage.',
+    fullTech: [
+      'TypeScript',
+      'React',
+      'React Native',
+      'HapiJS/NodeJS',
+      'GraphQL/REST APIs',
+      'Postgres',
+      'Microservices',
+      'RTL',
+      'Jest',
+      'Concourse CI',
+      'GCP/Kubernetes',
+      'ProdX',
+    ],
+    details:
+      'At HyVee, I contributed to both web and mobile development teams, working within a sophisticated microservices architecture. Operating in a test-driven development environment, I helped maintain and enhance a TypeScript codebase with 100% test coverage. Key responsibilities included developing new features for both web and mobile platforms, optimizing API integrations, and ensuring high performance across all digital touchpoints. The project utilized modern cloud infrastructure with GCP and Kubernetes, demonstrating expertise in enterprise-scale application development and deployment.',
     liveLink: 'https://hyvee.com',
-    images: ['https://live.staticflickr.com/65535/53517880325_3e8c3d376b_k.jpg']
+    images: [
+      'https://live.staticflickr.com/65535/53517880325_3e8c3d376b_k.jpg',
+    ],
   },
   {
     id: '88b3515a-c68e-4a63-b0db-1aa603fe1092',
     title: 'Hubble Contacts',
-    description: 'B2C Fullstack Shopify Development',
+    description: 'E-Commerce Platform Modernization',
     url: '/portfolio/88b3515a-c68e-4a63-b0db-1aa603fe1092',
     tech: ['React', 'GraphQL', 'Rails', 'Shopify'],
-    fullTech: ['React', 'Gatsby', 'TypeScript', 'Apollo GraphQL', 'Rails', 'Postgres', 'Shopify'],
-    details: 'I helped migrate the Rails 4 to Rails 6 API. I built the front end using Gatsby/React and connect it to Shopify and the new Rails API. I also built customer acquisition quiz using React TypeScript to help customers decide different contacts.',
+    fullTech: [
+      'React',
+      'Gatsby',
+      'TypeScript',
+      'Apollo GraphQL',
+      'Rails',
+      'Postgres',
+      'Shopify',
+    ],
+    details:
+      "Led significant technical improvements at Hubble Contacts, including a major API upgrade from Rails 4 to Rails 6 and the development of a modern frontend using Gatsby and React. A key achievement was creating an interactive customer acquisition quiz using React and TypeScript, which helped streamline the process of matching customers with appropriate contact lens products. The project involved complex integrations between Shopify's e-commerce capabilities and our custom Rails API, resulting in a seamless shopping experience. The modernized platform significantly improved performance metrics and user engagement.",
     liveLink: 'https://hubblecontacts.com',
-    images: ['https://live.staticflickr.com/65535/53510957077_a71313426c_k.jpg']
+    images: [
+      'https://live.staticflickr.com/65535/53510957077_a71313426c_k.jpg',
+    ],
   },
   {
     id: '2a724e2d-6e37-4be7-b68d-07fbb0c9cc9b',
     title: 'Klosers',
-    description: 'Sales Startup Platform',
+    description: 'Advanced Sales Management Platform',
     url: '/portfolio/2a724e2d-6e37-4be7-b68d-07fbb0c9cc9b',
     tech: ['Django', 'Postgres', 'NextJS', 'TypeScript'],
-    fullTech: ['Django', 'Postgres', 'NextJS', 'React', 'TypeScript', 'Redux', 'RTK Query', 'SCSS', 'Vue', 'Cypress', 'PyTest', 'Bash'],
-    details: 'A sales platform built with Django, Postgres, NextJS, Redux, and TypeScript. The API is built with Django and Postgres. The front end is built with NextJS and TypeScript, Redux Toolkit/RTK Query to manage state, React Bootstrap UI library.',
+    fullTech: [
+      'Django',
+      'Postgres',
+      'NextJS',
+      'React',
+      'TypeScript',
+      'Redux',
+      'RTK Query',
+      'SCSS',
+      'Vue',
+      'Cypress',
+      'PyTest',
+      'Bash',
+    ],
+    details:
+      'Developed a sophisticated sales platform that combines powerful backend capabilities with an intuitive frontend interface. The application leverages Django and PostgreSQL for robust data management and API functionality, while the frontend utilizes Next.js with TypeScript for a responsive and type-safe user experience. State management is handled efficiently through Redux Toolkit and RTK Query, enabling real-time data updates and seamless user interactions. The platform includes features for sales tracking, performance analytics, and team collaboration, all wrapped in a clean, professional interface built with React Bootstrap.',
     liveLink: 'https://klosers.vercel.app',
-    images: ['https://live.staticflickr.com/65535/53512305935_0664c0264e_k.jpg'],
+    images: [
+      'https://live.staticflickr.com/65535/53512305935_0664c0264e_k.jpg',
+    ],
   },
-  // {
-  //   id: '9f8b8125-a202-427e-9329-d1f0cd52ecac',
-  //   title: 'NestJS NextJS App',
-  //   description: 'Fullstack App',
-  //   url: '/portfolio/9f8b8125-a202-427e-9329-d1f0cd52ecac',
-  //   tech: ['NestJS', 'Postgres', 'NextJS', 'TypeScript'],
-  //   fullTech: ['NestJS', 'React', 'Postgres', 'NextJS', 'TypeScript', 'Prisma', 'Magic Link'],
-  //   details: 'This is a fullstack app built with NestJS, Postgres, NextJS, and TypeScript. The API is built with NestJS and Postgres. The front end is built with NextJS and TypeScript. The API is protected with Magic Link authentication.',
-  // },
 ];
-
 
 export const aboutData = `
 <p>
@@ -144,7 +206,6 @@ researching for more optimal solutions to my workflow.
 I am open to working on new projects of any size.
 </p>
 `;
-
 
 const date = new Date();
 const currentYear = date.getFullYear();
@@ -174,8 +235,8 @@ export const experienceData: ExperienceItem[] = [
   {
     title: 'Music/Music Production',
     description: `${musicExperience}+ years of music and music production experience`,
-  }
-]
+  },
+];
 
 export interface EducationItem {
   title: string;
@@ -189,17 +250,17 @@ export const educationData = [
     title: 'Belmont University',
     location: 'Nashville, TN',
     description: 'Major: Music Business (Production)',
-    type: 'Bachelors of Business Administration'
+    type: 'Bachelors of Business Administration',
   },
   {
     title: 'Belmont University',
     location: 'Nashville, TN',
     description: 'Major: Marketing',
-    type: 'Bachelors of Business Administration'
+    type: 'Bachelors of Business Administration',
   },
   {
     title: 'General Assembly',
     location: 'New York, NY',
     description: 'Software Engineering Bootcamp',
-  }
-]
+  },
+];

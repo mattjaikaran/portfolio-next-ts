@@ -21,8 +21,8 @@ const socialLinks = [
     icon: Linkedin,
   },
   {
-    name: 'Email',
-    href: 'mailto:info@mattjaikaran.com',
+    name: 'Contact',
+    href: '/contact',
     icon: Mail,
   },
 ];
@@ -56,12 +56,24 @@ export function Hero() {
           className="text-xl sm:text-2xl text-muted-foreground"
           {...fadeIn}
         >
-          Full Stack Software Engineer & Musician
+          Software Engineer
         </motion.h2>
 
         <motion.div className="flex gap-4 justify-center" {...fadeIn}>
           {socialLinks.map(link => {
             const Icon = link.icon;
+
+            if (link.name === 'Contact') {
+              return (
+                <Link href={link.href}>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <Mail className="h-5 w-5" />
+                    <span className="sr-only">Contact</span>
+                  </Button>
+                </Link>
+              );
+            }
+
             return (
               <Link
                 key={link.name}
@@ -91,12 +103,12 @@ export function Hero() {
             size="icon"
             className="animate-bounce rounded-full"
             onClick={() => {
-              const projectsSection = document.getElementById('projects');
-              projectsSection?.scrollIntoView({ behavior: 'smooth' });
+              const gallery = document.getElementById('gallery');
+              gallery?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             <ArrowDown className="h-5 w-5" />
-            <span className="sr-only">Scroll to projects</span>
+            <span className="sr-only">Scroll down</span>
           </Button>
         </motion.div>
       </motion.div>

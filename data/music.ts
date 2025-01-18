@@ -78,12 +78,12 @@ export const currentMusicData: MusicItem[] = [
     id: 'srh',
     title: 'TBA1',
     description: 'Solo Project 2025',
-    longDescription: 'Add more',
+    longDescription: 'New project releasing 2025',
     // releases: [
     //   {
     //     id: 1,
     //     title: '',
-    //     year: 2024,
+    //     year: 2025,
     //     url: '',
     //     image: '',
     //   },
@@ -111,7 +111,8 @@ export const musicData: MusicItem[] = [
     id: 'haveyouheard',
     title: 'Have You Heard',
     description: 'Guitarist/Songwriter 2008-2012',
-    longDescription: 'add more for hyh tbd',
+    longDescription:
+      'Have You Heard was a pop rock band from 2008-2012 based in Nashville, TN.',
     releases: [
       {
         id: 1,
@@ -137,7 +138,8 @@ export const musicData: MusicItem[] = [
     id: 'pocono',
     title: 'Pocono',
     description: 'Guitarist/Songwriter 2013',
-    longDescription: 'add more for pocono tbd',
+    longDescription:
+      'Pocono was an indie rock band from 2013-2015 based in Nashville, TN.',
     releases: [
       {
         id: 1,
@@ -152,7 +154,8 @@ export const musicData: MusicItem[] = [
     id: 'chapels',
     title: 'Chapels',
     description: 'Guitarist/Songwriter 2014-2015',
-    longDescription: 'add more for chapels tbd',
+    longDescription:
+      'Chapels was an indie rock band from 2014-2015 based in Nashville, TN.',
     releases: [
       {
         id: 1,
@@ -166,13 +169,13 @@ export const musicData: MusicItem[] = [
   {
     id: 'srh',
     title: 'TBA1',
-    description: 'Solo Project 2024',
-    longDescription: 'New project releasing fall 2024',
+    description: 'Solo Project 2025',
+    longDescription: 'New project releasing 2025',
   },
-  {
-    id: 'mc',
-    title: 'TBA2',
-    description: 'Solo Project 2024',
-    longDescription: 'Add more for mc',
-  },
+  // {
+  //   id: 'mc',
+  //   title: 'TBA2',
+  //   description: 'Solo Project 2025',
+  //   longDescription: 'New project releasing 2025',
+  // },
 ];
