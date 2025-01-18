@@ -27,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:image:width" content="2000" />
         <meta property="og:image:height" content="3000" />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Matt Jaikaran" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"

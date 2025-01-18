@@ -8,15 +8,15 @@ interface Photo {
 
 export const photoData: Photo[] = [
   {
-    src: 'https://live.staticflickr.com/65535/54272368629_d1c4f4a40d_h.jpg',
-    alt: 'NYC Street Scene',
+    src: 'https://live.staticflickr.com/65535/54271233492_70f7d41d9d_h.jpg',
+    alt: 'Urban Architecture',
     width: 2000,
     height: 3000,
     aspectRatio: '2/3',
   },
   {
-    src: 'https://live.staticflickr.com/65535/54271233492_70f7d41d9d_h.jpg',
-    alt: 'Urban Architecture',
+    src: 'https://live.staticflickr.com/65535/54272368629_d1c4f4a40d_h.jpg',
+    alt: 'NYC Street Scene',
     width: 2000,
     height: 3000,
     aspectRatio: '2/3',

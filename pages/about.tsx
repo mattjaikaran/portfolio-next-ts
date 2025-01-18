@@ -143,7 +143,211 @@ export default function AboutPage() {
           />
         </motion.div>
 
-        {viewMode === 'cards' ? (
+        {/* View Toggle */}
+        <div className="flex justify-center gap-4 my-12">
+          <Button
+            variant={viewMode === 'cards' ? 'default' : 'outline'}
+            size="lg"
+            onClick={() => setViewMode('cards')}
+            className="gap-2"
+          >
+            <Layout className="w-5 h-5" />
+            Card View
+          </Button>
+          <Button
+            variant={viewMode === 'timeline' ? 'default' : 'outline'}
+            size="lg"
+            onClick={() => setViewMode('timeline')}
+            className="gap-2"
+          >
+            <History className="w-5 h-5" />
+            Timeline
+          </Button>
+        </div>
+
+        {/* Desktop/Tablet Timeline */}
+        {viewMode === 'timeline' && (
+          <div className="hidden md:block">
+            <div className="relative">
+              <div className="absolute left-1/2 h-full w-px bg-border" />
+              <div className="space-y-8">
+                {timelineEvents.map((event, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="relative group"
+                  >
+                    <div
+                      className={`grid grid-cols-2 gap-8 ${
+                        index % 2 === 0 ? '' : 'direction-rtl'
+                      }`}
+                    >
+                      <div
+                        className={`${
+                          index % 2 === 0 ? 'text-right' : 'text-left'
+                        }`}
+                      >
+                        {index % 2 === 0 ? (
+                          <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
+                            <CardContent className="pt-6">
+                              <div className="flex flex-col space-y-4">
+                                <Badge
+                                  variant="secondary"
+                                  className={`${getCategoryColor(
+                                    event.category
+                                  )} ${
+                                    index % 2 === 0 ? 'self-end' : 'self-start'
+                                  }`}
+                                >
+                                  {event.year}
+                                </Badge>
+                                <div>
+                                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                                    {event.title}
+                                  </h3>
+                                  <p className="text-muted-foreground mt-2">
+                                    {event.description}
+                                  </p>
+                                  {event.link && (
+                                    <Link
+                                      href={event.link}
+                                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4"
+                                    >
+                                      Learn More
+                                      <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                  )}
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ) : (
+                          <div className="h-full" />
+                        )}
+                      </div>
+                      <div>
+                        {index % 2 === 1 ? (
+                          <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
+                            <CardContent className="pt-6">
+                              <div className="flex flex-col space-y-4">
+                                <Badge
+                                  variant="secondary"
+                                  className={`${getCategoryColor(
+                                    event.category
+                                  )} ${
+                                    index % 2 === 0 ? 'self-end' : 'self-start'
+                                  }`}
+                                >
+                                  {event.year}
+                                </Badge>
+                                <div>
+                                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                                    {event.title}
+                                  </h3>
+                                  <p className="text-muted-foreground mt-2">
+                                    {event.description}
+                                  </p>
+                                  {event.link && (
+                                    <Link
+                                      href={event.link}
+                                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4"
+                                    >
+                                      Learn More
+                                      <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                  )}
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ) : (
+                          <div className="h-full" />
+                        )}
+                      </div>
+
+                      {/* Timeline Point */}
+                      <div className="absolute left-1/2 transform -translate-x-1/2">
+                        <div
+                          className={`w-4 h-4 rounded-full ${
+                            event.link
+                              ? 'bg-primary ring-4 ring-primary/20'
+                              : 'bg-primary/50'
+                          } transition-all duration-300 ${
+                            event.link && 'group-hover:ring-primary/30'
+                          }`}
+                        />
+                        {event.link && (
+                          <div className="absolute -inset-2 bg-primary/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Mobile Timeline */}
+        {viewMode === 'timeline' && (
+          <div className="block md:hidden relative space-y-8">
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
+            {timelineEvents.map((event, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="group relative pl-16 pr-4"
+              >
+                <Card className="group hover:shadow-lg transition-all duration-300 w-full">
+                  <CardContent className="p-6">
+                    <Badge
+                      variant="secondary"
+                      className={`${getCategoryColor(event.category)} mb-4`}
+                    >
+                      {event.year}
+                    </Badge>
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                      {event.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-2 text-base">
+                      {event.description}
+                    </p>
+                    {event.link && (
+                      <Link
+                        href={event.link}
+                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4"
+                      >
+                        Learn More
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                  </CardContent>
+                </Card>
+
+                {/* Timeline Point */}
+                <div className="absolute left-[1.55rem] top-8 -translate-x-1/2">
+                  <div
+                    className={`w-3 h-3 rounded-full ${
+                      event.link
+                        ? 'bg-primary ring-4 ring-primary/20'
+                        : 'bg-primary/50'
+                    } transition-all duration-300 ${
+                      event.link && 'group-hover:ring-primary/30'
+                    }`}
+                  />
+                </div>
+
+                {/* Timeline Line */}
+                {index !== timelineEvents.length - 1 && (
+                  <div className="absolute left-8 top-8 h-full w-px bg-border" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        {/* Card View */}
+        {viewMode === 'cards' && (
           <>
             {/* Skills Section */}
             <motion.div variants={fadeInUp} className="mt-16">
@@ -262,133 +466,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </>
-        ) : (
-          <motion.div variants={fadeInUp} className="mt-16">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5">
-                <div className="h-full w-full bg-gradient-to-b from-primary/30 via-primary/20 to-transparent animate-pulse" />
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent blur-sm" />
-              </div>
-
-              {/* Timeline Events */}
-              <div className="space-y-16">
-                {timelineEvents.map((event, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center ${
-                      index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                    }`}
-                  >
-                    {/* Content */}
-                    <div
-                      className={`w-1/2 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}
-                    >
-                      <motion.div
-                        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                      >
-                        {event.link ? (
-                          <Link href={event.link}>
-                            <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300 cursor-pointer">
-                              <CardContent className="pt-6">
-                                <div className="flex flex-col space-y-4">
-                                  <Badge
-                                    variant="secondary"
-                                    className={`${getCategoryColor(
-                                      event.category
-                                    )} self-start`}
-                                  >
-                                    {event.year}
-                                  </Badge>
-                                  <div>
-                                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors flex items-center gap-2">
-                                      {event.title}
-                                      <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                                    </h3>
-                                    <p className="text-muted-foreground mt-2">
-                                      {event.description}
-                                    </p>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
-                          </Link>
-                        ) : (
-                          <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
-                            <CardContent className="pt-6">
-                              <div className="flex flex-col space-y-4">
-                                <Badge
-                                  variant="secondary"
-                                  className={`${getCategoryColor(
-                                    event.category
-                                  )} self-start`}
-                                >
-                                  {event.year}
-                                </Badge>
-                                <div>
-                                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                                    {event.title}
-                                  </h3>
-                                  <p className="text-muted-foreground mt-2">
-                                    {event.description}
-                                  </p>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        )}
-                      </motion.div>
-                    </div>
-
-                    {/* Timeline Point */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2">
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          event.link
-                            ? 'bg-primary ring-4 ring-primary/20'
-                            : 'bg-primary/50'
-                        } transition-all duration-300 ${
-                          event.link && 'group-hover:ring-primary/30'
-                        }`}
-                      />
-                      {event.link && (
-                        <div className="absolute -inset-2 bg-primary/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         )}
-
-        {/* View Toggle */}
-        <motion.div
-          variants={fadeInUp}
-          className="flex justify-center mt-16 gap-4"
-        >
-          <Button
-            variant={viewMode === 'cards' ? 'default' : 'outline'}
-            size="lg"
-            onClick={() => setViewMode('cards')}
-            className="gap-2"
-          >
-            <Layout className="w-5 h-5" />
-            Card View
-          </Button>
-          <Button
-            variant={viewMode === 'timeline' ? 'default' : 'outline'}
-            size="lg"
-            onClick={() => setViewMode('timeline')}
-            className="gap-2"
-          >
-            <History className="w-5 h-5" />
-            Timeline View
-          </Button>
-        </motion.div>
       </motion.div>
     </MainLayout>
   );

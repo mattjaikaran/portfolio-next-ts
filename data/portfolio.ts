@@ -183,27 +183,19 @@ export const portfolioData: PortfolioItem[] = [
 
 export const aboutData = `
 <p>
-I am <strong>Matt Jaikaran</strong>, a software engineer based in New York.
-<p>
-<p>
-I've had an unconventional career path transitioning from the music
-industry as a former touring musician, songwriter, and producer while also 
-specializing in marketing/branding, launching brands, and artist management 
-while living in Nashville.
+I am <strong>Matt Jaikaran</strong>, a software engineer based in New York City with a unique background bridging technology and creative industries.
 </p>
 <p>
-I moved to NYC 2016, attended a coding bootcamp and transitioned into software engineering, 
-gaining experience in the full software lifecycle from design, development, testing, 
-deployment, and maintenance. I have experience in both front end and back end development 
-and have worked on various projects in different industries.
+My journey began in Nashville's music industry, where I worked as a touring musician, songwriter, and producer while developing expertise in marketing, branding, and artist management. This experience taught me the value of creativity, attention to detail, and effective collaboration.
 </p>
 <p>
-The majority of my experience lies within JavaScript/TypeScript and Python
-languages using various frameworks but I am continuously learning and
-researching for more optimal solutions to my workflow.
+In 2016, I made a strategic pivot to software engineering, relocating to NYC and immersing myself in technology through an intensive coding bootcamp. Since then, I've built a robust career in full-stack development, working across the entire software lifecycle from design to deployment.
 </p>
 <p>
-I am open to working on new projects of any size.
+I specialize in modern web development using TypeScript/JavaScript and Python, constantly exploring new technologies and methodologies to optimize development workflows. My diverse background allows me to bring both technical expertise and creative problem-solving to every project.
+</p>
+<p>
+I'm always open to discussing new opportunities and collaborations, whether they're innovative software projects or creative technical ventures.
 </p>
 `;
 
