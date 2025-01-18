@@ -89,12 +89,12 @@ export function Collaborate() {
         {/* Section Header */}
         <motion.div className="text-center space-y-4" variants={fadeInUp}>
           <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
-            Let's Work Together
+            {`Let's Work Together`}
           </h2>
           <p className="text-foreground/80 max-w-2xl mx-auto">
-            Whether you're looking to build a web application, produce music, or
+            {`Whether you're looking to build a web application, produce music, or
             launch a brand, I offer professional services to help bring your
-            vision to life.
+            vision to life.`}
           </p>
         </motion.div>
 
@@ -147,8 +147,8 @@ export function Collaborate() {
         {/* Contact CTA */}
         <motion.div variants={fadeInUp} className="text-center">
           <p className="text-foreground/80 mb-6">
-            Have a different project in mind? Let's discuss how we can work
-            together.
+            {`Have a different project in mind? Let's discuss how we can work
+            together.`}
           </p>
           <Link href="/contact">
             <Button size="lg" variant="outline" className="group">
