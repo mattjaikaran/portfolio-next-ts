@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:image"
-          content="https://live.staticflickr.com/65535/53419346651_ec2f4bbb3d_h.jpg"
+          content="https://live.staticflickr.com/65535/54271233492_70f7d41d9d_h.jpg"
         />
         <meta property="og:image:width" content="2000" />
         <meta property="og:image:height" content="3000" />
@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           name="twitter:image"
-          content="https://live.staticflickr.com/65535/53419346651_ec2f4bbb3d_h.jpg"
+          content="https://live.staticflickr.com/65535/54271233492_70f7d41d9d_h.jpg"
         />
       </Head>
       <main
