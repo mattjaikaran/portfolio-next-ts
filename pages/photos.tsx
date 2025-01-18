@@ -1,5 +1,6 @@
 'use client';
 
+import Head from 'next/head';
 // @next/next/no-img-element
 import { MainLayout } from '@/layouts/MainLayout';
 import { motion, Variants } from 'framer-motion';
@@ -27,16 +28,31 @@ export default function PhotosPage() {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Photography | Matt Jaikaran | Software Engineer</title>
+        <meta
+          name="description"
+          content="Photography portfolio of Matt Jaikaran - A collection of photos taken with Sony A7 IV and CampSnap cameras."
+        />
+        <meta
+          property="og:title"
+          content="Photography - Matt Jaikaran | Software Engineer"
+        />
+        <meta
+          property="og:description"
+          content="Photography portfolio of Matt Jaikaran - A collection of photos taken with Sony A7 IV and CampSnap cameras."
+        />
+      </Head>
       <motion.div
         initial="initial"
         animate="animate"
         variants={staggerContainer}
-        className="w-full max-w-[2000px] mx-auto py-12"
+        className="w-full max-w-[2000px] mx-auto"
       >
         <motion.div
           variants={fadeInUp}
           transition={{ duration: 0.5 }}
-          className="text-center space-y-4 px-4 mb-12"
+          className="container text-center space-y-4 py-12"
         >
           <HeadingH1>Photography</HeadingH1>
           <p className="text-muted-foreground mt-4">
@@ -45,12 +61,12 @@ export default function PhotosPage() {
           </p>
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="px-4 md:px-8">
+        <motion.div variants={fadeInUp}>
           <div
             className={
               viewMode === 'masonry'
-                ? 'columns-1 md:columns-2 gap-8 md:gap-12 [&>div]:mb-8'
-                : 'grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12'
+                ? 'columns-1 md:columns-2 gap-0 md:gap-12 [&>div]:mb-0 md:[&>div]:mb-12'
+                : 'grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-12'
             }
           >
             {photoData.map(photo => (
@@ -67,14 +83,11 @@ export default function PhotosPage() {
                   height={photo.height}
                   className="w-full"
                 />
-                {/* <div className="mt-4 text-sm tracking-wide uppercase">
-                  {photo.alt}
-                </div> */}
               </motion.div>
             ))}
           </div>
 
-          <div className="flex justify-center mt-16 gap-4">
+          <div className="hidden md:flex justify-center mt-16 gap-4">
             <Button
               variant={viewMode === 'masonry' ? 'default' : 'outline'}
               size="lg"

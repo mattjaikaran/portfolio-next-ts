@@ -29,13 +29,13 @@ const services = [
       'Internal Tools & Dashboards',
       'API Development',
     ],
-    cta: 'Discuss Your Project',
+    cta: 'Start Project',
     href: '/contact',
   },
   {
     title: 'Music Production',
     description:
-      'Professional music production, mixing, and creative direction for artists and brands.',
+      'From songwriting to final masters, bringing your musical vision to life with professional production.',
     icon: Music4,
     offerings: [
       'Music Production',
@@ -43,35 +43,35 @@ const services = [
       'Creative Direction',
       'Artist Development',
     ],
-    cta: 'Start Creating',
+    cta: 'Make Music',
     href: '/contact',
   },
   {
-    title: 'Startup Consulting',
+    title: 'Technical Strategy',
     description:
-      'Technical consulting for startups. From product strategy to technical architecture.',
+      'Helping startups build strong technical foundations and scale efficiently.',
     icon: Rocket,
     offerings: [
+      'Architecture Design',
+      'Tech Stack Selection',
       'MVP Development',
-      'Technical Strategy',
-      'Architecture Planning',
       'Team Building',
     ],
     cta: 'Get Started',
     href: '/contact',
   },
   {
-    title: 'Marketing & Branding',
+    title: 'Brand Development',
     description:
-      'Launch and scale your brand with strategic marketing and digital presence.',
+      'Creating compelling brand identities and digital experiences that resonate with your audience.',
     icon: Megaphone,
     offerings: [
-      'Brand Development',
-      'Digital Strategy',
+      'Brand Strategy',
+      'Digital Presence',
+      'Content Direction',
       'Launch Planning',
-      'Content Strategy',
     ],
-    cta: 'Build Your Brand',
+    cta: 'Build Brand',
     href: '/contact',
   },
 ];
@@ -86,15 +86,12 @@ export function Collaborate() {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        {/* Section Header */}
         <motion.div className="text-center space-y-4" variants={fadeInUp}>
           <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
-            {`Let's Work Together`}
+            Services
           </h2>
           <p className="text-foreground/80 max-w-2xl mx-auto">
-            {`Whether you're looking to build a web application, produce music, or
-            launch a brand, I offer professional services to help bring your
-            vision to life.`}
+            Expertise in web development, music production, and brand building.
           </p>
         </motion.div>
 
