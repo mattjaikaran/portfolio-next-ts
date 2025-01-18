@@ -1,13 +1,16 @@
-import Navbar from '@/components/shared/navbar';
-import { ThemeProvider } from '@/components/shared/theme-provider';
+import { Navbar } from '@/components/shared/navbar';
 
-export function MainLayout({ children, ...props }: any) {
+interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+export function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div {...props}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <div className="relative min-h-screen">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <Navbar />
-        {children}
-      </ThemeProvider>
+      </div>
+      <main className="pt-20">{children}</main>
     </div>
   );
 }
