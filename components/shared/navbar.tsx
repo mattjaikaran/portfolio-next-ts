@@ -1,182 +1,128 @@
+import { useState, useEffect } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { cn } from '@/lib/utils';
-import { siteConfig } from '@/config/site';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { buttonVariants } from '../ui/button';
-import { Icons } from './icons';
-import { ThemeToggle } from './theme-toggle';
+import { ThemeToggle } from '../ui/theme-toggle';
+import { Menu, X } from 'lucide-react';
+import { Button } from '../ui/button';
 
-export interface NavItem {
-  title: string;
-  href?: string;
-  disabled?: boolean;
-  external?: boolean;
-}
+const navItems = [
+  { name: 'Web', href: '/web' },
+  { name: 'Music', href: '/music' },
+  { name: 'Photos', href: '/photos' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  // { name: 'Health', href: '/health' },
+];
 
-interface MainNavProps {
-  items?: NavItem[];
-}
-
-export default function Navbar({
-  className,
-  items,
-  ...props
-}: {
-  className?: string;
-  items?: MainNavProps;
-  props?: string;
-}) {
+export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Update scroll state
+  useEffect(() => {
+    const unsubscribe = scrollY.onChange(latest => {
+      setIsScrolled(latest > 10);
+    });
+    return () => unsubscribe();
+  }, [scrollY]);
+
   return (
-    <nav
+    <motion.header
       className={cn(
-        'flex items-center py-2 md:py-4 container space-x-4 lg:space-x-6',
-        className
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-md border-b'
+          : 'bg-transparent'
       )}
-      {...props}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.3 }}
     >
-      <Link href="/" className="flex items-center space-x-2 mr-auto">
-        <span className="inline-block font-bold">{siteConfig.name}</span>
-      </Link>
+      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
+        {/* Logo/Name */}
+        <Link href="/">
+          <motion.span
+            className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            Matt Jaikaran
+          </motion.span>
+        </Link>
 
-      <div className="inline md:hidden">
-        <DropdownMenu>
-          <DropdownMenuTrigger>Menu</DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {siteConfig.mainNav?.map(item => (
-              <div key={item.href}>
-                <DropdownMenuLabel
-                  className="hover:cursor-pointer"
-                  onClick={() => router.push(item.href)}
-                >
-                  {item.title}
-                </DropdownMenuLabel>
-              </div>
-            ))}
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map(item => (
             <Link
-              href={siteConfig.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: 'icon',
-                  variant: 'ghost',
-                })}
-              >
-                <Icons.linkedin className="h-5 w-5 fill-current" />
-                <span className="sr-only">LinkedIn</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: 'icon',
-                  variant: 'ghost',
-                })}
-              >
-                <Icons.github className="h-5 w-5 fill-current" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.instagram}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: 'icon',
-                  variant: 'ghost',
-                })}
-              >
-                <Icons.instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </div>
-            </Link>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-      {siteConfig.mainNav?.length ? (
-        <nav className="hidden md:flex gap-6">
-          {siteConfig.mainNav?.map(item => (
-            <Link
-              key={item.title}
+              key={item.href}
               href={item.href}
               className={cn(
-                `flex items-center text-sm font-medium text-muted-foreground hover:text-gray-700 ${
-                  router.asPath === item.href ? 'underline' : ''
-                }`
+                'text-sm transition-colors hover:text-primary',
+                router.asPath === item.href
+                  ? 'text-primary font-medium'
+                  : 'text-muted-foreground'
               )}
             >
-              {item.title}
+              {item.name}
             </Link>
           ))}
-        </nav>
-      ) : null}
+          <ThemeToggle />
+        </div>
 
-      <Link
-        className="hidden md:flex"
-        href={siteConfig.links.github}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <div
-          className={buttonVariants({
-            size: 'icon',
-            variant: 'ghost',
-          })}
-        >
-          <Icons.github className="h-5 w-5 " />
-          <span className="sr-only">GitHub</span>
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative z-50"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <span className="sr-only">Toggle menu</span>
+          </Button>
         </div>
-      </Link>
-      <Link
-        className="hidden md:flex"
-        href={siteConfig.links.linkedin}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <div
-          className={buttonVariants({
-            size: 'icon',
-            variant: 'ghost',
-          })}
-        >
-          <Icons.linkedin className="h-5 w-5 " />
-          <span className="sr-only">LinkedIn</span>
-        </div>
-      </Link>
 
-      <Link
-        className="hidden md:flex"
-        href={siteConfig.links.instagram}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <div
-          className={buttonVariants({
-            size: 'icon',
-            variant: 'ghost',
-          })}
-        >
-          <Icons.instagram className="h-5 w-5 " />
-          <span className="sr-only">Instagram</span>
-        </div>
-      </Link>
-      <ThemeToggle />
-    </nav>
+        {/* Mobile Menu */}
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="fixed inset-y-0 right-0 w-3/4 bg-background shadow-xl p-6 flex flex-col justify-center"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 20 }}
+            >
+              <div className="flex flex-col space-y-6 text-center">
+                {navItems.map(item => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      'text-lg transition-colors hover:text-primary',
+                      router.asPath === item.href
+                        ? 'text-primary font-medium'
+                        : 'text-muted-foreground'
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </nav>
+    </motion.header>
   );
 }

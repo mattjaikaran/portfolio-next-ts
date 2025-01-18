@@ -1,189 +1,98 @@
-export function HeadingH1({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
+import { cn } from '@/lib/utils';
+
+interface HeadingProps {
+  children: React.ReactNode;
   className?: string;
-}) {
+}
+
+export function HeadingH1({ children, className }: HeadingProps) {
   return (
     <h1
-      className={`scroll-m-20 mb-4 text-4xl font-medium tracking-tight lg:text-5xl ${className}`}
-      {...props}
+      className={cn(
+        'scroll-m-20 text-4xl font-normal tracking-tight lg:text-6xl mt-24 font-sora',
+        className
+      )}
     >
       {children}
     </h1>
   );
 }
 
-export function HeadingH2({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
+export function HeadingH2({ children, className }: HeadingProps) {
   return (
     <h2
-      className={`scroll-m-20 mb-4 text-3xl font-semibold tracking-tight transition-colors first:mt-0 ${className}`}
-      {...props}
+      className={cn(
+        'scroll-m-20 pb-2 text-3xl font-light tracking-tight transition-colors first:mt-0 font-sora',
+        className
+      )}
     >
       {children}
     </h2>
   );
 }
 
-export function HeadingH3({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
+export function HeadingH3({ children, className }: HeadingProps) {
   return (
     <h3
-      className={`scroll-m-20 mb-4 text-2xl font-semibold tracking-tight ${className}`}
-      {...props}
+      className={cn(
+        'scroll-m-20 text-2xl font-light tracking-tight font-sora',
+        className
+      )}
     >
       {children}
     </h3>
   );
 }
 
-export function HeadingH4({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
+export function HeadingH4({ children, className }: HeadingProps) {
   return (
     <h4
-      className={`scroll-m-20 mb-4 text-xl font-semibold tracking-tight ${className}`}
-      {...props}
+      className={cn(
+        'scroll-m-20 text-xl font-normal tracking-tight font-sora',
+        className
+      )}
     >
       {children}
     </h4>
   );
 }
 
-export function HeadingH5({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
-  return (
-    <h5
-      className={`scroll-m-20 mb-4 text-lg font-semibold tracking-tight ${className}`}
-      {...props}
-    >
-      {children}
-    </h5>
-  );
-}
-
-export function Paragraph({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
+export function Paragraph({ children, className }: HeadingProps) {
   return (
     <p
-      className={`leading-7 mb-4 [&:not(:first-child)]:mt-6 ${className}`}
-      {...props}
+      className={cn(
+        'leading-7 [&:not(:first-child)]:mt-6 font-light',
+        className
+      )}
     >
       {children}
     </p>
   );
 }
-export function TypographyBlockquote({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
-  return (
-    <blockquote
-      className={`mt-6 border-l-2 pl-6 italic ${className}`}
-      {...props}
-    >
-      {children}
-    </blockquote>
-  );
-}
 
-export function TypographyList({ list }: { list: string[] }) {
+export function TypographyLead({ children, className }: HeadingProps) {
   return (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
-      {list.map((item: string, i: number) => {
-        return <li key={i}>{item}</li>;
-      })}
-    </ul>
-  );
-}
-
-export function TypographyLead({ children, ...props }: { children: any }) {
-  return (
-    <p className="text-xl text-muted-foreground" {...props}>
+    <p className={cn('text-xl text-muted-foreground font-light', className)}>
       {children}
     </p>
   );
 }
 
-export function TypographyLarge({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
-  return (
-    <div className={`text-lg font-semibold ${className}`} {...props}>
-      {children}
-    </div>
-  );
+export function TypographyLarge({ children, className }: HeadingProps) {
+  return <div className={cn('text-lg font-normal', className)}>{children}</div>;
 }
 
-export function TypographySmall({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
+export function TypographySmall({ children, className }: HeadingProps) {
   return (
-    <small
-      className={`text-sm font-medium leading-none ${className}`}
-      {...props}
-    >
+    <small className={cn('text-sm font-normal leading-none', className)}>
       {children}
     </small>
   );
 }
 
-export function TypographyMuted({
-  children,
-  className,
-  ...props
-}: {
-  children: any;
-  className?: string;
-}) {
+export function TypographyMuted({ children, className }: HeadingProps) {
   return (
-    <p className="text-sm text-muted-foreground" {...props}>
+    <p className={cn('text-sm text-muted-foreground font-light', className)}>
       {children}
     </p>
   );

@@ -83,3 +83,36 @@
 p {
   margin-bottom: 1rem;
 }
+
+.bg-grid-black {
+  background-size: 40px 40px;
+  background-image: linear-gradient(
+      to right,
+      rgb(0 0 0 / 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.1) 1px, transparent 1px);
+}
+
+.bg-grid-white {
+  background-size: 40px 40px;
+  background-image: linear-gradient(
+      to right,
+      rgb(255 255 255 / 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.1) 1px, transparent 1px);
+}
+
+.bg-dot-black {
+  background-image: radial-gradient(rgb(0 0 0 / 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-dot-white {
+  background-image: radial-gradient(
+    rgb(255 255 255 / 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+}

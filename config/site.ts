@@ -12,10 +12,10 @@ export const siteConfig = {
       title: 'Portfolio',
       href: '/portfolio',
     },
-    {
-      title: 'Music',
-      href: '/music',
-    },
+    // {
+    //   title: 'Music',
+    //   href: '/music',
+    // },
     // {
     //   title: 'Photos',
     //   href: '/photos',
