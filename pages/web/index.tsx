@@ -14,7 +14,6 @@ import { PortfolioItem, portfolioData } from '@/data/portfolio';
 import { Badge } from '@/components/ui/badge';
 import { motion, Variants } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -46,10 +45,9 @@ export default function WebPage() {
         {/* Image Section */}
         <div className="relative h-48 overflow-hidden">
           {images?.[0] ? (
-            <Image
+            <img
               src={images[0]}
               alt={title}
-              fill
               className="object-cover transform group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
@@ -100,7 +98,7 @@ export default function WebPage() {
           <Button
             variant="ghost"
             className="group/btn w-full justify-between hover:bg-primary hover:text-primary-foreground"
-            onClick={() => router.push(`/portfolio/${id}`)}
+            onClick={() => router.push(`/web/${id}`)}
           >
             View Details
             <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />

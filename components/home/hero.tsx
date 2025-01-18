@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -27,7 +28,26 @@ const socialLinks = [
   },
 ];
 
+const roles = [
+  'Software Engineer',
+  'Technical Lead',
+  'Startup Consultant',
+  'Music Producer',
+  'Musician',
+  'Photographer',
+];
+
 export function Hero() {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex(prev => (prev + 1) % roles.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center px-4">
       {/* Background gradient */}
@@ -52,12 +72,18 @@ export function Hero() {
           Matt Jaikaran
         </motion.h1>
 
-        <motion.h2
-          className="text-xl sm:text-2xl text-muted-foreground"
-          {...fadeIn}
-        >
-          Software Engineer
-        </motion.h2>
+        <div className="h-[2.5rem] sm:h-[3rem]">
+          <motion.h2
+            key={roles[currentRoleIndex]}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="text-xl sm:text-2xl text-muted-foreground"
+          >
+            {roles[currentRoleIndex]}
+          </motion.h2>
+        </div>
 
         <motion.div className="flex gap-4 justify-center" {...fadeIn}>
           {socialLinks.map((link, index) => {
@@ -101,10 +127,10 @@ export function Hero() {
           <Button
             variant="ghost"
             size="icon"
-            className="animate-bounce rounded-full"
+            className="animate-bounce rounded-full hover:bg-transparent"
             onClick={() => {
-              const gallery = document.getElementById('gallery');
-              gallery?.scrollIntoView({ behavior: 'smooth' });
+              const webprojects = document.getElementById('webprojects');
+              webprojects?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             <ArrowDown className="h-5 w-5" />
