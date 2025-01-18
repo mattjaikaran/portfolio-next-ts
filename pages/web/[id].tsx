@@ -61,7 +61,7 @@ export default function PortfolioDetail() {
   return (
     <MainLayout>
       <div className="container mx-auto px-4 py-12">
-        <BackButton route="portfolio" />
+        <BackButton route="web" />
 
         <motion.div
           initial="initial"

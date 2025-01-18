@@ -1,5 +1,4 @@
 import { motion, Variants } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
@@ -25,7 +24,7 @@ export function WebProjects() {
   const featuredProjects = portfolioData.slice(0, 3);
 
   return (
-    <section className="py-24 px-4">
+    <section id="webprojects" className="py-24 px-4">
       <motion.div
         className="max-w-6xl mx-auto space-y-16"
         initial="initial"
@@ -35,10 +34,10 @@ export function WebProjects() {
       >
         {/* Section Header */}
         <motion.div className="text-center space-y-4" variants={fadeInUp}>
-          <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500">
+          <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
             Featured Projects
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-foreground/80 max-w-2xl mx-auto">
             Here are some of my recent projects, showcasing my expertise in
             full-stack development, modern UI design, and scalable architecture.
           </p>
@@ -96,8 +95,10 @@ export function WebProjects() {
               {/* Project Info */}
               <div className="p-6 space-y-4">
                 <div className="space-y-2">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <h3 className="text-xl font-semibold text-foreground">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-foreground/80 line-clamp-2">
                     {project.description}
                   </p>
                 </div>
@@ -108,7 +109,7 @@ export function WebProjects() {
                     <Badge
                       key={tech}
                       variant="secondary"
-                      className="bg-secondary/50"
+                      className="bg-secondary/50 text-foreground/90"
                     >
                       {tech}
                     </Badge>
@@ -118,7 +119,7 @@ export function WebProjects() {
                 {/* View Details Link */}
                 <Link
                   href={`/web/${project.id}`}
-                  className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="inline-flex items-center text-sm text-foreground/80 hover:text-primary transition-colors"
                 >
                   View Details
                   <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
