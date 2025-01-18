@@ -1,13 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-import { NextPage } from 'next';
 import Head from 'next/head';
-import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/site';
 import { MainLayout } from '@/layouts/MainLayout';
 import { Hero } from '@/components/home/hero';
-import { Projects } from '@/components/home/projects';
+import { WebProjects } from '@/components/home/WebProjects';
+import { ImageGallery } from '@/components/home/image-gallery';
 
-const Home: NextPage = () => {
+export default function HomePage() {
   return (
     <MainLayout>
       <Head>
@@ -21,22 +19,20 @@ const Home: NextPage = () => {
         {/* Hero Section */}
         <section className="relative">
           <Hero />
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          ></motion.div>
         </section>
 
-        {/* Projects Section */}
+        {/* Web Projects Section */}
         <section id="projects" className="relative">
           <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,theme(colors.purple.50)_0%,transparent_100%)] dark:bg-[radial-gradient(60%_60%_at_50%_0%,theme(colors.purple.900/0.2)_0%,transparent_100%)]" />
-          <Projects />
+          <WebProjects />
+        </section>
+
+        {/* Image Gallery Section */}
+        <section className="relative py-16" id="gallery">
+          <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,theme(colors.blue.50)_0%,transparent_100%)] dark:bg-[radial-gradient(60%_60%_at_50%_0%,theme(colors.blue.900/0.2)_0%,transparent_100%)]" />
+          <ImageGallery />
         </section>
       </div>
     </MainLayout>
   );
-};
-
-export default Home;
+}
