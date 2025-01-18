@@ -1,10 +1,10 @@
 'use client';
-import { NextPage } from 'next';
+
+// @next/next/no-img-element
 import { MainLayout } from '@/layouts/MainLayout';
 import { motion, Variants } from 'framer-motion';
 import { HeadingH1 } from '@/components/shared/typography';
 import { photoData } from '@/data/photos';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Grid, Rows } from 'lucide-react';
 import { useState } from 'react';
@@ -40,8 +40,8 @@ export default function PhotosPage() {
         >
           <HeadingH1>Photography</HeadingH1>
           <p className="text-muted-foreground mt-4">
-            A collection of photos I've taken. I currently shoot with Sony A7 IV
-            and a CampSnap "digital disposable" camera.
+            {`A collection of photos I've taken. I currently shoot with Sony A7 IV
+            and a CampSnap "digital disposable" camera.`}
           </p>
         </motion.div>
 

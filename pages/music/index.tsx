@@ -30,7 +30,7 @@ export default function MusicPage() {
           <motion.div variants={fadeInUp} className="text-center">
             <HeadingH1>Music</HeadingH1>
             <p className="text-muted-foreground mt-4">
-              A collection of music projects I've worked on in the past.
+              {`A collection of music projects I've worked on in the past.`}
             </p>
           </motion.div>
 

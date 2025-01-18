@@ -46,7 +46,7 @@ export default function ContactPage() {
         className="container max-w-5xl py-12"
       >
         <motion.div variants={fadeInUp} className="text-center space-y-4">
-          <HeadingH1>Let's Connect</HeadingH1>
+          <HeadingH1>{`Let's Connect`}</HeadingH1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? Fill out the form
             below or connect with me on social media.

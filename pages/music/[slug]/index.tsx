@@ -1,3 +1,4 @@
+// @next/next/no-img-element
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
