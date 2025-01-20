@@ -67,10 +67,9 @@ function FeaturedProject({
         )}
       >
         <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-8">
-          <Image
+          <img
             src={project.image}
             alt={project.title}
-            fill
             className="object-cover transition-transform duration-500 hover:scale-105"
           />
         </div>

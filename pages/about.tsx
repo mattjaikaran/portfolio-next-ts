@@ -1,10 +1,6 @@
 'use client';
 import { MainLayout } from '@/layouts/MainLayout';
-import {
-  HeadingH1,
-  HeadingH2,
-  Paragraph,
-} from '@/components/shared/typography';
+import { HeadingH1, HeadingH2 } from '@/components/shared/typography';
 import { motion, Variants } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +16,7 @@ import { aboutData, educationData, experienceData } from '@/data/portfolio';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import Link from 'next/link';
+import { Brands } from '@/components/home/brands';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -37,14 +34,14 @@ const staggerContainer: Variants = {
 const skills = {
   frontend: [
     'React',
-    'Next.js',
+    'NextJS',
     'TypeScript',
     'TailwindCSS',
     'Redux',
     'GraphQL',
   ],
-  backend: ['Node.js', 'Express', 'Python', 'Django', 'PostgreSQL', 'MongoDB'],
-  tools: ['Git', 'Docker', 'AWS', 'Vercel', 'Jest', 'CI/CD'],
+  backend: ['NodeJS', 'Express', 'Django', 'FastAPI', 'NestJS', 'PostgreSQL'],
+  tools: ['Git', 'Docker', 'AWS', 'Vercel', 'Jest', 'CI/CD', 'Bash'],
 };
 
 const timelineEvents = [
@@ -95,7 +92,7 @@ const timelineEvents = [
     year: '2016-Present',
     title: 'Various roles as a Software Engineer',
     description:
-      'Worked in various roles as a Software Engineer. Completed projects for companies such as Spotify, HyVee, Avon, and various startups.',
+      'Worked in various roles as a Software Engineer. Completed projects for companies such as Spotify, HyVee, Avon, General Motors, and various startups.',
     category: 'business',
   },
   {
@@ -135,8 +132,8 @@ export default function AboutPage() {
         className="container max-w-5xl py-12"
       >
         {/* Hero Section */}
-        <motion.div variants={fadeInUp} className="text-center space-y-4">
-          <HeadingH1>About Me</HeadingH1>
+        <motion.div variants={fadeInUp} className="space-y-4">
+          <HeadingH1 className="text-center mb-8">About Me</HeadingH1>
           <div
             className="text-muted-foreground text-lg max-w-3xl mx-auto prose dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: aboutData }}
@@ -468,6 +465,7 @@ export default function AboutPage() {
           </>
         )}
       </motion.div>
+      <Brands />
     </MainLayout>
   );
 }

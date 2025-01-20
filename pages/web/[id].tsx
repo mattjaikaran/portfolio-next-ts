@@ -107,12 +107,6 @@ export default function PortfolioDetail() {
                     <span>{portfolioDetail.date}</span>
                   </div>
                 )}
-                {portfolioDetail.tech && (
-                  <div className="flex items-center text-white/90">
-                    <Layers className="w-4 h-4 mr-2" />
-                    <span>{portfolioDetail.tech.length} Technologies</span>
-                  </div>
-                )}
               </div>
             </div>
           </motion.div>

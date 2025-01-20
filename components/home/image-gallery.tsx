@@ -24,12 +24,10 @@ export const ImageGallery = () => {
             transition={{ duration: 0.5, delay: index * 0.2 }}
             className="relative aspect-[2/3] w-full"
           >
-            <Image
+            <img
               src={image.src}
               alt={image.alt}
-              fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority={index < 2}
               className="object-cover"
             />
           </motion.div>
