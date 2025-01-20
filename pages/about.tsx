@@ -70,7 +70,7 @@ const timelineEvents = [
   {
     year: '2014-2015',
     title: 'Chapels',
-    description: 'Started indoe rock band Chapels. Released 1 EP',
+    description: 'Started indie rock band Chapels. Released 1 EP',
     category: 'music',
     link: '/music/chapels',
   },
