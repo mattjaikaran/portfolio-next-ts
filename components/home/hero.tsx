@@ -34,7 +34,6 @@ const roles = [
   'Startup Consultant',
   'Music Producer',
   'Musician',
-  'Photographer',
 ];
 
 export function Hero() {
