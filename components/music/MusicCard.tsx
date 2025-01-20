@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { MusicItem } from '@/data/music';
 
@@ -16,10 +15,9 @@ export const MusicCard = ({ project }: MusicCardProps) => {
         className="group relative h-[300px] rounded-xl overflow-hidden cursor-pointer"
       >
         {project.image ? (
-          <Image
+          <img
             src={project.image}
             alt={project.title}
-            fill
             className="object-cover transform group-hover:scale-105 transition-transform duration-500"
           />
         ) : (

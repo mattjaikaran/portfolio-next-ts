@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { PortfolioItem, portfolioData } from '@/data/portfolio';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -57,10 +56,9 @@ export function WebProjects() {
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
                 {project.images?.[0] ? (
-                  <Image
+                  <img
                     src={project.images[0]}
                     alt={project.title}
-                    fill
                     className="object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (

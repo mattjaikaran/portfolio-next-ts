@@ -1,5 +1,4 @@
 import { motion, Variants } from 'framer-motion';
-import Image from 'next/image';
 import { featuredPhotos } from '@/data/photos';
 import { Button } from '../ui/button';
 import Link from 'next/link';
