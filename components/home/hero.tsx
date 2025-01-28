@@ -119,23 +119,22 @@ export function Hero() {
           })}
         </motion.div>
 
-        <motion.div
-          {...fadeIn}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <Button
-            variant="ghost"
-            size="icon"
-            className="animate-bounce rounded-full hover:bg-transparent"
-            onClick={() => {
-              const webprojects = document.getElementById('webprojects');
-              webprojects?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            <ArrowDown className="h-5 w-5" />
-            <span className="sr-only">Scroll down</span>
-          </Button>
-        </motion.div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <motion.div {...fadeIn}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="animate-bounce rounded-full hover:bg-transparent"
+              onClick={() => {
+                const webprojects = document.getElementById('webprojects');
+                webprojects?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <ArrowDown className="h-5 w-5" />
+              <span className="sr-only">Scroll down</span>
+            </Button>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );
