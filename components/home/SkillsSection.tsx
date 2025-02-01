@@ -31,33 +31,34 @@ const skills = [
   {
     title: 'Frontend Architecture',
     description:
-      'Crafting modern web applications with a focus on performance and user experience',
+      'Crafting modern web applications with a focus on performance and user experience. Building reusable components and scalable systems.',
     icon: Layout,
     technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
   },
   {
     title: 'Backend Systems',
     description:
-      'Designing and implementing scalable backend infrastructure and APIs',
+      'Designing and implementing scalable backend infrastructure and APIs. Translating business requirements into technical solutions.',
     icon: Server,
-    technologies: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB'],
+    technologies: ['Node.js', 'Django', 'FastAPI', 'PostgreSQL'],
   },
   {
     title: 'Internal Tools & Automation',
     description:
-      'Creating custom tools and workflows to improve team efficiency and productivity',
+      'Creating custom tools and workflows to improve team efficiency and productivity. Utilizing Bash, Python, and other tools to automate tasks and streamline processes.',
     icon: Wrench,
     technologies: [
       'Process Automation',
       'Admin Dashboards',
       'Data Analytics',
       'Custom CMS',
+      'Bash',
     ],
   },
   {
     title: 'Technical Leadership',
     description:
-      'Leading engineering teams and driving technical decisions in high-growth environments',
+      'Leading engineering teams and driving technical decisions in high-growth environments. Mentoring and guiding junior developers.',
     icon: Laptop,
     technologies: [
       'Team Mentorship',
@@ -69,13 +70,13 @@ const skills = [
   {
     title: 'System Architecture',
     description:
-      'Building scalable, maintainable systems that grow with your business',
+      'Building scalable, maintainable systems that grow with your business. Utilizing LLMs and prompt engineering to improve productivity and efficiency.',
     icon: Boxes,
     technologies: [
-      'Microservices',
       'API Design',
       'Data Modeling',
       'Integration Architecture',
+      'Prompt Engineering',
     ],
   },
 ];
