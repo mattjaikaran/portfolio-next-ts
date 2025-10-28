@@ -92,7 +92,7 @@ function FeaturedProject({
 export function FeaturedWork() {
   return (
     <section className="py-24 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.primary.100),transparent_70%)] dark:bg-[radial-gradient(circle_at_top_right,theme(colors.primary.900),transparent_70%)] opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent dark:from-primary/20 opacity-40" />
 
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">

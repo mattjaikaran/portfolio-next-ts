@@ -29,7 +29,6 @@ export async function GET(
           tags: ['Music', 'Band'],
           date: legacyProject.releases?.[0]?.year?.toString() || 'Unknown',
           slug: legacyProject.id,
-          releases: legacyProject.releases,
         };
       }
     }
