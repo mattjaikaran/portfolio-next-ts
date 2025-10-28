@@ -5,14 +5,7 @@ import { HeadingH1, HeadingH2 } from '@/components/shared/typography';
 import { motion, Variants } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-  Code2,
-  GraduationCap,
-  Clock,
-  Layout,
-  History,
-  ArrowRight,
-} from 'lucide-react';
+import { Code2, Layout, History, ArrowRight } from 'lucide-react';
 import { educationData, experienceData, aboutData } from '@/data/portfolio';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
