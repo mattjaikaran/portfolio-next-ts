@@ -1,0 +1,10 @@
+[install]
+# Use exact versions for better reproducibility
+exact = false
+
+# Enable peer dependencies
+peer = true
+
+[run]
+# Use system shell for compatibility
+shell = "system"

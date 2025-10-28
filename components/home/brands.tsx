@@ -1,38 +1,44 @@
-/* eslint-disable @next/next/no-img-element */
+'use client';
+
 import { motion } from 'framer-motion';
-import { HeadingH2 } from '../shared/typography';
-import hubble from '@/public/images/hubble.svg';
-import hyvee from '@/public/images/hyvee.png';
-import avon from '@/public/images/avon.png';
-import gm from '@/public/images/gm.png';
-import rewyre from '@/public/images/rewyre-logo.svg';
-import spotify from '@/public/images/spotify-green.png';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
 };
 
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const brands = [
-  { name: 'Rewyre', logo: rewyre, url: 'https://rewyre.com', width: 'w-64' },
-  { name: 'Spotify', logo: spotify, url: 'https://spotify.com', width: 'w-64' },
+  {
+    name: 'Rewyre',
+    logo: '/images/rewyre-logo.svg',
+    url: 'https://rewyre.com',
+    width: 'w-64',
+  },
+  {
+    name: 'Spotify',
+    logo: '/images/spotify-green.png',
+    url: 'https://spotify.com',
+    width: 'w-64',
+  },
   {
     name: 'Hubble',
-    logo: hubble,
+    logo: '/images/hubble.svg',
     url: 'https://hubblecontacts.com',
     width: 'w-64',
   },
-  { name: 'Avon', logo: avon, url: 'https://avon.com', width: 'w-64' },
-  { name: 'HyVee', logo: hyvee, url: 'https://www.hy-vee.com', width: 'w-64' },
-  { name: 'GM', logo: gm, url: 'https://gm.com', width: 'w-32' },
+  {
+    name: 'Avon',
+    logo: '/images/avon.png',
+    url: 'https://avon.com',
+    width: 'w-64',
+  },
+  {
+    name: 'HyVee',
+    logo: '/images/hyvee.png',
+    url: 'https://www.hy-vee.com',
+    width: 'w-64',
+  },
+  { name: 'GM', logo: '/images/gm.png', url: 'https://gm.com', width: 'w-32' },
 ];
 
 export function Brands() {
@@ -43,10 +49,18 @@ export function Brands() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={staggerContainer}
+        variants={{
+          animate: {
+            transition: {
+              staggerChildren: 0.1,
+            },
+          },
+        }}
       >
         <motion.div className="text-center space-y-4" variants={fadeInUp}>
-          <HeadingH2>Brands Worked With</HeadingH2>
+          <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
+            Brands Worked With
+          </h2>
           <p className="text-foreground/80 max-w-2xl mx-auto">
             Collaborating with innovative companies to build impactful digital
             solutions.
@@ -57,7 +71,7 @@ export function Brands() {
           variants={fadeInUp}
           className="grid grid-cols-2 md:grid-cols-3 gap-12 items-center justify-items-center"
         >
-          {brands.map(brand => (
+          {brands.map((brand) => (
             <motion.a
               key={brand.name}
               href={brand.url}
@@ -70,7 +84,7 @@ export function Brands() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl blur-xl transition-opacity opacity-0 group-hover:opacity-100" />
               <div className="relative">
                 <img
-                  src={brand.logo.src}
+                  src={brand.logo}
                   alt={brand.name}
                   className={`${brand.width} transition-opacity opacity-80 group-hover:opacity-100 dark:brightness-0 dark:invert`}
                 />

@@ -1,7 +1,16 @@
 import { ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
 
-const ReleaseCard = ({ release }: any) => {
+interface Release {
+  title: string;
+  artist: string;
+  image?: string;
+  link?: string;
+  year?: number;
+  url?: string;
+}
+
+const ReleaseCard = ({ release }: { release: Release }) => {
   return (
     <div className="flex items-center gap-4 p-4 rounded-xl bg-card shadow-sm hover:shadow-md transition-shadow">
       {/* Album Art */}

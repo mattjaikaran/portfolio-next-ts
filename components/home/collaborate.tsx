@@ -1,7 +1,8 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { ArrowRight, Code2, Music4, Rocket, Megaphone } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 
 const fadeInUp = {
@@ -9,150 +10,66 @@ const fadeInUp = {
   animate: { opacity: 1, y: 0 },
 };
 
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const services = [
-  {
-    title: 'Web Development',
-    description:
-      'Full-stack development services for startups and businesses. From MVPs to scalable applications.',
-    icon: Code2,
-    offerings: [
-      'Custom Web Applications',
-      'E-commerce Solutions',
-      'Internal Tools & Dashboards',
-      'API Development',
-    ],
-    cta: 'Start Project',
-    href: '/contact',
-  },
-  {
-    title: 'Music Production',
-    description:
-      'From songwriting to final masters, bringing your musical vision to life with professional production.',
-    icon: Music4,
-    offerings: [
-      'Music Production',
-      'Mixing & Mastering',
-      'Creative Direction',
-      'Artist Development',
-    ],
-    cta: 'Make Music',
-    href: '/contact',
-  },
-  {
-    title: 'Technical Strategy',
-    description:
-      'Helping startups build strong technical foundations and scale efficiently.',
-    icon: Rocket,
-    offerings: [
-      'Architecture Design',
-      'Tech Stack Selection',
-      'MVP Development',
-      'Team Building',
-    ],
-    cta: 'Get Started',
-    href: '/contact',
-  },
-  {
-    title: 'Brand Development',
-    description:
-      'Creating compelling brand identities and digital experiences that resonate with your audience.',
-    icon: Megaphone,
-    offerings: [
-      'Brand Strategy',
-      'Digital Presence',
-      'Content Direction',
-      'Launch Planning',
-    ],
-    cta: 'Build Brand',
-    href: '/contact',
-  },
-];
-
 export function Collaborate() {
   return (
     <section className="py-24 px-4">
       <motion.div
-        className="max-w-6xl mx-auto space-y-16"
+        className="max-w-6xl mx-auto"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        variants={staggerContainer}
+        variants={{
+          animate: {
+            transition: {
+              staggerChildren: 0.1,
+            },
+          },
+        }}
       >
-        <motion.div className="text-center space-y-4" variants={fadeInUp}>
-          <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
-            Services
-          </h2>
-          <p className="text-foreground/80 max-w-2xl mx-auto">
-            Expertise in web development, music production, and brand building.
-          </p>
-        </motion.div>
-
-        {/* Services Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          variants={staggerContainer}
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 p-12 md:p-20"
+          variants={fadeInUp}
         >
-          {services.map(service => (
-            <motion.div
-              key={service.title}
-              variants={fadeInUp}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Card className="p-6 h-full bg-card hover:bg-accent/5 transition-colors duration-300">
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <service.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground">
-                    {service.title}
-                  </h3>
-                  <p className="text-foreground/80">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.offerings.map(offering => (
-                      <li
-                        key={offering}
-                        className="text-sm text-foreground/70 flex items-center"
-                      >
-                        <ArrowRight className="w-4 h-4 mr-2 text-primary" />
-                        {offering}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="pt-4">
-                    <Link href={service.href}>
-                      <Button className="w-full group">
-                        {service.cta}
-                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 bg-grid-white/[0.02] pointer-events-none" />
 
-        {/* Contact CTA */}
-        <motion.div variants={fadeInUp} className="text-center">
-          <p className="text-foreground/80 mb-6">
-            {`Have a different project in mind? Let's discuss how we can work
-            together.`}
-          </p>
-          <Link href="/contact">
-            <Button size="lg" variant="outline" className="group">
-              Get in Touch
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
+          <div className="relative z-10 text-center space-y-8">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="p-2 rounded-lg bg-white/10">
+                <MessageSquare className="w-5 h-5 text-white" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                Let&apos;s Work Together
+              </h2>
+            </div>
+
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Have a project in mind? I&apos;m always open to discussing new
+              opportunities and collaborations.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                variant="default"
+                className="bg-white text-gray-900 hover:bg-white/90"
+              >
+                <Link href="/contact">
+                  Get in Touch
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white text-foreground hover:bg-white/80 dark:hover:bg-white/10"
+              >
+                <Link href="/web">View Projects</Link>
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>
