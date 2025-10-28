@@ -1,5 +1,12 @@
+'use client';
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import axios from 'axios';
+
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -7,133 +14,118 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import { Input } from '../ui/input';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import axios from 'axios';
-import { MailCheck } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useToast } from '@/components/ui/use-toast';
 
-export const contactFormSchema = z.object({
+// Define form schema with validation
+const formSchema = z.object({
   name: z.string().min(2, {
     message: 'Name must be at least 2 characters.',
   }),
-  title: z
-    .string()
-    .min(2, {
-      message: 'Title must be at least 2 characters.',
-    })
-    .max(30, {
-      message: 'Title must not be longer than 30 characters.',
-    }),
-  email: z
-    .string({
-      required_error: 'Please select an email to display.',
-    })
-    .email(),
-  message: z.string().max(1024).min(10),
+  email: z.string().email({
+    message: 'Please enter a valid email address.',
+  }),
+  message: z.string().min(10, {
+    message: 'Message must be at least 10 characters.',
+  }),
 });
 
-export type ContactFormValues = z.infer<typeof contactFormSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
-const ContactForm = () => {
-  const router = useRouter();
-  const [alertMessage, setAlertMessage] = useState<string>('');
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    mode: 'onChange',
+export function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  // Initialize form
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
   });
 
-  const onSubmit = async (data: ContactFormValues) => {
+  // Form submission handler
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+
     try {
-      const messageData = {
-        to: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
-        from: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
-        name: data.name,
-        subject: data.title,
-        text: `${data.message} from ${data.email}`,
-        html: `
-          <p>${data.message}</p>
-          <p style="margin-top: 2rem;">${data.name}</p>
-          <p>${data.email}</p>
-        `,
-      };
-      const response = await axios.post('/api/sendgrid', messageData);
-      console.log('response', response);
-      setAlertMessage(response.data.message);
-      setTimeout(() => {
-        router.push('/');
-      }, 8000);
-    } catch (error: any) {
-      console.log('error in onSubmit', error);
-      if (error.response) {
-        console.log('error.response.data', error.response.data);
-      }
+      await axios.post('/api/sendgrid', data);
+
+      toast({
+        title: 'Message sent!',
+        description: 'Thank you for your message. I will get back to you soon.',
+      });
+
+      form.reset();
+    } catch {
+      toast({
+        title: 'Error',
+        description:
+          'There was an error sending your message. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <>
-      {alertMessage ? (
-        <Alert className="mt-8">
-          <MailCheck />
-          <AlertTitle>Success</AlertTitle>
-          <AlertDescription>{alertMessage}</AlertDescription>
-        </Alert>
-      ) : null}
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormItem>
-            <FormLabel>Name</FormLabel>
-            <FormControl>
-              <Input placeholder="Test Example" {...form.register('name')} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-          <FormItem>
-            <FormLabel>Email</FormLabel>
-            <FormControl>
-              <Input
-                placeholder="test@example.com"
-                {...form.register('email')}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-          <FormItem>
-            <FormLabel>Title</FormLabel>
-            <FormControl>
-              <Input placeholder="Enter a Title" {...form.register('title')} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Enter your message"
-                    className="resize-none"
-                    {...form.register('message')}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Send Message</Button>
-        </form>
-      </Form>
-    </>
-  );
-};
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Your name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-export default ContactForm;
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="your.email@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Your message..."
+                  className="min-h-[150px] resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? 'Sending...' : 'Send Message'}
+        </Button>
+      </form>
+    </Form>
+  );
+}

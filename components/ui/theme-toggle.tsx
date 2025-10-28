@@ -20,7 +20,7 @@ export function ThemeToggle() {
 }
 
 export function ThemeToggleDropdown() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme } = useTheme();
 
   return (
     <DropdownMenu.Root>

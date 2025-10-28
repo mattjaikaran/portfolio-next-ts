@@ -2,16 +2,29 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  longDescription?: string;
-  image: string;
-  tags: string[];
-  links: {
-    github?: string;
-    live?: string;
-    demo?: string;
-  };
-  featured?: boolean;
-  techStack: string[];
+  longDescription: string;
   company?: string;
   date: string;
+  tech: string[];
+  fullTech: string[];
+  images: string[];
+  liveLink?: string;
+  githubLinks?: {
+    text: string;
+    link: string;
+  }[];
+  challenges: {
+    title: string;
+    description: string;
+  }[];
+  solutions: {
+    title: string;
+    description: string;
+  }[];
+  outcomes: string[];
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+  };
 }

@@ -1,17 +1,8 @@
-# Matt Portfolio Front End
+# New Front End
 
-## Technologies
-
-- React 18.2
-- NextJS 13.4 (Pages Router)
-- [shadcn/ui](https://ui.shadcn.com/)
-
-### TODO:
-
-- Add more portfolio photos
-- Analytics
-- Finish back end
-- Upgrade to Next 14. App Router
+- Next 15
+- App Router
+- Shadcn UI
 - Bun
 
 
@@ -20,7 +11,8 @@
 First, run the development server:
 
 ```bash
-yarn dev
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
