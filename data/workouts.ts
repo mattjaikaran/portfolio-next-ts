@@ -7,27 +7,23 @@ export interface Exercise {
 // Exercise data
 export const exerciseData: Exercise[] = [
   {
-    name: 'Push Day',
-    link: 'https://hevy.com/routine/123456',
+    name: 'Back and Biceps',
+    link: 'https://hevy.com/routine/Dp0KoCvKhKr',
   },
   {
-    name: 'Pull Day',
-    link: 'https://hevy.com/routine/234567',
+    name: 'Chest, Shoulders & Triceps',
+    link: 'https://hevy.com/routine/pde14Bj1JJI',
   },
   {
-    name: 'Leg Day',
-    link: 'https://hevy.com/routine/345678',
+    name: 'Abs & Kettlebells',
+    link: 'https://hevy.com/routine/yeFlfLI2HzD',
   },
   {
     name: 'Full Body',
     link: 'https://hevy.com/routine/456789',
   },
   {
-    name: 'Upper Body',
-    link: 'https://hevy.com/routine/567890',
+    name: 'Legs',
+    link: 'https://hevy.com/routine/UMK3vJOoSS7',
   },
-  {
-    name: 'Lower Body',
-    link: 'https://hevy.com/routine/678901',
-  },
-]; 
+];
