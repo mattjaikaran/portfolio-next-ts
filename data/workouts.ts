@@ -19,10 +19,6 @@ export const exerciseData: Exercise[] = [
     link: 'https://hevy.com/routine/yeFlfLI2HzD',
   },
   {
-    name: 'Full Body',
-    link: 'https://hevy.com/routine/456789',
-  },
-  {
     name: 'Legs',
     link: 'https://hevy.com/routine/UMK3vJOoSS7',
   },
