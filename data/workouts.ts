@@ -23,3 +23,19 @@ export const exerciseData: Exercise[] = [
     link: 'https://hevy.com/routine/UMK3vJOoSS7',
   },
 ];
+
+// Kettlebell 3-Day Routine
+export const kettlebellData: Exercise[] = [
+  {
+    name: 'Kettlebell 1 – Lower Body + Hinge',
+    link: 'https://hevy.com/routine/jrKej0iyHf4',
+  },
+  {
+    name: 'Kettlebell 2 – Upper Body + Grind',
+    link: 'https://hevy.com/routine/JAsnSKydplN',
+  },
+  {
+    name: 'Kettlebell 3 – Full Body Conditioning',
+    link: 'https://hevy.com/routine/bi5pDo3o5b8',
+  },
+];
