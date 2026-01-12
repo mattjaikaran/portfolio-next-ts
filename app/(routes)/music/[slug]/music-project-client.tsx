@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ExternalLink, Music } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -21,6 +21,14 @@ const staggerContainer: Variants = {
     },
   },
 };
+
+interface Release {
+  id: number;
+  title: string;
+  year: number;
+  url: string;
+  image?: string;
+}
 
 interface MusicProject {
   id: string;
@@ -40,6 +48,7 @@ interface MusicProject {
   credits?: Array<{ role: string; name: string }>;
   tracks?: Array<{ title: string; duration?: string }>;
   highlights?: Array<{ title: string; description: string }>;
+  releases?: Release[];
 }
 
 interface MusicProjectClientProps {
@@ -53,14 +62,14 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
         initial="initial"
         animate="animate"
         variants={staggerContainer}
-        className="container max-w-5xl py-12"
+        className="container max-w-5xl py-12 px-4"
       >
         <motion.div variants={fadeInUp} className="mb-8">
           <Link
             href="/music"
-            className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-6"
+            className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-6 group"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
+            <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to Music Projects
           </Link>
 
@@ -82,11 +91,10 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
         >
           <div className="space-y-6">
             <div className="relative aspect-square overflow-hidden rounded-lg border">
-              <Image
+              <img
                 src={project.coverArt || project.image}
                 alt={project.title}
-                fill
-                className="object-cover"
+                className="object-cover w-full h-full"
               />
             </div>
             <div className="prose dark:prose-invert max-w-none">
@@ -124,11 +132,11 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
               </dl>
             </div>
 
-            <div>
-              <HeadingH2 className="text-xl mb-4">Credits</HeadingH2>
-              <div className="space-y-2">
-                {project.credits &&
-                  project.credits.map((credit, index) => (
+            {project.credits && project.credits.length > 0 && (
+              <div>
+                <HeadingH2 className="text-xl mb-4">Credits</HeadingH2>
+                <div className="space-y-2">
+                  {project.credits.map((credit, index) => (
                     <div key={index}>
                       <span className="font-medium">{credit.role}:</span>{' '}
                       <span className="text-muted-foreground">
@@ -136,11 +144,12 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
                       </span>
                     </div>
                   ))}
+                </div>
               </div>
-            </div>
+            )}
 
-            <div className="flex flex-col gap-3">
-              {project.streamingUrl && (
+            {!project.releases && project.streamingUrl && (
+              <div className="flex flex-col gap-3">
                 <Button asChild className="w-full">
                   <a
                     href={project.streamingUrl}
@@ -152,32 +161,85 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
                     Listen Now
                   </a>
                 </Button>
-              )}
-              {project.externalUrl && (
-                <Button variant="outline" asChild className="w-full">
-                  <a
-                    href={project.externalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Visit Artist Page
-                  </a>
-                </Button>
-              )}
-            </div>
+                {project.externalUrl && (
+                  <Button variant="outline" asChild className="w-full">
+                    <a
+                      href={project.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center"
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Visit Artist Page
+                    </a>
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
         </motion.div>
 
-        {project.tracks && (
+        {/* Releases Section */}
+        {project.releases && project.releases.length > 0 && (
+          <motion.div variants={fadeInUp} className="mb-12">
+            <HeadingH2 className="mb-6">Releases</HeadingH2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.releases.map((release) => (
+                <Card
+                  key={release.id}
+                  className="overflow-hidden group hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+                >
+                  <div className="flex flex-col sm:flex-row">
+                    {release.image && (
+                      <div className="relative w-full sm:w-40 h-40 flex-shrink-0 overflow-hidden">
+                        <img
+                          src={release.image}
+                          alt={release.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+                    <CardContent className="flex flex-col justify-between p-4 flex-1">
+                      <div>
+                        <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                          {release.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          {release.year}
+                        </p>
+                      </div>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="mt-4 w-full sm:w-auto"
+                      >
+                        <a
+                          href={release.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center"
+                        >
+                          <Music className="mr-2 h-4 w-4" />
+                          Listen
+                        </a>
+                      </Button>
+                    </CardContent>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {project.tracks && project.tracks.length > 0 && (
           <motion.div variants={fadeInUp} className="mb-12">
             <HeadingH2 className="mb-6">Track List</HeadingH2>
             <ul className="space-y-4">
               {project.tracks.map((track, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-4 p-3 rounded-lg border"
+                  className="flex items-center gap-4 p-3 rounded-lg border hover:border-primary/20 transition-colors"
                 >
                   <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary font-medium">
                     {index + 1}
@@ -196,7 +258,7 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
           </motion.div>
         )}
 
-        {project.highlights && (
+        {project.highlights && project.highlights.length > 0 && (
           <motion.div variants={fadeInUp}>
             <HeadingH2 className="mb-6">Highlights</HeadingH2>
             <div className="space-y-6">

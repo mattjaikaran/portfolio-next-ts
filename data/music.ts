@@ -51,6 +51,7 @@ export interface MusicProject {
   credits?: Credit[];
   tracks?: Track[];
   highlights?: Highlight[];
+  releases?: Release[];
 }
 
 // Music projects data - ported from portfolio-next-ts
@@ -58,7 +59,7 @@ export const musicProjects: MusicProject[] = [
   {
     id: 'haveyouheard',
     title: 'Have You Heard',
-    artist: 'Matt Jaikaran',
+    artist: 'Have You Heard',
     description: 'Guitarist/Songwriter 2008-2012',
     longDescription:
       'Have You Heard was a pop rock band from 2008-2012 based in Nashville, TN.',
@@ -69,11 +70,27 @@ export const musicProjects: MusicProject[] = [
     year: '2008-2012',
     role: 'Guitarist/Songwriter',
     slug: 'haveyouheard',
+    releases: [
+      {
+        id: 1,
+        title: 'Where You Want Me',
+        year: 2010,
+        url: 'https://haveyouheard.bandcamp.com/album/where-you-want-me',
+        image: 'https://f4.bcbits.com/img/a4242374142_10.jpg',
+      },
+      {
+        id: 2,
+        title: 'take.create.revive.',
+        year: 2011,
+        url: 'https://haveyouheard.bandcamp.com/album/take-create-revive',
+        image: 'https://f4.bcbits.com/img/a1910409234_16.jpg',
+      },
+    ],
   },
   {
     id: 'pocono',
     title: 'Pocono',
-    artist: 'Matt Jaikaran',
+    artist: 'Pocono',
     description: 'Guitarist/Songwriter 2013',
     longDescription:
       'Pocono was an indie rock band from 2013-2015 based in Nashville, TN.',
@@ -84,11 +101,20 @@ export const musicProjects: MusicProject[] = [
     year: '2013',
     role: 'Guitarist/Songwriter',
     slug: 'pocono',
+    releases: [
+      {
+        id: 1,
+        title: 'Pocono EP',
+        year: 2013,
+        url: 'https://pocono.bandcamp.com/album/pocono',
+        image: 'https://f4.bcbits.com/img/a3047471647_16.jpg',
+      },
+    ],
   },
   {
     id: 'chapels',
     title: 'Chapels',
-    artist: 'Matt Jaikaran',
+    artist: 'Chapels',
     description: 'Guitarist/Songwriter 2014-2015',
     longDescription:
       'Chapels was an indie rock band from 2014-2015 based in Nashville, TN.',
@@ -99,14 +125,23 @@ export const musicProjects: MusicProject[] = [
     year: '2014-2015',
     role: 'Guitarist/Songwriter',
     slug: 'chapels',
+    releases: [
+      {
+        id: 1,
+        title: 'Chapels EP',
+        year: 2015,
+        url: 'https://chapelsmusic.bandcamp.com/',
+        image: 'https://f4.bcbits.com/img/a2204902306_16.jpg',
+      },
+    ],
   },
   {
     id: 'srh',
     title: 'TBA1',
-    artist: 'Matt Jaikaran',
+    artist: 'TBA',
     description: 'Solo Project',
-    longDescription: 'New project',
-    image: '/images/music/tba1.jpg',
+    longDescription: 'New project coming soon.',
+    image: 'https://dummyimage.com/600x600/1a1a1a/666666&text=Coming+Soon',
     streamingUrl: '#',
     tags: ['Solo', 'Upcoming', 'TBA'],
     date: '2026',

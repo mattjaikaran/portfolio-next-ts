@@ -2,15 +2,14 @@
 
 import { MainLayout } from '@/components/layouts/main-layout';
 import { HeadingH1, HeadingH2 } from '@/components/shared/typography';
-import { motion, useScroll, useTransform, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ExternalLink, Github, Maximize2 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Project } from '@/types/project';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -38,16 +37,7 @@ interface ProjectDetailClientProps {
 }
 
 export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
-  const containerRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
 
   return (
     <MainLayout>
@@ -56,29 +46,21 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
         animate="animate"
         variants={staggerContainer}
         className="w-full relative"
-        ref={containerRef}
       >
-        {/* Hero Section with Parallax */}
-        <motion.div
-          className="relative w-full h-[90vh] flex items-center"
-          style={{ opacity, scale, y }}
-        >
-          <motion.div variants={fadeInUp} className="absolute inset-0">
-            {project.images[0] && (
-              <Image
+        {/* Hero Section */}
+        <div className="relative w-full min-h-[70vh] flex items-center">
+          <div className="absolute inset-0">
+            {project.images?.[0] && (
+              <img
                 src={project.images[0]}
                 alt={project.title}
-                fill
-                className="object-cover opacity-30"
-                priority
-                sizes="100vw"
-                quality={100}
+                className="w-full h-full object-cover opacity-20"
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
-          </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+          </div>
 
-          <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="container mx-auto max-w-7xl relative z-10 px-4 py-12">
             <motion.div variants={fadeInUp} className="flex flex-col max-w-3xl">
               <Link
                 href="/web"
@@ -87,18 +69,18 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 Back to Projects
               </Link>
-              <HeadingH1 className="mb-6 text-5xl md:text-7xl font-bold tracking-tighter">
+              <HeadingH1 className="mb-6 text-4xl md:text-6xl font-bold tracking-tight">
                 {project.title}
               </HeadingH1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
+                {project.tech?.map((tech) => (
                   <Badge
                     key={tech}
                     variant="secondary"
-                    className="text-sm px-4 py-1.5"
+                    className="text-sm px-3 py-1"
                   >
                     {tech}
                   </Badge>
@@ -106,185 +88,151 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               </div>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="bg-background">
           <motion.div
             variants={fadeInUp}
-            className="container mx-auto max-w-7xl py-24"
+            className="container mx-auto max-w-7xl py-16 px-4"
           >
             {/* Project Overview */}
-            <div className="mb-32">
-              <div className="max-w-3xl mb-16">
-                <HeadingH2 className="text-4xl font-bold tracking-tight mb-8">
+            <div className="mb-16">
+              <div className="max-w-3xl mb-12">
+                <HeadingH2 className="text-3xl font-bold tracking-tight mb-6">
                   Project Overview
                 </HeadingH2>
                 {project.longDescription && (
-                  <p className="text-xl leading-relaxed text-muted-foreground">
+                  <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
                     {project.longDescription}
                   </p>
                 )}
               </div>
 
-              {/* Initial Gallery Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-                {project.images.slice(0, 3).map((image, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                    className={cn(
-                      'relative rounded-xl overflow-hidden group cursor-pointer',
-                      index === 0 && 'md:col-span-2 md:row-span-2',
-                    )}
-                    onClick={() => setSelectedImage(image)}
-                  >
-                    <AspectRatio ratio={index === 0 ? 16 / 9 : 4 / 3}>
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors z-10 flex items-center justify-center">
-                        <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </div>
-                      <Image
-                        src={image}
-                        alt={`${project.title} screenshot ${index + 1}`}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        quality={90}
-                      />
-                    </AspectRatio>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Full Width Image Section */}
-              {project.images[3] && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  className="relative h-[60vh] mb-32 rounded-xl overflow-hidden cursor-pointer"
-                  onClick={() => setSelectedImage(project.images[3])}
-                >
-                  <Image
-                    src={project.images[3]}
-                    alt={`${project.title} full view`}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                    quality={95}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-background/20 to-background/60" />
-                </motion.div>
-              )}
-
-              {/* Challenges & Solutions with Images */}
-              <div className="grid md:grid-cols-2 gap-24 mb-32">
-                {/* Challenges Section */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="space-y-8"
-                >
-                  <HeadingH2 className="text-4xl font-bold tracking-tight">
-                    Challenges
-                  </HeadingH2>
-                  <div className="space-y-8">
-                    {project.challenges.map((challenge, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.2 }}
-                        className="p-8 rounded-xl bg-card border transition-all hover:border-primary hover:bg-accent/5"
-                      >
-                        <h3 className="text-2xl font-semibold mb-4">
-                          {challenge.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {challenge.description}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Solutions Section with Image */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="space-y-8"
-                >
-                  {project.images[4] && (
+              {/* Gallery Grid */}
+              {project.images && project.images.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                  {project.images.slice(0, 6).map((image, index) => (
                     <motion.div
+                      key={index}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="relative h-[300px] rounded-xl overflow-hidden mb-8 cursor-pointer"
-                      onClick={() => setSelectedImage(project.images[4])}
+                      transition={{ delay: index * 0.1 }}
+                      className={cn(
+                        'relative rounded-xl overflow-hidden group cursor-pointer border',
+                        index === 0 && 'md:col-span-2 md:row-span-2',
+                      )}
+                      onClick={() => setSelectedImage(image)}
                     >
-                      <Image
-                        src={project.images[4]}
-                        alt={`${project.title} solution visualization`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        quality={90}
-                      />
+                      <AspectRatio ratio={index === 0 ? 16 / 9 : 4 / 3}>
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors z-10 flex items-center justify-center">
+                          <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <img
+                          src={image}
+                          alt={`${project.title} screenshot ${index + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </AspectRatio>
                     </motion.div>
-                  )}
-                  <HeadingH2 className="text-4xl font-bold tracking-tight">
-                    Solutions
-                  </HeadingH2>
-                  <div className="space-y-8">
-                    {project.solutions.map((solution, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.2 }}
-                        className="p-8 rounded-xl bg-card border transition-all hover:border-primary hover:bg-accent/5"
-                      >
-                        <h3 className="text-2xl font-semibold mb-4">
-                          {solution.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {solution.description}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Challenges & Solutions */}
+              <div className="grid md:grid-cols-2 gap-12 mb-16">
+                {/* Challenges Section */}
+                {project.challenges && project.challenges.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="space-y-6"
+                  >
+                    <HeadingH2 className="text-2xl font-bold tracking-tight">
+                      Challenges
+                    </HeadingH2>
+                    <div className="space-y-4">
+                      {project.challenges.map((challenge, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 }}
+                          className="p-6 rounded-xl bg-card border hover:border-primary/20 transition-colors"
+                        >
+                          <h3 className="text-lg font-semibold mb-2">
+                            {challenge.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm">
+                            {challenge.description}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Solutions Section */}
+                {project.solutions && project.solutions.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="space-y-6"
+                  >
+                    <HeadingH2 className="text-2xl font-bold tracking-tight">
+                      Solutions
+                    </HeadingH2>
+                    <div className="space-y-4">
+                      {project.solutions.map((solution, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 }}
+                          className="p-6 rounded-xl bg-card border hover:border-primary/20 transition-colors"
+                        >
+                          <h3 className="text-lg font-semibold mb-2">
+                            {solution.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm">
+                            {solution.description}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
               </div>
 
-              {/* Final Image Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-32">
-                {project.images.slice(5).map((image, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative aspect-square rounded-lg overflow-hidden cursor-pointer"
-                    onClick={() => setSelectedImage(image)}
-                  >
-                    <Image
-                      src={image}
-                      alt={`${project.title} detail ${index + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-700 hover:scale-105"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      quality={85}
-                    />
-                  </motion.div>
-                ))}
-              </div>
+              {/* Outcomes */}
+              {project.outcomes && project.outcomes.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="mb-16"
+                >
+                  <HeadingH2 className="text-2xl font-bold tracking-tight mb-6">
+                    Outcomes
+                  </HeadingH2>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    {project.outcomes.map((outcome, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 p-4 rounded-lg bg-card border"
+                      >
+                        <span className="text-primary font-bold">+</span>
+                        <span className="text-muted-foreground">{outcome}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
 
               {/* Project Links */}
               <motion.div
@@ -295,26 +243,26 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               >
                 {project.liveLink && (
                   <Button asChild size="lg">
-                    <Link
+                    <a
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Visit Live Site
-                    </Link>
+                    </a>
                   </Button>
                 )}
                 {project.githubLinks?.[0] && (
                   <Button variant="outline" asChild size="lg">
-                    <Link
+                    <a
                       href={project.githubLinks[0].link}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Github className="mr-2 h-4 w-4" />
                       View Source
-                    </Link>
+                    </a>
                   </Button>
                 )}
               </motion.div>
@@ -327,7 +275,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
           open={!!selectedImage}
           onOpenChange={() => setSelectedImage(null)}
         >
-          <DialogContent className="max-w-7xl w-full p-0 bg-transparent border-none">
+          <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-none">
             <DialogTitle asChild>
               <VisuallyHidden>Project Image View</VisuallyHidden>
             </DialogTitle>
@@ -335,14 +283,11 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               <VisuallyHidden>Detailed view of project image</VisuallyHidden>
             </DialogDescription>
             {selectedImage && (
-              <div className="relative w-full aspect-video">
-                <Image
+              <div className="relative w-full">
+                <img
                   src={selectedImage}
                   alt="Project detail"
-                  fill
-                  className="object-contain"
-                  sizes="100vw"
-                  quality={100}
+                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                 />
               </div>
             )}

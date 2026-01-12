@@ -53,7 +53,8 @@ export function WebProjects() {
             <motion.div
               key={project.id}
               variants={fadeInUp}
-              className="group relative bg-card rounded-xl overflow-hidden border shadow-sm hover:shadow-lg transition-all duration-300"
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group relative bg-card/80 backdrop-blur-sm rounded-xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300"
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -68,13 +69,13 @@ export function WebProjects() {
                 )}
 
                 {/* Links Overlay */}
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                   {project.liveLink && (
                     <a
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                      className="p-2 rounded-full bg-background/90 backdrop-blur-sm hover:bg-background hover:scale-110 transition-all duration-200 shadow-lg"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
@@ -84,7 +85,7 @@ export function WebProjects() {
                       href={project.githubLinks[0].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                      className="p-2 rounded-full bg-background/90 backdrop-blur-sm hover:bg-background hover:scale-110 transition-all duration-200 shadow-lg"
                     >
                       <Github className="w-4 h-4" />
                     </a>

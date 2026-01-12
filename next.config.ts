@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
       {
         hostname: 'live.staticflickr.com',
       },
+      {
+        hostname: 'f4.bcbits.com',
+      },
+      {
+        hostname: '*.bcbits.com',
+      },
     ],
   },
 };

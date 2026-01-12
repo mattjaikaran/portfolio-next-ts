@@ -140,7 +140,7 @@ export default function AboutPage() {
         >
           <HeadingH1>About Me</HeadingH1>
           <div
-            className="text-muted-foreground text-lg max-w-3xl mx-auto prose dark:prose-invert"
+            className="text-muted-foreground text-lg text-left max-w-3xl mx-auto prose dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: aboutData }}
           />
         </motion.section>
@@ -171,12 +171,26 @@ export default function AboutPage() {
         {viewMode === 'timeline' && (
           <div className="hidden md:block mb-16">
             <div className="relative">
-              <div className="absolute left-1/2 h-full w-px bg-border" />
-              <div className="space-y-8">
+              {/* Animated timeline line */}
+              <motion.div
+                className="absolute left-1/2 w-px bg-gradient-to-b from-primary/50 via-primary to-primary/50"
+                initial={{ height: 0 }}
+                whileInView={{ height: '100%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: 'easeOut' }}
+              />
+              <div className="space-y-12">
                 {timelineEvents.map((event, index) => (
                   <motion.div
                     key={index}
-                    variants={fadeInUp}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.1,
+                      ease: [0.25, 0.1, 0.25, 1],
+                    }}
                     className="relative group"
                   >
                     <div
@@ -190,7 +204,7 @@ export default function AboutPage() {
                         }`}
                       >
                         {index % 2 === 0 ? (
-                          <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
+                          <Card className="overflow-hidden group hover:shadow-xl hover:border-primary/20 transition-all duration-300 bg-card/80 backdrop-blur-sm">
                             <CardContent className="pt-6">
                               <div className="flex flex-col space-y-4">
                                 <Badge
@@ -213,10 +227,10 @@ export default function AboutPage() {
                                   {event.link && (
                                     <Link
                                       href={event.link}
-                                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4"
+                                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4 group/link"
                                     >
                                       Learn More
-                                      <ArrowRight className="w-4 h-4" />
+                                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                                     </Link>
                                   )}
                                 </div>
@@ -229,7 +243,7 @@ export default function AboutPage() {
                       </div>
                       <div>
                         {index % 2 === 1 ? (
-                          <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
+                          <Card className="overflow-hidden group hover:shadow-xl hover:border-primary/20 transition-all duration-300 bg-card/80 backdrop-blur-sm">
                             <CardContent className="pt-6">
                               <div className="flex flex-col space-y-4">
                                 <Badge
@@ -252,10 +266,10 @@ export default function AboutPage() {
                                   {event.link && (
                                     <Link
                                       href={event.link}
-                                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4"
+                                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4 group/link"
                                     >
                                       Learn More
-                                      <ArrowRight className="w-4 h-4" />
+                                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                                     </Link>
                                   )}
                                 </div>
@@ -268,20 +282,31 @@ export default function AboutPage() {
                       </div>
 
                       {/* Timeline Point */}
-                      <div className="absolute left-1/2 transform -translate-x-1/2">
+                      <motion.div
+                        className="absolute left-1/2 transform -translate-x-1/2"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: 0.2,
+                          type: 'spring',
+                          stiffness: 200,
+                        }}
+                      >
                         <div
                           className={`w-4 h-4 rounded-full ${
                             event.link
                               ? 'bg-primary ring-4 ring-primary/20'
                               : 'bg-primary/50'
                           } transition-all duration-300 ${
-                            event.link && 'group-hover:ring-primary/30'
+                            event.link &&
+                            'group-hover:ring-primary/40 group-hover:scale-125'
                           }`}
                         />
                         {event.link && (
                           <div className="absolute -inset-2 bg-primary/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
                         )}
-                      </div>
+                      </motion.div>
                     </div>
                   </motion.div>
                 ))}
@@ -292,57 +317,69 @@ export default function AboutPage() {
 
         {/* Mobile Timeline */}
         {viewMode === 'timeline' && (
-          <div className="block md:hidden relative space-y-8 mb-16">
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
+          <div className="block md:hidden relative space-y-6 mb-16">
+            {/* Animated timeline line */}
+            <motion.div
+              className="absolute left-[1.55rem] top-0 w-px bg-gradient-to-b from-primary/50 via-primary to-primary/50"
+              initial={{ height: 0 }}
+              whileInView={{ height: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+            />
             {timelineEvents.map((event, index) => (
               <motion.div
                 key={index}
-                variants={fadeInUp}
-                className="group relative pl-16 pr-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="group relative pl-12 pr-4"
               >
-                <Card className="group hover:shadow-lg transition-all duration-300 w-full">
-                  <CardContent className="p-6">
+                <Card className="group hover:shadow-xl hover:border-primary/20 transition-all duration-300 w-full bg-card/80 backdrop-blur-sm">
+                  <CardContent className="p-5">
                     <Badge
                       variant="secondary"
-                      className={`${getCategoryColor(event.category)} mb-4`}
+                      className={`${getCategoryColor(event.category)} mb-3`}
                     >
                       {event.year}
                     </Badge>
-                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
                       {event.title}
                     </h3>
-                    <p className="text-muted-foreground mt-2 text-base">
+                    <p className="text-muted-foreground mt-2 text-sm">
                       {event.description}
                     </p>
                     {event.link && (
                       <Link
                         href={event.link}
-                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-4"
+                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mt-3 text-sm group/link"
                       >
                         Learn More
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
                       </Link>
                     )}
                   </CardContent>
                 </Card>
 
                 {/* Timeline Point */}
-                <div className="absolute left-[1.55rem] top-8 -translate-x-1/2">
+                <motion.div
+                  className="absolute left-[1.55rem] top-6 -translate-x-1/2"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1, type: 'spring', stiffness: 200 }}
+                >
                   <div
                     className={`w-3 h-3 rounded-full ${
                       event.link
-                        ? 'bg-primary ring-4 ring-primary/20'
+                        ? 'bg-primary ring-2 ring-primary/20'
                         : 'bg-primary/50'
                     } transition-all duration-300 ${
-                      event.link && 'group-hover:ring-primary/30'
+                      event.link &&
+                      'group-hover:ring-primary/40 group-hover:scale-125'
                     }`}
                   />
-                </div>
-
-                {/* Timeline Line */}
-                {index !== timelineEvents.length - 1 && (
-                  <div className="absolute left-8 top-8 h-full w-px bg-border" />
-                )}
+                </motion.div>
               </motion.div>
             ))}
           </div>

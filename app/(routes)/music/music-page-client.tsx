@@ -5,6 +5,8 @@ import { HeadingH1 } from '@/components/shared/typography';
 import { motion, Variants } from 'framer-motion';
 import { musicProjects } from '@/data/music';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -41,22 +43,28 @@ export function MusicPageClient() {
           className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {musicProjects.map((project) => (
-            <div
+            <Link
               key={project.id}
-              className="group relative overflow-hidden rounded-xl border bg-card transition-all hover:border-primary"
+              href={`/music/${project.slug}`}
+              className="group relative overflow-hidden rounded-xl border bg-card/80 backdrop-blur-sm transition-all hover:border-primary/20 hover:shadow-xl"
             >
               {project.image && (
                 <div className="relative aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full transition-transform group-hover:scale-105"
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
               )}
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                </div>
                 <p className="text-muted-foreground mb-4">
                   {project.description}
                 </p>
@@ -68,7 +76,7 @@ export function MusicPageClient() {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </motion.div>
       </motion.div>

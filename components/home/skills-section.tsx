@@ -109,18 +109,17 @@ export function SkillsSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={staggerContainer}
         >
-          {skills.map(skill => {
+          {skills.map((skill) => {
             const Icon = skill.icon;
             return (
               <motion.div
                 key={skill.title}
                 variants={fadeInUp}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
-                <Card className="p-6 h-full bg-card hover:bg-accent/5 transition-colors duration-300">
+                <Card className="p-6 h-full bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
                   <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground">
@@ -131,7 +130,7 @@ export function SkillsSection() {
                       {skill.technologies.map(tech => (
                         <span
                           key={tech}
-                          className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary"
+                          className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-default"
                         >
                           {tech}
                         </span>
