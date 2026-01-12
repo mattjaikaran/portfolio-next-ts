@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -29,11 +28,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <Card className="group h-full flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300">
         {/* Image Section */}
         <div className="relative h-48 overflow-hidden">
-          <Image
+          <img
             src={project.images[0]}
             alt={project.title}
-            fill
-            className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
           />
           {/* Links Overlay */}
           <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">

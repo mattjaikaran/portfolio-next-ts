@@ -57,10 +57,10 @@ I am <strong>Matt Jaikaran</strong>, a software engineer based in New York City 
 My journey began in Nashville's music industry, where I worked as a touring musician, songwriter, and producer while developing expertise in marketing, branding, and artist management. This experience taught me the value of creativity, attention to detail, and effective collaboration.
 </p>
 <p>
-In 2016, I made a strategic pivot to software engineering, relocating to NYC and immersing myself in technology through a coding bootcamp. Since then, I've built a robust career in full-stack development, working across the entire software lifecycle from design to deployment.
+In 2016, I made a strategic pivot to software engineering, relocating to NYC and immersing myself in technology through a coding bootcamp and continuous self-learning. Since then, I've built a robust career in full-stack development, working across the entire software lifecycle from design to deployment.
 </p>
 <p>
-I specialize in modern web development using JavaScript/TypeScript and Python, constantly exploring new technologies and methodologies to optimize development workflows. My diverse background allows me to bring both technical expertise and creative problem-solving to every project.
+I specialize in modern web development using mostly JavaScript/TypeScript and Python, with a focus on React and Next.js for the frontend and Django/FastAPI for the backend. I'm constantly exploring new technologies and methodologies to optimize development workflows. My diverse background allows me to bring both technical expertise and creative problem-solving to every project.
 </p>
 <p>
 I'm always open to discussing new opportunities and collaborations, whether they're innovative software projects or creative technical ventures.

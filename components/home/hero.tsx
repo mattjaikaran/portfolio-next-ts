@@ -49,9 +49,21 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center px-4">
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),transparent)] dark:bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.900),transparent)]" />
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden noise">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 -z-10">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background" />
+
+        {/* Animated gradient orbs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 dark:opacity-30 animate-blob" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 dark:opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 dark:opacity-30 animate-blob animation-delay-4000" />
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 dark:opacity-30 animate-blob animation-delay-6000" />
+
+        {/* Subtle grid overlay */}
+        <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.02]" />
+      </div>
 
       <motion.div
         className="text-center space-y-8 max-w-3xl mx-auto"

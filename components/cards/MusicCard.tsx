@@ -6,7 +6,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Music } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 interface MusicCardProps {
   project: MusicProject;
@@ -15,12 +14,12 @@ interface MusicCardProps {
 export function MusicCard({ project }: MusicCardProps) {
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300">
-      <div className="relative aspect-square w-full">
-        <Image
+      <div className="relative aspect-square w-full overflow-hidden">
+        <img
           src={project.coverArt || project.image}
           alt={project.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
         />
       </div>
       <CardContent className="p-6">
@@ -67,4 +66,4 @@ export function MusicCard({ project }: MusicCardProps) {
       </CardContent>
     </Card>
   );
-} 
+}
