@@ -5,7 +5,19 @@ import { HeadingH1, HeadingH2 } from '@/components/shared/typography';
 import { motion, Variants } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink, Github, Maximize2 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Maximize2,
+  Calendar,
+  Building2,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+  TrendingUp,
+} from 'lucide-react';
 import Link from 'next/link';
 import { Project } from '@/types/project';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -69,12 +81,58 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 Back to Projects
               </Link>
+
+              {/* Project Meta */}
+              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-muted-foreground">
+                {project.company && (
+                  <span className="flex items-center gap-1">
+                    <Building2 className="w-4 h-4" />
+                    {project.company}
+                  </span>
+                )}
+                {project.date && (
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {project.date}
+                  </span>
+                )}
+              </div>
+
               <HeadingH1 className="mb-6 text-4xl md:text-6xl font-bold tracking-tight">
                 {project.title}
               </HeadingH1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 {project.description}
               </p>
+
+              {/* Quick Actions */}
+              <div className="flex flex-wrap gap-4 mb-8">
+                {project.liveLink && (
+                  <Button asChild size="lg">
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Visit Live Site
+                    </a>
+                  </Button>
+                )}
+                {project.githubLinks?.[0] && (
+                  <Button variant="outline" asChild size="lg">
+                    <a
+                      href={project.githubLinks[0].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="mr-2 h-4 w-4" />
+                      View Source
+                    </a>
+                  </Button>
+                )}
+              </div>
+
               <div className="flex flex-wrap gap-2">
                 {project.tech?.map((tech) => (
                   <Badge
@@ -108,6 +166,42 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 )}
               </div>
 
+              {/* Tech Stack Breakdown */}
+              {project.fullTech && project.fullTech.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="mb-16"
+                >
+                  <HeadingH2 className="text-2xl font-bold tracking-tight mb-6">
+                    Technology Stack
+                  </HeadingH2>
+                  <Card>
+                    <CardContent className="pt-6">
+                      <div className="flex flex-wrap gap-3">
+                        {project.fullTech.map((tech, index) => (
+                          <motion.div
+                            key={tech}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.05 }}
+                          >
+                            <Badge
+                              variant="outline"
+                              className="text-sm px-4 py-2 hover:bg-primary/10 transition-colors"
+                            >
+                              {tech}
+                            </Badge>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )}
+
               {/* Gallery Grid */}
               {project.images && project.images.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -120,7 +214,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                       transition={{ delay: index * 0.1 }}
                       className={cn(
                         'relative rounded-xl overflow-hidden group cursor-pointer border',
-                        index === 0 && 'md:col-span-2 md:row-span-2',
+                        index === 0 && 'md:col-span-2 md:row-span-2'
                       )}
                       onClick={() => setSelectedImage(image)}
                     >
@@ -140,76 +234,110 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 </div>
               )}
 
-              {/* Challenges & Solutions */}
-              <div className="grid md:grid-cols-2 gap-12 mb-16">
-                {/* Challenges Section */}
-                {project.challenges && project.challenges.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                  >
-                    <HeadingH2 className="text-2xl font-bold tracking-tight">
-                      Challenges
-                    </HeadingH2>
-                    <div className="space-y-4">
-                      {project.challenges.map((challenge, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 }}
-                          className="p-6 rounded-xl bg-card border hover:border-primary/20 transition-colors"
-                        >
-                          <h3 className="text-lg font-semibold mb-2">
-                            {challenge.title}
-                          </h3>
-                          <p className="text-muted-foreground text-sm">
-                            {challenge.description}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
+              {/* Case Study Section */}
+              {((project.challenges && project.challenges.length > 0) ||
+                (project.solutions && project.solutions.length > 0)) && (
+                <div className="mb-16">
+                  <div className="text-center mb-12">
+                    <Badge variant="outline" className="mb-4">
+                      Case Study
+                    </Badge>
+                    <h2 className="text-3xl font-bold tracking-tight">
+                      The Journey
+                    </h2>
+                    <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
+                      Every project comes with unique challenges. Here&apos;s
+                      how I approached and solved them.
+                    </p>
+                  </div>
 
-                {/* Solutions Section */}
-                {project.solutions && project.solutions.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                  >
-                    <HeadingH2 className="text-2xl font-bold tracking-tight">
-                      Solutions
-                    </HeadingH2>
-                    <div className="space-y-4">
-                      {project.solutions.map((solution, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 }}
-                          className="p-6 rounded-xl bg-card border hover:border-primary/20 transition-colors"
-                        >
-                          <h3 className="text-lg font-semibold mb-2">
-                            {solution.title}
-                          </h3>
-                          <p className="text-muted-foreground text-sm">
-                            {solution.description}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </div>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Challenges Section */}
+                    {project.challenges && project.challenges.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-4"
+                      >
+                        <div className="flex items-center gap-2 mb-6">
+                          <div className="p-2 rounded-lg bg-orange-500/10">
+                            <AlertTriangle className="w-5 h-5 text-orange-500" />
+                          </div>
+                          <HeadingH2 className="text-xl font-bold tracking-tight">
+                            Challenges
+                          </HeadingH2>
+                        </div>
+                        <div className="space-y-4">
+                          {project.challenges.map((challenge, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.1 }}
+                            >
+                              <Card className="hover:border-orange-500/30 transition-colors">
+                                <CardContent className="pt-6">
+                                  <h3 className="text-lg font-semibold mb-2">
+                                    {challenge.title}
+                                  </h3>
+                                  <p className="text-muted-foreground text-sm">
+                                    {challenge.description}
+                                  </p>
+                                </CardContent>
+                              </Card>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
 
-              {/* Outcomes */}
+                    {/* Solutions Section */}
+                    {project.solutions && project.solutions.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-4"
+                      >
+                        <div className="flex items-center gap-2 mb-6">
+                          <div className="p-2 rounded-lg bg-green-500/10">
+                            <Lightbulb className="w-5 h-5 text-green-500" />
+                          </div>
+                          <HeadingH2 className="text-xl font-bold tracking-tight">
+                            Solutions
+                          </HeadingH2>
+                        </div>
+                        <div className="space-y-4">
+                          {project.solutions.map((solution, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.1 }}
+                            >
+                              <Card className="hover:border-green-500/30 transition-colors">
+                                <CardContent className="pt-6">
+                                  <h3 className="text-lg font-semibold mb-2">
+                                    {solution.title}
+                                  </h3>
+                                  <p className="text-muted-foreground text-sm">
+                                    {solution.description}
+                                  </p>
+                                </CardContent>
+                              </Card>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Outcomes / Results */}
               {project.outcomes && project.outcomes.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -217,54 +345,88 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                   viewport={{ once: true }}
                   className="mb-16"
                 >
-                  <HeadingH2 className="text-2xl font-bold tracking-tight mb-6">
-                    Outcomes
-                  </HeadingH2>
-                  <ul className="grid md:grid-cols-2 gap-4">
+                  <div className="text-center mb-8">
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <TrendingUp className="w-5 h-5 text-primary" />
+                      </div>
+                      <HeadingH2 className="text-2xl font-bold tracking-tight">
+                        Results & Impact
+                      </HeadingH2>
+                    </div>
+                    <p className="text-muted-foreground max-w-2xl mx-auto">
+                      Key achievements and measurable outcomes from this project
+                    </p>
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {project.outcomes.map((outcome, index) => (
-                      <li
+                      <motion.div
                         key={index}
-                        className="flex items-start gap-3 p-4 rounded-lg bg-card border"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
                       >
-                        <span className="text-primary font-bold">+</span>
-                        <span className="text-muted-foreground">{outcome}</span>
-                      </li>
+                        <Card className="h-full hover:border-primary/30 transition-colors">
+                          <CardContent className="pt-6">
+                            <div className="flex items-start gap-3">
+                              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <span className="text-sm">{outcome}</span>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
                 </motion.div>
               )}
 
-              {/* Project Links */}
+              {/* GitHub Links */}
+              {project.githubLinks && project.githubLinks.length > 1 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="mb-16"
+                >
+                  <HeadingH2 className="text-2xl font-bold tracking-tight mb-6">
+                    Project Resources
+                  </HeadingH2>
+                  <div className="flex flex-wrap gap-4">
+                    {project.githubLinks.map((link, index) => (
+                      <Button key={index} variant="outline" asChild>
+                        <a
+                          href={link.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          {link.text}
+                        </a>
+                      </Button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Bottom CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex flex-wrap gap-4 justify-center"
+                className="text-center pt-8 border-t border-border"
               >
-                {project.liveLink && (
+                <p className="text-muted-foreground mb-6">
+                  Interested in working together on a similar project?
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center">
                   <Button asChild size="lg">
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Visit Live Site
-                    </a>
+                    <Link href="/contact">Get in Touch</Link>
                   </Button>
-                )}
-                {project.githubLinks?.[0] && (
                   <Button variant="outline" asChild size="lg">
-                    <a
-                      href={project.githubLinks[0].link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      View Source
-                    </a>
+                    <Link href="/web">View More Projects</Link>
                   </Button>
-                )}
+                </div>
               </motion.div>
             </div>
           </motion.div>
