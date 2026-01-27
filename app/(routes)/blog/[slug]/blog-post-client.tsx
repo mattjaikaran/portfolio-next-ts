@@ -10,6 +10,7 @@ import { BlogPost } from '@/lib/types/blog';
 import { calculateReadingTime } from '@/data/blog';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
+import { ArticleJsonLd } from '@/components/seo/json-ld';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -47,6 +48,14 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
 
   return (
     <MainLayout>
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt}
+        url={`https://mattjaikaran.com/blog/${post.slug}`}
+        datePublished={post.date}
+        author={post.author}
+        image={post.coverImage}
+      />
       <motion.article
         initial="initial"
         animate="animate"
