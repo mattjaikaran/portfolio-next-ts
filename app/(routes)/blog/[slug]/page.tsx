@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getBlogPost, getAllPublishedPosts } from '@/data/blog';
+import { getBlogPost, getBlogSlugs } from '@/lib/services/blog';
 import { BlogPostClient } from './blog-post-client';
 
 interface Props {
@@ -8,15 +8,12 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPublishedPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return getBlogSlugs();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return {
@@ -31,8 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.excerpt,
       type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
+      publishedTime: post.publishedAt?.toISOString(),
       tags: post.tags,
     },
     twitter: {
@@ -45,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     notFound();

@@ -7,10 +7,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowLeft, Share2 } from 'lucide-react';
 import { BlogPost } from '@/lib/types/blog';
-import { calculateReadingTime } from '@/data/blog';
+import { calculateReadingTime } from '@/lib/services/blog';
+import { ArticleJsonLd } from '@/components/seo/json-ld';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { ArticleJsonLd } from '@/components/seo/json-ld';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -52,8 +52,8 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
         title={post.title}
         description={post.excerpt}
         url={`https://mattjaikaran.com/blog/${post.slug}`}
-        datePublished={post.date}
-        author={post.author}
+        datePublished={post.publishedAt?.toISOString() ?? post.createdAt.toISOString()}
+        author="Matt Jaikaran"
         image={post.coverImage}
       />
       <motion.article
@@ -84,11 +84,13 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })}
+                {post.publishedAt
+                  ? new Date(post.publishedAt).toLocaleDateString('en-US', {
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })
+                  : 'Draft'}
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
@@ -126,7 +128,7 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
           <div className="flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
               Written by{' '}
-              <span className="font-medium text-foreground">{post.author}</span>
+              <span className="font-medium text-foreground">Matt Jaikaran</span>
             </div>
             <Link href="/blog">
               <Button variant="outline" size="sm">

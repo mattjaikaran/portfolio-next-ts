@@ -77,18 +77,12 @@ const currentActivities = [
   },
 ];
 
-const currentlyReading = [
-  'Clean Architecture by Robert C. Martin',
-  'Designing Data-Intensive Applications',
-  'Various tech blogs and newsletters',
-];
-
 const currentlyListening = [
-  'Bon Iver',
-  'The National',
-  'Phoebe Bridgers',
-  'Japanese Breakfast',
-  'Big Thief',
+  'Radiohead',
+  'Tame Impala',
+  'Frank Ocean',
+  'Tyler, the Creator',
+  'Khruangbin',
 ];
 
 export function NowPageClient() {
@@ -165,58 +159,30 @@ export function NowPageClient() {
           ))}
         </motion.div>
 
-        {/* Reading & Listening */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          <motion.div
-            variants={fadeInUp}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card>
-              <CardContent className="pt-6">
-                <HeadingH2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <BookOpen className="w-5 h-5 text-green-500" />
-                  Currently Reading
-                </HeadingH2>
-                <ul className="space-y-2">
-                  {currentlyReading.map((book) => (
-                    <li
-                      key={book}
-                      className="text-muted-foreground text-sm flex items-start gap-2"
-                    >
-                      <span className="text-primary mt-1">•</span>
-                      {book}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card>
-              <CardContent className="pt-6">
-                <HeadingH2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <Music className="w-5 h-5 text-purple-500" />
-                  Currently Listening
-                </HeadingH2>
-                <div className="flex flex-wrap gap-2">
-                  {currentlyListening.map((artist) => (
-                    <Badge key={artist} variant="outline">
-                      {artist}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+        {/* Currently Listening */}
+        <motion.div
+          variants={fadeInUp}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <Card>
+            <CardContent className="pt-6">
+              <HeadingH2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <Music className="w-5 h-5 text-purple-500" />
+                Currently Listening
+              </HeadingH2>
+              <div className="flex flex-wrap gap-2">
+                {currentlyListening.map((artist) => (
+                  <Badge key={artist} variant="outline">
+                    {artist}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
