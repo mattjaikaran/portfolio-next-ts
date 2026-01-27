@@ -4,6 +4,7 @@ import { WebProjects } from '@/components/home/web-projects';
 import { SkillsSection } from '@/components/home/skills-section';
 import { Collaborate } from '@/components/home/collaborate';
 import { Brands } from '@/components/home/brands';
+import { Newsletter } from '@/components/home/newsletter';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Brands />
       {/* <FeaturedWork /> */}
       {/* <FeaturedPhotos /> */}
+      <Newsletter />
       <Collaborate />
     </MainLayout>
   );
