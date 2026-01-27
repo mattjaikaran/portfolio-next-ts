@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -37,6 +38,7 @@ type FormValues = z.infer<typeof formSchema>;
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   // Initialize form
   const form = useForm<FormValues>({
@@ -54,13 +56,8 @@ export function ContactForm() {
 
     try {
       await axios.post('/api/sendgrid', data);
-
-      toast({
-        title: 'Message sent!',
-        description: 'Thank you for your message. I will get back to you soon.',
-      });
-
       form.reset();
+      router.push('/contact/thank-you');
     } catch {
       toast({
         title: 'Error',
