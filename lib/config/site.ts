@@ -16,10 +16,10 @@ export const siteConfig = {
       title: 'Blog',
       href: '/blog',
     },
-    // {
-    //   title: 'Photos',
-    //   href: '/photos',
-    // },
+    {
+      title: 'Photos',
+      href: '/photos',
+    },
     {
       title: 'About',
       href: '/about',
