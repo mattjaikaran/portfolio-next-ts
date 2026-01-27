@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
@@ -43,11 +42,14 @@ export default function RootLayout({
         <WebsiteJsonLd />
       </head>
       <body className={inter.className}>
-        <Script
-          defer
-          data-domain="mattjaikaran.com"
-          src=""
-        />
+        {/* Analytics - configure NEXT_PUBLIC_PLAUSIBLE_URL in environment */}
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_URL && (
+          <script
+            defer
+            data-domain="mattjaikaran.com"
+            src={process.env.NEXT_PUBLIC_PLAUSIBLE_URL}
+          />
+        )}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
