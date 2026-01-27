@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import { WebPageClient } from './web-page-client';
 import { projects } from '@/data/projects';
 
@@ -15,5 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default function WebPage() {
-  return <WebPageClient initialProjects={projects} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <WebPageClient initialProjects={projects} />
+    </Suspense>
+  );
 }
