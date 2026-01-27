@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { MainLayout } from '@/components/layouts/main-layout';
 import { HeadingH1 } from '@/components/shared/typography';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
@@ -29,8 +30,17 @@ interface WebPageClientProps {
 }
 
 export function WebPageClient({ initialProjects }: WebPageClientProps) {
+  const searchParams = useSearchParams();
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Handle search param from URL (e.g., from 404 page)
+  useEffect(() => {
+    const search = searchParams.get('search');
+    if (search) {
+      setSearchQuery(search);
+    }
+  }, [searchParams]);
 
   // Extract all unique technologies from projects
   const allTechnologies = useMemo(() => {
