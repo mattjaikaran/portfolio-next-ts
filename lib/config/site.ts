@@ -12,6 +12,10 @@ export const siteConfig = {
       title: 'Music',
       href: '/music',
     },
+    {
+      title: 'Blog',
+      href: '/blog',
+    },
     // {
     //   title: 'Photos',
     //   href: '/photos',
