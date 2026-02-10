@@ -12,32 +12,31 @@ const brands = [
     name: 'Spotify',
     logo: '/images/spotify-green.png',
     url: 'https://spotify.com',
-    width: 'w-64',
   },
   {
     name: 'Hubble',
     logo: '/images/hubble.svg',
     url: 'https://hubblecontacts.com',
-    width: 'w-64',
   },
   {
     name: 'NBC',
     logo: '/images/nbc-logo.svg',
     url: 'https://nbc.com',
-    width: 'w-48',
   },
   {
     name: 'HyVee',
     logo: '/images/hyvee.png',
     url: 'https://www.hy-vee.com',
-    width: 'w-64',
   },
-  { name: 'GM', logo: '/images/gm.png', url: 'https://gm.com', width: 'w-32' },
+  {
+    name: 'GM',
+    logo: '/images/gm.png',
+    url: 'https://gm.com',
+  },
   {
     name: 'Avon',
     logo: '/images/avon.png',
     url: 'https://avon.com',
-    width: 'w-64',
   },
 ];
 
@@ -45,7 +44,7 @@ export function Brands() {
   return (
     <section className="py-24 px-4 bg-muted/30">
       <motion.div
-        className="max-w-6xl mx-auto space-y-16"
+        className="max-w-5xl mx-auto space-y-16"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
@@ -69,7 +68,7 @@ export function Brands() {
 
         <motion.div
           variants={fadeInUp}
-          className="grid grid-cols-2 md:grid-cols-3 gap-12 items-center justify-items-center"
+          className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 md:gap-x-16 md:gap-y-16 items-center justify-items-center"
         >
           {brands.map((brand) => (
             <motion.a
@@ -77,18 +76,16 @@ export function Brands() {
               href={brand.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative"
+              className="group relative flex items-center justify-center h-14 sm:h-16 md:h-20 w-full max-w-[220px]"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl blur-xl transition-opacity opacity-0 group-hover:opacity-100" />
-              <div className="relative">
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className={`${brand.width} transition-opacity opacity-80 group-hover:opacity-100 dark:brightness-0 dark:invert`}
-                />
-              </div>
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="relative max-h-full max-w-full w-auto h-auto object-contain transition-opacity opacity-70 group-hover:opacity-100 dark:brightness-0 dark:invert"
+              />
             </motion.a>
           ))}
         </motion.div>
