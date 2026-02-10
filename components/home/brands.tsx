@@ -9,12 +9,6 @@ const fadeInUp = {
 
 const brands = [
   {
-    name: 'NBCUniversal',
-    logo: '/images/nbcuniversal-logo.svg',
-    url: 'https://nbcuniversal.com',
-    width: 'w-64',
-  },
-  {
     name: 'Spotify',
     logo: '/images/spotify-green.png',
     url: 'https://spotify.com',
@@ -27,10 +21,10 @@ const brands = [
     width: 'w-64',
   },
   {
-    name: 'Avon',
-    logo: '/images/avon.png',
-    url: 'https://avon.com',
-    width: 'w-64',
+    name: 'NBC',
+    logo: '/images/nbc-logo.svg',
+    url: 'https://nbc.com',
+    width: 'w-48',
   },
   {
     name: 'HyVee',
@@ -39,6 +33,12 @@ const brands = [
     width: 'w-64',
   },
   { name: 'GM', logo: '/images/gm.png', url: 'https://gm.com', width: 'w-32' },
+  {
+    name: 'Avon',
+    logo: '/images/avon.png',
+    url: 'https://avon.com',
+    width: 'w-64',
+  },
 ];
 
 export function Brands() {

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <!-- NBC Peacock -->
+  <g transform="translate(100, 2) scale(0.8)">
+    <!-- Feather 1 - Red -->
+    <path d="M30,58 C24,40 18,20 30,2 C38,16 40,36 38,54Z" fill="#E11A2C"/>
+    <!-- Feather 2 - Orange -->
+    <path d="M40,52 C38,32 42,12 56,0 C56,16 52,36 46,50Z" fill="#F68E1E"/>
+    <!-- Feather 3 - Yellow -->
+    <path d="M48,48 C54,30 66,12 82,6 C72,22 62,38 54,50Z" fill="#FBBE28"/>
+    <!-- Feather 4 - Green -->
+    <path d="M56,50 C66,36 82,24 100,24 C86,36 72,46 60,52Z" fill="#00A651"/>
+    <!-- Feather 5 - Blue -->
+    <path d="M60,54 C74,46 90,42 106,46 C90,50 76,52 62,56Z" fill="#0078BF"/>
+    <!-- Feather 6 - Purple -->
+    <path d="M62,58 C76,56 92,58 104,66 C88,64 74,60 62,60Z" fill="#6E4B9E"/>
+    <!-- Body (negative space peacock) -->
+    <path d="M48,56 C48,50 52,48 56,52 C58,56 56,62 52,64 C48,62 46,60 48,56Z" fill="#000"/>
+  </g>
+  <!-- NBC Text -->
+  <text x="150" y="88" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="800" letter-spacing="8" fill="#000" text-anchor="middle">NBC</text>
+</svg>
