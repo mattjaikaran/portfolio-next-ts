@@ -62,7 +62,7 @@ export function MusicProjectClient({ project }: MusicProjectClientProps) {
         initial="initial"
         animate="animate"
         variants={staggerContainer}
-        className="container max-w-5xl py-12 px-4"
+        className="container max-w-5xl py-12 mx-auto px-4"
       >
         <motion.div variants={fadeInUp} className="mb-8">
           <Link

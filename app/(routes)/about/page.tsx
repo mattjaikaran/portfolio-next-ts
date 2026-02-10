@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Brands } from '@/components/home/brands';
-import { GitHubActivity } from '@/components/home/github-activity';
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -604,11 +603,6 @@ export default function AboutPage() {
             </motion.section>
           </>
         )}
-
-        {/* GitHub Activity Section */}
-        <motion.section variants={fadeInUp} className="mt-16">
-          <GitHubActivity />
-        </motion.section>
 
         {/* Brands Section */}
         <motion.section variants={fadeInUp} className="mt-16">

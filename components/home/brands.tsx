@@ -9,9 +9,9 @@ const fadeInUp = {
 
 const brands = [
   {
-    name: 'Rewyre',
-    logo: '/images/rewyre-logo.svg',
-    url: 'https://rewyre.com',
+    name: 'NBCUniversal',
+    logo: '/images/nbcuniversal-logo.svg',
+    url: 'https://nbcuniversal.com',
     width: 'w-64',
   },
   {
